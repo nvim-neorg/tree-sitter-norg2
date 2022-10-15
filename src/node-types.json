@@ -8,6 +8,59 @@
       "required": false,
       "types": [
         {
+          "type": "heading1",
+          "named": true
+        },
+        {
+          "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "paragraph_break",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heading1",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "paragraph_segment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "paragraph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "paragraph_segment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "paragraph_segment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
           "type": "whitespace",
           "named": true
         },
@@ -17,6 +70,38 @@
         }
       ]
     }
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "**",
+    "named": false
+  },
+  {
+    "type": "***",
+    "named": false
+  },
+  {
+    "type": "****",
+    "named": false
+  },
+  {
+    "type": "*****",
+    "named": false
+  },
+  {
+    "type": "******",
+    "named": false
+  },
+  {
+    "type": "paragraph_break",
+    "named": true
   },
   {
     "type": "whitespace",
