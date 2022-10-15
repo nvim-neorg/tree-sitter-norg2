@@ -1,4 +1,5 @@
-let i = token.immediate
+let i = token.immediate;
+let line_break = i("\n");
 
 module.exports = grammar({
     name: "norg",
@@ -13,6 +14,10 @@ module.exports = grammar({
     precedences: $ => [
     ],
 
+    supertypes: $ => [
+        $.non_structural,
+    ],
+
     rules: {
         document: $ => repeat(
             choice(
@@ -22,28 +27,41 @@ module.exports = grammar({
             ),
         ),
 
+        // ------------------------------------------------------------------------
+
         word: _ => /[^\s]+/,
         whitespace: _ => /[\t                　]+/,
 
-        paragraph_segment: $ => prec.right(seq(
-            $.word,
+        paragraph_segment: $ => prec.right(
+            seq(
+                $.word,
 
-            repeat(
-                choice(
-                    $.word,
-                    $.whitespace,
+                repeat(
+                    choice(
+                        $.word,
+                        $.whitespace,
+                    ),
                 ),
-            ),
-        )),
+            )
+        ),
 
         paragraph_break: $ => /\n+/,
 
-        paragraph: $ => prec.right(repeat1(
-            seq(
-                $.paragraph_segment,
-                i("\n"),
+        paragraph: $ => prec.right(
+            repeat1(
+                seq(
+                    $.paragraph_segment,
+                    line_break,
+                )
             )
-        )),
+        ),
+
+        non_structural: $ => choice(
+            $.paragraph,
+            $.paragraph_break,
+        ),
+
+        // ------------------------------------------------------------------------
 
         heading1: $ => gen_heading($, 1),
         heading2: $ => gen_heading($, 2),
@@ -55,9 +73,27 @@ module.exports = grammar({
 });
 
 function gen_heading($, level) {
-    return seq(
-        "*".repeat(level),
-        /\s+/,
-        $.paragraph_segment,
+    let subheadings = [];
+
+    for (let i = level; i < 6; i++) {
+        subheadings.push($["heading" + i]);
+    }
+
+    return prec.right(
+        seq(
+            "*".repeat(level),
+            /\s+/,
+            field("title", $.paragraph_segment),
+            line_break,
+
+            field("content",
+                repeat(
+                    choice(
+                        $.non_structural,
+                        ...subheadings,
+                    ),
+                ),
+            ),
+        )
     );
 }
