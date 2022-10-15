@@ -16,6 +16,7 @@ module.exports = grammar({
 
     supertypes: $ => [
         $.non_structural,
+        $.nestable_detached_modifiers,
     ],
 
     rules: {
@@ -24,22 +25,23 @@ module.exports = grammar({
                 $.paragraph,
                 $.paragraph_break,
                 $.heading1,
+                $.nestable_detached_modifiers,
             ),
         ),
 
         // ------------------------------------------------------------------------
 
-        word: _ => /[^\s]+/,
-        whitespace: _ => /[\t                　]+/,
+        _word: _ => /[^\s]+/,
+        _whitespace: _ => /[\t                　]+/,
 
         paragraph_segment: $ => prec.right(
             seq(
-                $.word,
+                $._word,
 
                 repeat(
                     choice(
-                        $.word,
-                        $.whitespace,
+                        $._word,
+                        $._whitespace,
                     ),
                 ),
             )
@@ -61,6 +63,10 @@ module.exports = grammar({
             $.paragraph_break,
         ),
 
+        nestable_detached_modifiers: $ => choice(
+            $.unordered_list,
+        ),
+
         // ------------------------------------------------------------------------
 
         heading1: $ => gen_heading($, 1),
@@ -69,20 +75,44 @@ module.exports = grammar({
         heading4: $ => gen_heading($, 4),
         heading5: $ => gen_heading($, 5),
         heading6: $ => gen_heading($, 6),
+
+        // weak_paragraph_delimiter: _ => "---",
+
+        // -----------------------------------------------------------------------
+
+        unordered_list: $ => prec.right(
+            repeat1(
+                choice(
+                    $.unordered_list1,
+                    $.unordered_list2,
+                    $.unordered_list3,
+                    $.unordered_list4,
+                    $.unordered_list5,
+                    $.unordered_list6,
+                )
+            ),
+        ),
+
+        unordered_list1: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 1),
+        unordered_list2: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 2),
+        unordered_list3: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 3),
+        unordered_list4: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 4),
+        unordered_list5: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 5),
+        unordered_list6: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 6),
     },
 });
 
 function gen_heading($, level) {
     let subheadings = [];
 
-    for (let i = level; i < 6; i++) {
+    for (let i = level + 1; i < 6; i++) {
         subheadings.push($["heading" + i]);
     }
 
     return prec.right(
         seq(
             "*".repeat(level),
-            /\s+/,
+            $._whitespace,
             field("title", $.paragraph_segment),
             line_break,
 
@@ -90,8 +120,38 @@ function gen_heading($, level) {
                 repeat(
                     choice(
                         $.non_structural,
+                        $.nestable_detached_modifiers,
                         ...subheadings,
                     ),
+                ),
+            ),
+
+            // optional(
+            //     seq(
+            //         $.weak_paragraph_delimiter,
+            //         line_break,
+            //     ),
+            // ),
+        )
+    );
+}
+
+function gen_nestable_detached_modifier($, char, name, level) {
+    let submodifiers = [];
+
+    for (let i = level + 1; i < 6; i++) {
+        submodifiers.push($[name + i]);
+    }
+
+    return prec.right(
+        seq(
+            char.repeat(level),
+            $._whitespace,
+            field("content", $.paragraph),
+
+            repeat(
+                choice(
+                    ...submodifiers,
                 ),
             ),
         )
