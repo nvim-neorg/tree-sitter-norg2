@@ -4,6 +4,14 @@
     "named": true,
     "subtypes": [
       {
+        "type": "ordered_list",
+        "named": true
+      },
+      {
+        "type": "quote",
+        "named": true
+      },
+      {
         "type": "unordered_list",
         "named": true
       }
@@ -45,10 +53,6 @@
         },
         {
           "type": "paragraph_break",
-          "named": true
-        },
-        {
-          "type": "weak_paragraph_delimiter",
           "named": true
         }
       ]
@@ -98,16 +102,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "weak_paragraph_delimiter",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -150,16 +144,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "weak_paragraph_delimiter",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -198,16 +182,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "weak_paragraph_delimiter",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -242,16 +216,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "weak_paragraph_delimiter",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -282,16 +246,201 @@
           }
         ]
       }
-    },
+    }
+  },
+  {
+    "type": "ordered_list",
+    "named": true,
+    "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
-          "type": "weak_paragraph_delimiter",
+          "type": "ordered_list1",
+          "named": true
+        },
+        {
+          "type": "ordered_list2",
+          "named": true
+        },
+        {
+          "type": "ordered_list3",
+          "named": true
+        },
+        {
+          "type": "ordered_list4",
+          "named": true
+        },
+        {
+          "type": "ordered_list5",
+          "named": true
+        },
+        {
+          "type": "ordered_list6",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "ordered_list1",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ordered_list2",
+          "named": true
+        },
+        {
+          "type": "ordered_list3",
+          "named": true
+        },
+        {
+          "type": "ordered_list4",
+          "named": true
+        },
+        {
+          "type": "ordered_list5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ordered_list2",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ordered_list3",
+          "named": true
+        },
+        {
+          "type": "ordered_list4",
+          "named": true
+        },
+        {
+          "type": "ordered_list5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ordered_list3",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ordered_list4",
+          "named": true
+        },
+        {
+          "type": "ordered_list5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ordered_list4",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ordered_list5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ordered_list5",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "ordered_list6",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -313,6 +462,201 @@
     "type": "paragraph_segment",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "quote",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "quote1",
+          "named": true
+        },
+        {
+          "type": "quote2",
+          "named": true
+        },
+        {
+          "type": "quote3",
+          "named": true
+        },
+        {
+          "type": "quote4",
+          "named": true
+        },
+        {
+          "type": "quote5",
+          "named": true
+        },
+        {
+          "type": "quote6",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quote1",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "quote2",
+          "named": true
+        },
+        {
+          "type": "quote3",
+          "named": true
+        },
+        {
+          "type": "quote4",
+          "named": true
+        },
+        {
+          "type": "quote5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quote2",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "quote3",
+          "named": true
+        },
+        {
+          "type": "quote4",
+          "named": true
+        },
+        {
+          "type": "quote5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quote3",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "quote4",
+          "named": true
+        },
+        {
+          "type": "quote5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quote4",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "quote5",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quote5",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "quote6",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "unordered_list",
@@ -510,11 +854,6 @@
     }
   },
   {
-    "type": "weak_paragraph_delimiter",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "\n",
     "named": false
   },
@@ -567,7 +906,55 @@
     "named": false
   },
   {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">>",
+    "named": false
+  },
+  {
+    "type": ">>>",
+    "named": false
+  },
+  {
+    "type": ">>>>",
+    "named": false
+  },
+  {
+    "type": ">>>>>",
+    "named": false
+  },
+  {
+    "type": ">>>>>>",
+    "named": false
+  },
+  {
     "type": "paragraph_break",
     "named": true
+  },
+  {
+    "type": "~",
+    "named": false
+  },
+  {
+    "type": "~~",
+    "named": false
+  },
+  {
+    "type": "~~~",
+    "named": false
+  },
+  {
+    "type": "~~~~",
+    "named": false
+  },
+  {
+    "type": "~~~~~",
+    "named": false
+  },
+  {
+    "type": "~~~~~~",
+    "named": false
   }
 ]

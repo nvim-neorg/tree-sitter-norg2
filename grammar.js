@@ -65,6 +65,8 @@ module.exports = grammar({
 
         nestable_detached_modifiers: $ => choice(
             $.unordered_list,
+            $.ordered_list,
+            $.quote,
         ),
 
         // ------------------------------------------------------------------------
@@ -99,6 +101,46 @@ module.exports = grammar({
         unordered_list4: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 4),
         unordered_list5: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 5),
         unordered_list6: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 6),
+
+        ordered_list: $ => prec.right(
+            repeat1(
+                choice(
+                    $.ordered_list1,
+                    $.ordered_list2,
+                    $.ordered_list3,
+                    $.ordered_list4,
+                    $.ordered_list5,
+                    $.ordered_list6,
+                )
+            ),
+        ),
+
+        ordered_list1: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 1),
+        ordered_list2: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 2),
+        ordered_list3: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 3),
+        ordered_list4: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 4),
+        ordered_list5: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 5),
+        ordered_list6: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 6),
+
+        quote: $ => prec.right(
+            repeat1(
+                choice(
+                    $.quote1,
+                    $.quote2,
+                    $.quote3,
+                    $.quote4,
+                    $.quote5,
+                    $.quote6,
+                )
+            ),
+        ),
+
+        quote1: $ => gen_nestable_detached_modifier($, ">", "quote", 1),
+        quote2: $ => gen_nestable_detached_modifier($, ">", "quote", 2),
+        quote3: $ => gen_nestable_detached_modifier($, ">", "quote", 3),
+        quote4: $ => gen_nestable_detached_modifier($, ">", "quote", 4),
+        quote5: $ => gen_nestable_detached_modifier($, ">", "quote", 5),
+        quote6: $ => gen_nestable_detached_modifier($, ">", "quote", 6),
     },
 });
 
