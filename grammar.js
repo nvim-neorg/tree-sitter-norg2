@@ -17,6 +17,7 @@ module.exports = grammar({
     supertypes: $ => [
         $.non_structural,
         $.nestable_detached_modifiers,
+        $.rangeable_detached_modifiers,
     ],
 
     rules: {
@@ -60,6 +61,7 @@ module.exports = grammar({
             $.paragraph,
             $.paragraph_break,
             $.nestable_detached_modifiers,
+            $.rangeable_detached_modifiers,
         ),
 
         nestable_detached_modifiers: $ => choice(
@@ -163,6 +165,29 @@ module.exports = grammar({
         attribute6: $ => gen_nestable_detached_modifier($, "%", "attribute", 6),
 
         // ------------------------------------------------------------------------
+
+        rangeable_detached_modifiers: $ => choice(
+            $.definition_list,
+            $.footnote_list,
+        ),
+
+        definition_list:   $ => prec.right(repeat1(choice($.single_definition, $.multi_definition))),
+
+        single_definition: $ => gen_rangeable_detached_modifier($, "$", false, "definition"),
+        multi_definition:  $ => gen_rangeable_detached_modifier($, "$", true, "definition"),
+        definition_end:    $ => seq("$$", line_break),
+
+        footnote_list:     $ => prec.right(repeat1(choice($.single_footnote, $.multi_footnote))),
+
+        single_footnote:   $ => gen_rangeable_detached_modifier($, "^", false, "footnote"),
+        multi_footnote:    $ => gen_rangeable_detached_modifier($, "^", true, "footnote"),
+        footnote_end:      $ => seq("^^", line_break),
+
+        table:             $ => prec.right(repeat1(choice($.single_table_cell, $.multi_table_cell))),
+
+        single_table_cell: $ => gen_rangeable_detached_modifier($, ":", false, "table_cell"),
+        multi_table_cell:  $ => gen_rangeable_detached_modifier($, ":", true, "table_cell"),
+        table_cell_end:    $ => seq("::", line_break),
     },
 });
 
@@ -219,4 +244,35 @@ function gen_nestable_detached_modifier($, char, name, level) {
             ),
         )
     );
+}
+
+function gen_rangeable_detached_modifier($, char, multi, name) {
+    if (multi) {
+        return prec(1,
+            seq(
+                char.repeat(2),
+                $._whitespace,
+                field("title", $.paragraph_segment),
+                line_break,
+                repeat($.non_structural),
+                // NOTE: This does not work for example with the following input:
+                // $$ Definition
+                // $ Nested Definition
+                // content
+                // $$
+                //
+                // There must be a paragraph break after the nested definition. Is this intended?
+                $[name + "_end"],
+            )
+        );
+    }
+    else {
+        return seq(
+            char,
+            $._whitespace,
+            field("title", $.paragraph_segment),
+            line_break,
+            field("content", $.paragraph),
+        );
+    }
 }

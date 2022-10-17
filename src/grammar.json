@@ -67,22 +67,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "paragraph_segment"
-                },
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "definition_end"
-                  },
-                  "named": true,
-                  "value": "paragraph_segment"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "paragraph_segment"
             },
             {
               "type": "IMMEDIATE_TOKEN",
@@ -1786,6 +1772,121 @@
         {
           "type": "STRING",
           "value": "^^"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "\n"
+          }
+        }
+      ]
+    },
+    "table": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "single_table_cell"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "multi_table_cell"
+            }
+          ]
+        }
+      }
+    },
+    "single_table_cell": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_whitespace"
+        },
+        {
+          "type": "FIELD",
+          "name": "title",
+          "content": {
+            "type": "SYMBOL",
+            "name": "paragraph_segment"
+          }
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "\n"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "content",
+          "content": {
+            "type": "SYMBOL",
+            "name": "paragraph"
+          }
+        }
+      ]
+    },
+    "multi_table_cell": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "::"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_whitespace"
+          },
+          {
+            "type": "FIELD",
+            "name": "title",
+            "content": {
+              "type": "SYMBOL",
+              "name": "paragraph_segment"
+            }
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "\n"
+            }
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "non_structural"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "table_cell_end"
+          }
+        ]
+      }
+    },
+    "table_cell_end": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "::"
         },
         {
           "type": "IMMEDIATE_TOKEN",

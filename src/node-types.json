@@ -550,6 +550,36 @@
     }
   },
   {
+    "type": "multi_table_cell",
+    "named": true,
+    "fields": {
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "non_structural",
+          "named": true
+        },
+        {
+          "type": "table_cell_end",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ordered_list",
     "named": true,
     "fields": {},
@@ -1012,6 +1042,37 @@
     }
   },
   {
+    "type": "single_table_cell",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      },
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "table_cell_end",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "unordered_list",
     "named": true,
     "fields": {},
@@ -1288,6 +1349,14 @@
   },
   {
     "type": "------",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {
