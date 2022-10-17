@@ -22,10 +22,8 @@ module.exports = grammar({
     rules: {
         document: $ => repeat(
             choice(
-                $.paragraph,
-                $.paragraph_break,
                 $.heading1,
-                $.nestable_detached_modifiers,
+                $.non_structural,
             ),
         ),
 
@@ -61,12 +59,14 @@ module.exports = grammar({
         non_structural: $ => choice(
             $.paragraph,
             $.paragraph_break,
+            $.nestable_detached_modifiers,
         ),
 
         nestable_detached_modifiers: $ => choice(
             $.unordered_list,
             $.ordered_list,
             $.quote,
+            $.attribute,
         ),
 
         // ------------------------------------------------------------------------
@@ -141,6 +141,28 @@ module.exports = grammar({
         quote4: $ => gen_nestable_detached_modifier($, ">", "quote", 4),
         quote5: $ => gen_nestable_detached_modifier($, ">", "quote", 5),
         quote6: $ => gen_nestable_detached_modifier($, ">", "quote", 6),
+
+        attribute: $ => prec.right(
+            repeat1(
+                choice(
+                    $.attribute1,
+                    $.attribute2,
+                    $.attribute3,
+                    $.attribute4,
+                    $.attribute5,
+                    $.attribute6,
+                )
+            ),
+        ),
+
+        attribute1: $ => gen_nestable_detached_modifier($, "%", "attribute", 1),
+        attribute2: $ => gen_nestable_detached_modifier($, "%", "attribute", 2),
+        attribute3: $ => gen_nestable_detached_modifier($, "%", "attribute", 3),
+        attribute4: $ => gen_nestable_detached_modifier($, "%", "attribute", 4),
+        attribute5: $ => gen_nestable_detached_modifier($, "%", "attribute", 5),
+        attribute6: $ => gen_nestable_detached_modifier($, "%", "attribute", 6),
+
+        // ------------------------------------------------------------------------
     },
 });
 
@@ -162,7 +184,6 @@ function gen_heading($, level) {
                 repeat(
                     choice(
                         $.non_structural,
-                        $.nestable_detached_modifiers,
                         ...subheadings,
                     ),
                 ),
