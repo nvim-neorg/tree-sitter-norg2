@@ -54,6 +54,10 @@
       {
         "type": "footnote_list",
         "named": true
+      },
+      {
+        "type": "table",
+        "named": true
       }
     ]
   },
@@ -1065,6 +1069,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "table",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "multi_table_cell",
+          "named": true
+        },
+        {
+          "type": "single_table_cell",
+          "named": true
+        }
+      ]
     }
   },
   {

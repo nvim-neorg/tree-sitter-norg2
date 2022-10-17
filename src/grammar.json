@@ -1549,6 +1549,10 @@
         {
           "type": "SYMBOL",
           "name": "footnote_list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "table"
         }
       ]
     },

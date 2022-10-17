@@ -169,6 +169,7 @@ module.exports = grammar({
         rangeable_detached_modifiers: $ => choice(
             $.definition_list,
             $.footnote_list,
+            $.table,
         ),
 
         definition_list:   $ => prec.right(repeat1(choice($.single_definition, $.multi_definition))),
