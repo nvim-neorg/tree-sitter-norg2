@@ -25,6 +25,7 @@ module.exports = grammar({
             choice(
                 $.heading1,
                 $.non_structural,
+                $.strong_delimiting_modifier,
             ),
         ),
 
@@ -62,6 +63,7 @@ module.exports = grammar({
             $.paragraph_break,
             $.nestable_detached_modifiers,
             $.rangeable_detached_modifiers,
+            $.horizontal_line_delimiting_modifier,
         ),
 
         nestable_detached_modifiers: $ => choice(
@@ -176,19 +178,26 @@ module.exports = grammar({
 
         single_definition: $ => gen_rangeable_detached_modifier($, "$", false, "definition"),
         multi_definition:  $ => gen_rangeable_detached_modifier($, "$", true, "definition"),
-        definition_end:    $ => seq("$$", line_break),
+        definition_end:    $ => token(seq("$$", line_break)),
 
         footnote_list:     $ => prec.right(repeat1(choice($.single_footnote, $.multi_footnote))),
 
         single_footnote:   $ => gen_rangeable_detached_modifier($, "^", false, "footnote"),
         multi_footnote:    $ => gen_rangeable_detached_modifier($, "^", true, "footnote"),
-        footnote_end:      $ => seq("^^", line_break),
+        footnote_end:      $ => token(seq("^^", line_break)),
 
         table:             $ => prec.right(repeat1(choice($.single_table_cell, $.multi_table_cell))),
 
         single_table_cell: $ => gen_rangeable_detached_modifier($, ":", false, "table_cell"),
         multi_table_cell:  $ => gen_rangeable_detached_modifier($, ":", true, "table_cell"),
-        table_cell_end:    $ => seq("::", line_break),
+        table_cell_end:    $ => token(seq("::", line_break)),
+
+        // ------------------------------------------------------------------------
+
+        // TODO: `--` is an error
+        weak_delimiting_modifier:            $ => token(seq("---", i(repeat("-")), line_break)),
+        strong_delimiting_modifier:          $ => token(seq("===", i(repeat("=")), line_break)),
+        horizontal_line_delimiting_modifier: $ => token(seq("___", i(repeat("_")), line_break)),
     },
 });
 
@@ -215,12 +224,7 @@ function gen_heading($, level) {
                 ),
             ),
 
-            // optional(
-            //     seq(
-            //         $.weak_paragraph_delimiter,
-            //         line_break,
-            //     ),
-            // ),
+            optional($.weak_delimiting_modifier),
         )
     );
 }

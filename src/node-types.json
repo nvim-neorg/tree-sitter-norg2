@@ -26,6 +26,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "horizontal_line_delimiting_modifier",
+        "named": true
+      },
+      {
         "type": "nestable_detached_modifiers",
         "named": true
       },
@@ -257,11 +261,6 @@
     }
   },
   {
-    "type": "definition_end",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "definition_list",
     "named": true,
     "fields": {},
@@ -295,14 +294,13 @@
         {
           "type": "non_structural",
           "named": true
+        },
+        {
+          "type": "strong_delimiting_modifier",
+          "named": true
         }
       ]
     }
-  },
-  {
-    "type": "footnote_end",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "footnote_list",
@@ -363,6 +361,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -401,6 +409,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -435,6 +453,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -465,6 +493,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -491,6 +529,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1091,11 +1139,6 @@
     }
   },
   {
-    "type": "table_cell_end",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "unordered_list",
     "named": true,
     "fields": {},
@@ -1415,7 +1458,31 @@
     "named": false
   },
   {
+    "type": "definition_end",
+    "named": true
+  },
+  {
+    "type": "footnote_end",
+    "named": true
+  },
+  {
+    "type": "horizontal_line_delimiting_modifier",
+    "named": true
+  },
+  {
     "type": "paragraph_break",
+    "named": true
+  },
+  {
+    "type": "strong_delimiting_modifier",
+    "named": true
+  },
+  {
+    "type": "table_cell_end",
+    "named": true
+  },
+  {
+    "type": "weak_delimiting_modifier",
     "named": true
   },
   {
