@@ -363,9 +363,13 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_extension",
+          "named": true
+        },
         {
           "type": "weak_delimiting_modifier",
           "named": true
@@ -411,9 +415,13 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_extension",
+          "named": true
+        },
         {
           "type": "weak_delimiting_modifier",
           "named": true
@@ -455,9 +463,13 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_extension",
+          "named": true
+        },
         {
           "type": "weak_delimiting_modifier",
           "named": true
@@ -495,9 +507,13 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_extension",
+          "named": true
+        },
         {
           "type": "weak_delimiting_modifier",
           "named": true
@@ -531,9 +547,13 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_extension",
+          "named": true
+        },
         {
           "type": "weak_delimiting_modifier",
           "named": true
@@ -1459,6 +1479,10 @@
   },
   {
     "type": "definition_end",
+    "named": true
+  },
+  {
+    "type": "detached_modifier_extension",
     "named": true
   },
   {

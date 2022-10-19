@@ -142,6 +142,18 @@
             "value": "*"
           },
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "detached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "SYMBOL",
             "name": "_whitespace"
           },
@@ -218,6 +230,18 @@
             "value": "**"
           },
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "detached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "SYMBOL",
             "name": "_whitespace"
           },
@@ -290,6 +314,18 @@
             "value": "***"
           },
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "detached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "SYMBOL",
             "name": "_whitespace"
           },
@@ -358,6 +394,18 @@
             "value": "****"
           },
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "detached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "SYMBOL",
             "name": "_whitespace"
           },
@@ -422,6 +470,18 @@
             "value": "*****"
           },
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "detached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "SYMBOL",
             "name": "_whitespace"
           },
@@ -480,6 +540,18 @@
           {
             "type": "STRING",
             "value": "******"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "detached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           },
           {
             "type": "SYMBOL",
@@ -2075,6 +2147,94 @@
             }
           }
         ]
+      }
+    },
+    "detached_modifier_extension": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "("
+            }
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "x"
+            }
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": ")"
+            }
+          }
+        ]
+      }
+    },
+    "todo_item_undone": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": " "
+      }
+    },
+    "todo_item_done": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "x"
+      }
+    },
+    "todo_item_uncertain": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "?"
+      }
+    },
+    "todo_item_urgent": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "!"
+      }
+    },
+    "todo_item_pending": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "-"
+      }
+    },
+    "todo_item_on_hold": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "="
+      }
+    },
+    "todo_item_on_cancelled": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "_"
+      }
+    },
+    "todo_item_recurring": {
+      "type": "TOKEN",
+      "content": {
+        "type": "IMMEDIATE_TOKEN",
+        "content": {
+          "type": "STRING",
+          "value": "+"
+        }
       }
     }
   },

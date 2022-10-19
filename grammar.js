@@ -5,13 +5,15 @@ module.exports = grammar({
     name: "norg",
 
     externals: $ => [
-        //$.eof,
     ],
 
     conflicts: $ => [
     ],
 
     precedences: $ => [
+    ],
+
+    inline: $ => [
     ],
 
     supertypes: $ => [
@@ -75,14 +77,12 @@ module.exports = grammar({
 
         // ------------------------------------------------------------------------
 
-        heading1: $ => gen_heading($, 1),
-        heading2: $ => gen_heading($, 2),
-        heading3: $ => gen_heading($, 3),
-        heading4: $ => gen_heading($, 4),
-        heading5: $ => gen_heading($, 5),
-        heading6: $ => gen_heading($, 6),
-
-        // weak_paragraph_delimiter: _ => "---",
+        heading1: $ => heading($, 1),
+        heading2: $ => heading($, 2),
+        heading3: $ => heading($, 3),
+        heading4: $ => heading($, 4),
+        heading5: $ => heading($, 5),
+        heading6: $ => heading($, 6),
 
         // -----------------------------------------------------------------------
 
@@ -99,12 +99,12 @@ module.exports = grammar({
             ),
         ),
 
-        unordered_list1: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 1),
-        unordered_list2: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 2),
-        unordered_list3: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 3),
-        unordered_list4: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 4),
-        unordered_list5: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 5),
-        unordered_list6: $ => gen_nestable_detached_modifier($, "-", "unordered_list", 6),
+        unordered_list1: $ => nestable_detached_modifier($, "-", "unordered_list", 1),
+        unordered_list2: $ => nestable_detached_modifier($, "-", "unordered_list", 2),
+        unordered_list3: $ => nestable_detached_modifier($, "-", "unordered_list", 3),
+        unordered_list4: $ => nestable_detached_modifier($, "-", "unordered_list", 4),
+        unordered_list5: $ => nestable_detached_modifier($, "-", "unordered_list", 5),
+        unordered_list6: $ => nestable_detached_modifier($, "-", "unordered_list", 6),
 
         ordered_list: $ => prec.right(
             repeat1(
@@ -119,12 +119,12 @@ module.exports = grammar({
             ),
         ),
 
-        ordered_list1: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 1),
-        ordered_list2: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 2),
-        ordered_list3: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 3),
-        ordered_list4: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 4),
-        ordered_list5: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 5),
-        ordered_list6: $ => gen_nestable_detached_modifier($, "~", "ordered_list", 6),
+        ordered_list1: $ => nestable_detached_modifier($, "~", "ordered_list", 1),
+        ordered_list2: $ => nestable_detached_modifier($, "~", "ordered_list", 2),
+        ordered_list3: $ => nestable_detached_modifier($, "~", "ordered_list", 3),
+        ordered_list4: $ => nestable_detached_modifier($, "~", "ordered_list", 4),
+        ordered_list5: $ => nestable_detached_modifier($, "~", "ordered_list", 5),
+        ordered_list6: $ => nestable_detached_modifier($, "~", "ordered_list", 6),
 
         quote: $ => prec.right(
             repeat1(
@@ -139,12 +139,12 @@ module.exports = grammar({
             ),
         ),
 
-        quote1: $ => gen_nestable_detached_modifier($, ">", "quote", 1),
-        quote2: $ => gen_nestable_detached_modifier($, ">", "quote", 2),
-        quote3: $ => gen_nestable_detached_modifier($, ">", "quote", 3),
-        quote4: $ => gen_nestable_detached_modifier($, ">", "quote", 4),
-        quote5: $ => gen_nestable_detached_modifier($, ">", "quote", 5),
-        quote6: $ => gen_nestable_detached_modifier($, ">", "quote", 6),
+        quote1: $ => nestable_detached_modifier($, ">", "quote", 1),
+        quote2: $ => nestable_detached_modifier($, ">", "quote", 2),
+        quote3: $ => nestable_detached_modifier($, ">", "quote", 3),
+        quote4: $ => nestable_detached_modifier($, ">", "quote", 4),
+        quote5: $ => nestable_detached_modifier($, ">", "quote", 5),
+        quote6: $ => nestable_detached_modifier($, ">", "quote", 6),
 
         attribute: $ => prec.right(
             repeat1(
@@ -159,12 +159,12 @@ module.exports = grammar({
             ),
         ),
 
-        attribute1: $ => gen_nestable_detached_modifier($, "%", "attribute", 1),
-        attribute2: $ => gen_nestable_detached_modifier($, "%", "attribute", 2),
-        attribute3: $ => gen_nestable_detached_modifier($, "%", "attribute", 3),
-        attribute4: $ => gen_nestable_detached_modifier($, "%", "attribute", 4),
-        attribute5: $ => gen_nestable_detached_modifier($, "%", "attribute", 5),
-        attribute6: $ => gen_nestable_detached_modifier($, "%", "attribute", 6),
+        attribute1: $ => nestable_detached_modifier($, "%", "attribute", 1),
+        attribute2: $ => nestable_detached_modifier($, "%", "attribute", 2),
+        attribute3: $ => nestable_detached_modifier($, "%", "attribute", 3),
+        attribute4: $ => nestable_detached_modifier($, "%", "attribute", 4),
+        attribute5: $ => nestable_detached_modifier($, "%", "attribute", 5),
+        attribute6: $ => nestable_detached_modifier($, "%", "attribute", 6),
 
         // ------------------------------------------------------------------------
 
@@ -176,32 +176,36 @@ module.exports = grammar({
 
         definition_list:   $ => prec.right(repeat1(choice($.single_definition, $.multi_definition))),
 
-        single_definition: $ => gen_rangeable_detached_modifier($, "$", false, "definition"),
-        multi_definition:  $ => gen_rangeable_detached_modifier($, "$", true, "definition"),
+        single_definition: $ => rangeable_detached_modifier($, "$", false, "definition"),
+        multi_definition:  $ => rangeable_detached_modifier($, "$", true, "definition"),
         definition_end:    $ => token(seq("$$", line_break)),
 
         footnote_list:     $ => prec.right(repeat1(choice($.single_footnote, $.multi_footnote))),
 
-        single_footnote:   $ => gen_rangeable_detached_modifier($, "^", false, "footnote"),
-        multi_footnote:    $ => gen_rangeable_detached_modifier($, "^", true, "footnote"),
+        single_footnote:   $ => rangeable_detached_modifier($, "^", false, "footnote"),
+        multi_footnote:    $ => rangeable_detached_modifier($, "^", true, "footnote"),
         footnote_end:      $ => token(seq("^^", line_break)),
 
         table:             $ => prec.right(repeat1(choice($.single_table_cell, $.multi_table_cell))),
 
-        single_table_cell: $ => gen_rangeable_detached_modifier($, ":", false, "table_cell"),
-        multi_table_cell:  $ => gen_rangeable_detached_modifier($, ":", true, "table_cell"),
+        single_table_cell: $ => rangeable_detached_modifier($, ":", false, "table_cell"),
+        multi_table_cell:  $ => rangeable_detached_modifier($, ":", true, "table_cell"),
         table_cell_end:    $ => token(seq("::", line_break)),
 
         // ------------------------------------------------------------------------
 
         // TODO: `--` is an error
-        weak_delimiting_modifier:            $ => token(seq("---", i(repeat("-")), line_break)),
-        strong_delimiting_modifier:          $ => token(seq("===", i(repeat("=")), line_break)),
-        horizontal_line_delimiting_modifier: $ => token(seq("___", i(repeat("_")), line_break)),
+        weak_delimiting_modifier:            _ => token(seq("---", i(repeat("-")), line_break)),
+        strong_delimiting_modifier:          _ => token(seq("===", i(repeat("=")), line_break)),
+        horizontal_line_delimiting_modifier: _ => token(seq("___", i(repeat("_")), line_break)),
+
+        // ------------------------------------------------------------------------
+        // TODO: Detached mod extensions
+        // ------------------------------------------------------------------------
     },
 });
 
-function gen_heading($, level) {
+function heading($, level) {
     let subheadings = [];
 
     for (let i = level + 1; i < 6; i++) {
@@ -211,7 +215,6 @@ function gen_heading($, level) {
     return prec.right(
         seq(
             "*".repeat(level),
-            $._whitespace,
             field("title", $.paragraph_segment),
             line_break,
 
@@ -229,7 +232,7 @@ function gen_heading($, level) {
     );
 }
 
-function gen_nestable_detached_modifier($, char, name, level) {
+function nestable_detached_modifier($, char, name, level) {
     let submodifiers = [];
 
     for (let i = level + 1; i < 6; i++) {
@@ -251,7 +254,7 @@ function gen_nestable_detached_modifier($, char, name, level) {
     );
 }
 
-function gen_rangeable_detached_modifier($, char, multi, name) {
+function rangeable_detached_modifier($, char, multi, name) {
     if (multi) {
         return prec(1,
             seq(
