@@ -20,6 +20,7 @@ module.exports = grammar({
         $.non_structural,
         $.nestable_detached_modifiers,
         $.rangeable_detached_modifiers,
+        $.detached_modifier_suffix,
     ],
 
     rules: {
@@ -34,20 +35,9 @@ module.exports = grammar({
         // ------------------------------------------------------------------------
 
         _word: _ => /[^\s]+/,
-        _whitespace: _ => /[\t                　]+/,
+        _whitespace: _ => i(/[\t                　]+/),
 
-        paragraph_segment: $ => prec.right(
-            seq(
-                $._word,
-
-                repeat(
-                    choice(
-                        $._word,
-                        $._whitespace,
-                    ),
-                ),
-            )
-        ),
+        paragraph_segment: $ => repeat1($._word),
 
         paragraph_break: $ => /\n+/,
 
@@ -202,6 +192,26 @@ module.exports = grammar({
         // ------------------------------------------------------------------------
         // TODO: Detached mod extensions
         // ------------------------------------------------------------------------
+
+        detached_modifier_suffix: $ => choice(
+            $.slide,
+            // $.indent_segment,
+        ),
+
+        indent_segment: $ => choice(
+            // $.indent_segment1,
+            // $.indent_segment2,
+            // $.indent_segment3,
+            // $.indent_segment4,
+            // $.indent_segment5,
+            // $.indent_segment6,
+        ),
+
+        slide: $ => seq(
+            ":",
+            line_break,
+            $.non_structural,
+        ),
     },
 });
 
@@ -215,7 +225,11 @@ function heading($, level) {
     return prec.right(
         seq(
             "*".repeat(level),
-            field("title", $.paragraph_segment),
+            $._whitespace,
+            choice(
+                field("title", $.paragraph_segment),
+                $.detached_modifier_suffix,
+            ),
             line_break,
 
             field("content",
@@ -243,7 +257,10 @@ function nestable_detached_modifier($, char, name, level) {
         seq(
             char.repeat(level),
             $._whitespace,
-            field("content", $.paragraph),
+            choice(
+                field("content", $.paragraph),
+                $.detached_modifier_suffix,
+            ),
 
             repeat(
                 choice(
@@ -260,7 +277,10 @@ function rangeable_detached_modifier($, char, multi, name) {
             seq(
                 char.repeat(2),
                 $._whitespace,
-                field("title", $.paragraph_segment),
+                choice(
+                    field("title", $.paragraph_segment),
+                    $.detached_modifier_suffix,
+                ),
                 line_break,
                 repeat($.non_structural),
                 // NOTE: This does not work for example with the following input:

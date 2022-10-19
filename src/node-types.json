@@ -1,5 +1,15 @@
 [
   {
+    "type": "detached_modifier_suffix",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "slide",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "nestable_detached_modifiers",
     "named": true,
     "subtypes": [
@@ -106,7 +116,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -134,6 +144,10 @@
         {
           "type": "attribute5",
           "named": true
+        },
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
         }
       ]
     }
@@ -144,7 +158,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -168,6 +182,10 @@
         {
           "type": "attribute5",
           "named": true
+        },
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
         }
       ]
     }
@@ -178,7 +196,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -198,6 +216,10 @@
         {
           "type": "attribute5",
           "named": true
+        },
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
         }
       ]
     }
@@ -208,7 +230,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -224,6 +246,10 @@
         {
           "type": "attribute5",
           "named": true
+        },
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
         }
       ]
     }
@@ -234,7 +260,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -242,6 +268,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -250,7 +286,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -258,6 +294,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -353,7 +399,7 @@
       },
       "title": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph_segment",
@@ -367,7 +413,7 @@
       "required": false,
       "types": [
         {
-          "type": "detached_modifier_extension",
+          "type": "detached_modifier_suffix",
           "named": true
         },
         {
@@ -405,7 +451,7 @@
       },
       "title": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph_segment",
@@ -419,7 +465,7 @@
       "required": false,
       "types": [
         {
-          "type": "detached_modifier_extension",
+          "type": "detached_modifier_suffix",
           "named": true
         },
         {
@@ -453,7 +499,7 @@
       },
       "title": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph_segment",
@@ -467,7 +513,7 @@
       "required": false,
       "types": [
         {
-          "type": "detached_modifier_extension",
+          "type": "detached_modifier_suffix",
           "named": true
         },
         {
@@ -497,7 +543,7 @@
       },
       "title": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph_segment",
@@ -511,7 +557,7 @@
       "required": false,
       "types": [
         {
-          "type": "detached_modifier_extension",
+          "type": "detached_modifier_suffix",
           "named": true
         },
         {
@@ -537,7 +583,7 @@
       },
       "title": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph_segment",
@@ -551,7 +597,7 @@
       "required": false,
       "types": [
         {
-          "type": "detached_modifier_extension",
+          "type": "detached_modifier_suffix",
           "named": true
         },
         {
@@ -567,7 +613,7 @@
     "fields": {
       "title": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph_segment",
@@ -585,6 +631,10 @@
           "named": true
         },
         {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
+        {
           "type": "non_structural",
           "named": true
         }
@@ -597,7 +647,7 @@
     "fields": {
       "title": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph_segment",
@@ -610,6 +660,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "footnote_end",
           "named": true
@@ -627,7 +681,7 @@
     "fields": {
       "title": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph_segment",
@@ -640,6 +694,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "non_structural",
           "named": true
@@ -692,7 +750,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -705,6 +763,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "ordered_list2",
           "named": true
@@ -730,7 +792,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -743,6 +805,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "ordered_list3",
           "named": true
@@ -764,7 +830,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -777,6 +843,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "ordered_list4",
           "named": true
@@ -794,7 +864,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -808,6 +878,10 @@
       "required": false,
       "types": [
         {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
+        {
           "type": "ordered_list5",
           "named": true
         }
@@ -820,7 +894,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -828,6 +902,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -836,7 +920,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -844,6 +928,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -907,7 +1001,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -920,6 +1014,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "quote2",
           "named": true
@@ -945,7 +1043,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -958,6 +1056,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "quote3",
           "named": true
@@ -979,7 +1081,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -992,6 +1094,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "quote4",
           "named": true
@@ -1009,7 +1115,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1023,6 +1129,10 @@
       "required": false,
       "types": [
         {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
+        {
           "type": "quote5",
           "named": true
         }
@@ -1035,7 +1145,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1043,6 +1153,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1051,7 +1171,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1059,6 +1179,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1140,6 +1270,21 @@
     }
   },
   {
+    "type": "slide",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "non_structural",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "table",
     "named": true,
     "fields": {},
@@ -1199,7 +1344,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1212,6 +1357,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "unordered_list2",
           "named": true
@@ -1237,7 +1386,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1250,6 +1399,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "unordered_list3",
           "named": true
@@ -1271,7 +1424,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1284,6 +1437,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
         {
           "type": "unordered_list4",
           "named": true
@@ -1301,7 +1458,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1315,6 +1472,10 @@
       "required": false,
       "types": [
         {
+          "type": "detached_modifier_suffix",
+          "named": true
+        },
+        {
           "type": "unordered_list5",
           "named": true
         }
@@ -1327,7 +1488,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1335,6 +1496,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1343,7 +1514,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "paragraph",
@@ -1351,6 +1522,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_suffix",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1479,10 +1660,6 @@
   },
   {
     "type": "definition_end",
-    "named": true
-  },
-  {
-    "type": "detached_modifier_extension",
     "named": true
   },
   {
