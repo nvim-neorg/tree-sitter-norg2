@@ -20,12 +20,13 @@ module.exports = grammar({
         $.non_structural,
         $.nestable_detached_modifiers,
         $.rangeable_detached_modifiers,
+        $.headings,
     ],
 
     rules: {
         document: $ => repeat(
             choice(
-                $.heading1,
+                $.headings,
                 $.non_structural,
                 $.strong_delimiting_modifier,
             ),
@@ -65,6 +66,15 @@ module.exports = grammar({
         ),
 
         // ------------------------------------------------------------------------
+
+        headings: $ => choice(
+            $.heading1,
+            $.heading2,
+            $.heading3,
+            $.heading4,
+            $.heading5,
+            $.heading6,
+        ),
 
         heading1: $ => heading($, 1),
         heading2: $ => heading($, 2),
