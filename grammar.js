@@ -20,7 +20,6 @@ module.exports = grammar({
         $.non_structural,
         $.nestable_detached_modifiers,
         $.rangeable_detached_modifiers,
-        $.detached_modifier_suffix,
     ],
 
     rules: {
@@ -193,25 +192,13 @@ module.exports = grammar({
         // TODO: Detached mod extensions
         // ------------------------------------------------------------------------
 
-        detached_modifier_suffix: $ => choice(
-            $.slide,
-            // $.indent_segment,
-        ),
-
-        indent_segment: $ => choice(
-            // $.indent_segment1,
-            // $.indent_segment2,
-            // $.indent_segment3,
-            // $.indent_segment4,
-            // $.indent_segment5,
-            // $.indent_segment6,
-        ),
-
         slide: $ => seq(
             ":",
             line_break,
             $.non_structural,
         ),
+
+        // TODO: Indent Segments
     },
 });
 
@@ -228,7 +215,7 @@ function heading($, level) {
             $._whitespace,
             choice(
                 field("title", $.paragraph_segment),
-                $.detached_modifier_suffix,
+                $.slide,
             ),
             line_break,
 
@@ -259,7 +246,7 @@ function nestable_detached_modifier($, char, name, level) {
             $._whitespace,
             choice(
                 field("content", $.paragraph),
-                $.detached_modifier_suffix,
+                $.slide,
             ),
 
             repeat(
@@ -279,7 +266,7 @@ function rangeable_detached_modifier($, char, multi, name) {
                 $._whitespace,
                 choice(
                     field("title", $.paragraph_segment),
-                    $.detached_modifier_suffix,
+                    $.slide,
                 ),
                 line_break,
                 repeat($.non_structural),
