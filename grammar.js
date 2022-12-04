@@ -5,6 +5,7 @@ module.exports = grammar({
     name: "norg",
 
     externals: $ => [
+        $.infirm_tag_begin,
     ],
 
     conflicts: $ => [
@@ -21,12 +22,14 @@ module.exports = grammar({
         $.nestable_detached_modifiers,
         $.rangeable_detached_modifiers,
         $.headings,
+        $.tags,
     ],
 
     rules: {
         document: $ => repeat(
             choice(
                 $.headings,
+                $.tags,
                 $.non_structural,
                 $.strong_delimiting_modifier,
             ),
@@ -209,6 +212,29 @@ module.exports = grammar({
         ),
 
         // TODO: Indent Segments
+
+        // ------------------------------------------------------------------------
+
+        tags: $ => choice(
+            $.infirm_tag,
+        ),
+
+        tag_name: $ => prec.right(
+            seq(
+                alias(/[a-zA-Z0-9\-_]+/, $.word),
+                repeat(
+                    seq(
+                        alias($.infirm_tag_begin, "_delimiter"),
+                        alias(/[a-zA-Z0-9\-_]+/, $.word),
+                    ),
+                ),
+            ),
+        ),
+
+        infirm_tag: $ => seq(
+            $.infirm_tag_begin,
+            $.tag_name,
+        ),
     },
 });
 
