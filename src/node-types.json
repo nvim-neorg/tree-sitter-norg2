@@ -383,6 +383,21 @@
     }
   },
   {
+    "type": "escape_sequence",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "char",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "footnote_list",
     "named": true,
     "fields": {},
@@ -695,6 +710,10 @@
         },
         {
           "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameter",
           "named": true
         }
       ]
@@ -1051,7 +1070,17 @@
   {
     "type": "paragraph_segment",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "quote",
@@ -1759,6 +1788,10 @@
     "named": false
   },
   {
+    "type": "\\",
+    "named": false
+  },
+  {
     "type": "^",
     "named": false
   },
@@ -1769,6 +1802,10 @@
   {
     "type": "_delimiter",
     "named": false
+  },
+  {
+    "type": "char",
+    "named": true
   },
   {
     "type": "definition_end",
@@ -1796,6 +1833,10 @@
   },
   {
     "type": "table_cell_end",
+    "named": true
+  },
+  {
+    "type": "tag_parameter",
     "named": true
   },
   {

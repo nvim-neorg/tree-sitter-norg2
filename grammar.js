@@ -37,10 +37,15 @@ module.exports = grammar({
 
         // ------------------------------------------------------------------------
 
-        _word: _ => /[^\s]+/,
+        _word: _ => /[^\s\\]+/,
         _whitespace: _ => i(/[\t                　]+/),
 
-        paragraph_segment: $ => repeat1($._word),
+        paragraph_segment: $ => repeat1(
+            choice(
+                $._word,
+                $.escape_sequence,
+            ),
+        ),
 
         paragraph_break: $ => /\n+/,
 
@@ -52,6 +57,8 @@ module.exports = grammar({
                 )
             )
         ),
+
+        escape_sequence: $ => seq(i("\\"), alias(i(/[.\n\r\\]/), $.char)),
 
         non_structural: $ => choice(
             $.paragraph,
@@ -231,9 +238,14 @@ module.exports = grammar({
             ),
         ),
 
-        infirm_tag: $ => seq(
-            $.infirm_tag_begin,
-            $.tag_name,
+        tag_parameter: _ => /[^\s]+/,
+
+        infirm_tag: $ => prec.right(
+            seq(
+                $.infirm_tag_begin,
+                $.tag_name,
+                repeat($.tag_parameter),
+            ),
         ),
     },
 });
