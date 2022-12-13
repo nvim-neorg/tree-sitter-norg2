@@ -204,9 +204,9 @@ module.exports = grammar({
         // ------------------------------------------------------------------------
 
         // TODO: `--` is an error
-        weak_delimiting_modifier:            _ => token(seq("---", i(repeat("-")), line_break)),
-        strong_delimiting_modifier:          _ => token(seq("===", i(repeat("=")), line_break)),
-        horizontal_line_delimiting_modifier: _ => token(seq("___", i(repeat("_")), line_break)),
+        weak_delimiting_modifier:            _ => token(seq("--", i(repeat("-")), line_break)),
+        strong_delimiting_modifier:          _ => token(seq("==", i(repeat("=")), line_break)),
+        horizontal_line_delimiting_modifier: _ => token(seq("__", i(repeat("_")), line_break)),
 
         // ------------------------------------------------------------------------
         // TODO: Detached mod extensions
