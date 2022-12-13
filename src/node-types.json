@@ -441,6 +441,10 @@
             "named": true
           },
           {
+            "type": "heading6",
+            "named": true
+          },
+          {
             "type": "non_structural",
             "named": true
           }
@@ -493,6 +497,10 @@
             "named": true
           },
           {
+            "type": "heading6",
+            "named": true
+          },
+          {
             "type": "non_structural",
             "named": true
           }
@@ -541,6 +549,10 @@
             "named": true
           },
           {
+            "type": "heading6",
+            "named": true
+          },
+          {
             "type": "non_structural",
             "named": true
           }
@@ -585,6 +597,10 @@
             "named": true
           },
           {
+            "type": "heading6",
+            "named": true
+          },
+          {
             "type": "non_structural",
             "named": true
           }
@@ -624,6 +640,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "heading6",
+            "named": true
+          },
           {
             "type": "non_structural",
             "named": true

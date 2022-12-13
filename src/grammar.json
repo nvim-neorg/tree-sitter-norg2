@@ -243,6 +243,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "heading5"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "heading6"
                   }
                 ]
               }
@@ -324,6 +328,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "heading5"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "heading6"
                   }
                 ]
               }
@@ -401,6 +409,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "heading5"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "heading6"
                   }
                 ]
               }
@@ -474,6 +486,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "heading5"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "heading6"
                   }
                 ]
               }
@@ -543,6 +559,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "non_structural"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "heading6"
                   }
                 ]
               }
@@ -2341,7 +2361,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "---"
+            "value": "--"
           },
           {
             "type": "IMMEDIATE_TOKEN",
@@ -2370,7 +2390,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "==="
+            "value": "=="
           },
           {
             "type": "IMMEDIATE_TOKEN",
@@ -2399,7 +2419,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "___"
+            "value": "__"
           },
           {
             "type": "IMMEDIATE_TOKEN",
@@ -2499,28 +2519,24 @@
       "value": "[^\\s]+"
     },
     "infirm_tag": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "infirm_tag_begin"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tag_name"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
             "type": "SYMBOL",
-            "name": "infirm_tag_begin"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "tag_name"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "tag_parameter"
-            }
+            "name": "tag_parameter"
           }
-        ]
-      }
+        }
+      ]
     }
   },
   "extras": [
