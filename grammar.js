@@ -251,7 +251,7 @@ module.exports = grammar({
 function heading($, level) {
     let subheadings = [];
 
-    for (let i = level + 1; i < 6; i++) {
+    for (let i = level + 1; i <= 6; i++) {
         subheadings.push($["heading" + i]);
     }
 
