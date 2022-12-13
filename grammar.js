@@ -238,12 +238,10 @@ module.exports = grammar({
 
         tag_parameter: _ => /[^\s]+/,
 
-        infirm_tag: $ => prec.right(
-            seq(
-                $.infirm_tag_begin,
-                $.tag_name,
-                repeat($.tag_parameter),
-            ),
+        infirm_tag: $ => seq(
+            $.infirm_tag_begin,
+            $.tag_name,
+            repeat($.tag_parameter),
         ),
     },
 });
