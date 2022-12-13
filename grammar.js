@@ -202,8 +202,6 @@ module.exports = grammar({
         table_cell_end:    $ => token(seq("::", line_break)),
 
         // ------------------------------------------------------------------------
-
-        // TODO: `--` is an error
         weak_delimiting_modifier:            _ => token(seq("--", i(repeat("-")), line_break)),
         strong_delimiting_modifier:          _ => token(seq("==", i(repeat("=")), line_break)),
         horizontal_line_delimiting_modifier: _ => token(seq("__", i(repeat("_")), line_break)),
