@@ -8,6 +8,8 @@ module.exports = grammar({
         $.infirm_tag_begin,
         $._ranged_tag_begin,
         $._ranged_verbatim_tag_begin,
+        $._weak_carryover_tag_begin,
+        $._strong_carryover_tag_begin,
     ],
 
     conflicts: $ => [
@@ -99,14 +101,17 @@ module.exports = grammar({
 
         unordered_list: $ => prec.right(
             repeat1(
-                choice(
-                    $.unordered_list1,
-                    $.unordered_list2,
-                    $.unordered_list3,
-                    $.unordered_list4,
-                    $.unordered_list5,
-                    $.unordered_list6,
-                )
+                seq(
+                    optional($.weak_carryover_tag),
+                    choice(
+                        $.unordered_list1,
+                        $.unordered_list2,
+                        $.unordered_list3,
+                        $.unordered_list4,
+                        $.unordered_list5,
+                        $.unordered_list6,
+                    )
+                ),
             ),
         ),
 
@@ -119,14 +124,17 @@ module.exports = grammar({
 
         ordered_list: $ => prec.right(
             repeat1(
-                choice(
-                    $.ordered_list1,
-                    $.ordered_list2,
-                    $.ordered_list3,
-                    $.ordered_list4,
-                    $.ordered_list5,
-                    $.ordered_list6,
-                )
+                seq(
+                    optional($.weak_carryover_tag),
+                    choice(
+                        $.ordered_list1,
+                        $.ordered_list2,
+                        $.ordered_list3,
+                        $.ordered_list4,
+                        $.ordered_list5,
+                        $.ordered_list6,
+                    )
+                ),
             ),
         ),
 
@@ -139,14 +147,17 @@ module.exports = grammar({
 
         quote: $ => prec.right(
             repeat1(
-                choice(
-                    $.quote1,
-                    $.quote2,
-                    $.quote3,
-                    $.quote4,
-                    $.quote5,
-                    $.quote6,
-                )
+                seq(
+                    optional($.weak_carryover_tag),
+                    choice(
+                        $.quote1,
+                        $.quote2,
+                        $.quote3,
+                        $.quote4,
+                        $.quote5,
+                        $.quote6,
+                    )
+                ),
             ),
         ),
 
@@ -159,14 +170,17 @@ module.exports = grammar({
 
         attribute: $ => prec.right(
             repeat1(
-                choice(
-                    $.attribute1,
-                    $.attribute2,
-                    $.attribute3,
-                    $.attribute4,
-                    $.attribute5,
-                    $.attribute6,
-                )
+                seq(
+                    optional($.weak_carryover_tag),
+                    choice(
+                        $.attribute1,
+                        $.attribute2,
+                        $.attribute3,
+                        $.attribute4,
+                        $.attribute5,
+                        $.attribute6,
+                    )
+                ),
             ),
         ),
 
@@ -226,15 +240,17 @@ module.exports = grammar({
             $.infirm_tag,
             $.ranged_tag,
             $.ranged_verbatim_tag,
+            prec(-1, $.weak_carryover_tag),
+            $.strong_carryover_tag,
         ),
 
         tag_name: $ => prec.right(
             seq(
-                alias(/[a-zA-Z0-9\-_]+/, $.word),
+                alias(i(/[a-zA-Z0-9\-_]+/), $.word),
                 repeat(
                     seq(
                         alias($.infirm_tag_begin, "_delimiter"),
-                        alias(/[a-zA-Z0-9\-_]+/, $.word),
+                        alias(i(/[a-zA-Z0-9\-_]+/), $.word),
                     ),
                 ),
             ),
@@ -275,6 +291,20 @@ module.exports = grammar({
 
             $._ranged_verbatim_tag_begin,
             i("end"),
+            line_break,
+        ),
+
+        strong_carryover_tag: $ => seq(
+            $._strong_carryover_tag_begin,
+            $.tag_name,
+            repeat($.tag_parameter),
+            line_break,
+        ),
+
+        weak_carryover_tag: $ => seq(
+            $._weak_carryover_tag_begin,
+            $.tag_name,
+            repeat($.tag_parameter),
             line_break,
         ),
     },

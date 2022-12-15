@@ -110,6 +110,14 @@
       {
         "type": "ranged_verbatim_tag",
         "named": true
+      },
+      {
+        "type": "strong_carryover_tag",
+        "named": true
+      },
+      {
+        "type": "weak_carryover_tag",
+        "named": true
       }
     ]
   },
@@ -143,6 +151,10 @@
         },
         {
           "type": "attribute6",
+          "named": true
+        },
+        {
+          "type": "weak_carryover_tag",
           "named": true
         }
       ]
@@ -880,6 +892,10 @@
         {
           "type": "ordered_list6",
           "named": true
+        },
+        {
+          "type": "weak_carryover_tag",
+          "named": true
         }
       ]
     }
@@ -1140,6 +1156,10 @@
         },
         {
           "type": "quote6",
+          "named": true
+        },
+        {
+          "type": "weak_carryover_tag",
           "named": true
         }
       ]
@@ -1515,6 +1535,25 @@
     }
   },
   {
+    "type": "strong_carryover_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "table",
     "named": true,
     "fields": {},
@@ -1578,6 +1617,10 @@
         },
         {
           "type": "unordered_list6",
+          "named": true
+        },
+        {
+          "type": "weak_carryover_tag",
           "named": true
         }
       ]
@@ -1774,6 +1817,25 @@
       "types": [
         {
           "type": "slide",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "weak_carryover_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameter",
           "named": true
         }
       ]

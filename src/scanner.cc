@@ -9,6 +9,8 @@ enum TokenType : char {
     INFIRM_TAG_BEGIN,
     RANGED_TAG_BEGIN,
     RANGED_VERBATIM_TAG_BEGIN,
+    WEAK_CARRYOVER_TAG_BEGIN,
+    STRONG_CARRYOVER_TAG_BEGIN,
 };
 
 struct Scanner {
@@ -19,6 +21,10 @@ struct Scanner {
 
         while (iswspace(lexer->lookahead))
             skip();
+
+        // Tag Parsing
+        // This is required because the grammar-based approach fails under certain
+        // circumstances.
 
         if (valid_symbols[INFIRM_TAG_BEGIN] && lexer->lookahead == '.') {
             advance();
@@ -32,9 +38,15 @@ struct Scanner {
             return true;
         }
 
-        if (valid_symbols[RANGED_TAG_BEGIN] && lexer->lookahead == '|') {
+        if (valid_symbols[WEAK_CARRYOVER_TAG_BEGIN] && lexer->lookahead == '+') {
             advance();
-            lexer->result_symbol = RANGED_TAG_BEGIN;
+            lexer->result_symbol = WEAK_CARRYOVER_TAG_BEGIN;
+            return true;
+        }
+
+        if (valid_symbols[STRONG_CARRYOVER_TAG_BEGIN] && lexer->lookahead == '#') {
+            advance();
+            lexer->result_symbol = STRONG_CARRYOVER_TAG_BEGIN;
             return true;
         }
 
