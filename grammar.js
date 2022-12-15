@@ -56,6 +56,7 @@ module.exports = grammar({
         paragraph: $ => prec.right(
             repeat1(
                 seq(
+                    optional($.weak_carryover_tag),
                     $.paragraph_segment,
                     line_break,
                 )
