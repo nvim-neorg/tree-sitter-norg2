@@ -745,10 +745,6 @@
       "required": true,
       "types": [
         {
-          "type": "infirm_tag_begin",
-          "named": true
-        },
-        {
           "type": "tag_name",
           "named": true
         },
@@ -1995,10 +1991,6 @@
   },
   {
     "type": "horizontal_line_delimiting_modifier",
-    "named": true
-  },
-  {
-    "type": "infirm_tag_begin",
     "named": true
   },
   {

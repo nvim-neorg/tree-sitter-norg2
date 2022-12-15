@@ -5,7 +5,7 @@ module.exports = grammar({
     name: "norg",
 
     externals: $ => [
-        $.infirm_tag_begin,
+        $._infirm_tag_begin,
         $._ranged_tag_begin,
         $._ranged_verbatim_tag_begin,
         $._weak_carryover_tag_begin,
@@ -249,7 +249,7 @@ module.exports = grammar({
                 alias(i(/[a-zA-Z0-9\-_]+/), $.word),
                 repeat(
                     seq(
-                        alias($.infirm_tag_begin, "_delimiter"),
+                        alias($._infirm_tag_begin, "_delimiter"),
                         alias(i(/[a-zA-Z0-9\-_]+/), $.word),
                     ),
                 ),
@@ -258,12 +258,7 @@ module.exports = grammar({
 
         tag_parameter: _ => /[^\s]+/,
 
-        infirm_tag: $ => seq(
-            $.infirm_tag_begin,
-            $.tag_name,
-            repeat($.tag_parameter),
-            line_break,
-        ),
+        infirm_tag: $ => tag($, $._infirm_tag_begin),
 
         ranged_tag: $ => seq(
             $._ranged_tag_begin,
@@ -294,19 +289,9 @@ module.exports = grammar({
             line_break,
         ),
 
-        strong_carryover_tag: $ => seq(
-            $._strong_carryover_tag_begin,
-            $.tag_name,
-            repeat($.tag_parameter),
-            line_break,
-        ),
+        strong_carryover_tag: $ => tag($, $._strong_carryover_tag_begin),
 
-        weak_carryover_tag: $ => seq(
-            $._weak_carryover_tag_begin,
-            $.tag_name,
-            repeat($.tag_parameter),
-            line_break,
-        ),
+        weak_carryover_tag: $ => tag($, $._weak_carryover_tag_begin),
     },
 });
 
@@ -398,4 +383,13 @@ function rangeable_detached_modifier($, char, multi, name) {
             field("content", $.paragraph),
         );
     }
+}
+
+function tag($, symbol) {
+    return seq(
+        symbol,
+        $.tag_name,
+        repeat($.tag_parameter),
+        line_break,
+    );
 }

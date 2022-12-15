@@ -2829,7 +2829,7 @@
                   "type": "ALIAS",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "infirm_tag_begin"
+                    "name": "_infirm_tag_begin"
                   },
                   "named": false,
                   "value": "_delimiter"
@@ -2861,7 +2861,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "infirm_tag_begin"
+          "name": "_infirm_tag_begin"
         },
         {
           "type": "SYMBOL",
@@ -3204,7 +3204,7 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "infirm_tag_begin"
+      "name": "_infirm_tag_begin"
     },
     {
       "type": "SYMBOL",
