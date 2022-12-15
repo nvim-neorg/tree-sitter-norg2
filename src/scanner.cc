@@ -7,13 +7,15 @@ using namespace std;
 
 enum TokenType : char {
     INFIRM_TAG_BEGIN,
+    RANGED_TAG_BEGIN,
+    RANGED_VERBATIM_TAG_BEGIN,
 };
 
 struct Scanner {
     TSLexer* lexer;
 
     bool scan(const bool *valid_symbols) {
-        // const bool is_on_new_line = lexer->get_column(lexer) == 0;
+        // const bool is_on_new_line = (lexer->get_column(lexer) == 0);
 
         while (iswspace(lexer->lookahead))
             skip();
@@ -21,6 +23,18 @@ struct Scanner {
         if (valid_symbols[INFIRM_TAG_BEGIN] && lexer->lookahead == '.') {
             advance();
             lexer->result_symbol = INFIRM_TAG_BEGIN;
+            return true;
+        }
+
+        if (valid_symbols[RANGED_VERBATIM_TAG_BEGIN] && lexer->lookahead == '@') {
+            advance();
+            lexer->result_symbol = RANGED_VERBATIM_TAG_BEGIN;
+            return true;
+        }
+
+        if (valid_symbols[RANGED_TAG_BEGIN] && lexer->lookahead == '|') {
+            advance();
+            lexer->result_symbol = RANGED_TAG_BEGIN;
             return true;
         }
 

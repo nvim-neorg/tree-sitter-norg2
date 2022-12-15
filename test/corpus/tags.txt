@@ -1,0 +1,101 @@
+================================================================================
+Infirm Tag
+      TODO: FIX
+================================================================================
+.infirm-one
+.infirm-two.with.nested.content
+--------------------------------------------------------------------------------
+
+(document
+  (infirm_tag
+    (infirm_tag_begin)
+    (tag_name
+      (word)
+      (word)
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Infirm Tag with Parameters
+================================================================================
+.infirm parameter
+.infirm-two parameter second-parameter third\ parameter
+--------------------------------------------------------------------------------
+
+(document
+  (infirm_tag
+    (infirm_tag_begin)
+    (ERROR
+      (word)
+      (tag_name
+        (word)
+        (word))
+      (word)
+      (word)
+      (tag_name
+        (word))
+      (tag_parameter))
+    (tag_name
+      (word))))
+
+================================================================================
+Ranged Verbatim Tag
+================================================================================
+@tag
+@end
+
+@tag.subtag
+this is
+some
+
+content
+@end
+
+@tag
+@this should not be a tag
+@end
+
+@tag
+test @end
+--------------------------------------------------------------------------------
+
+(document
+  (ranged_verbatim_tag
+    (tag_name
+      (word)))
+  (ranged_verbatim_tag
+    (tag_name
+      (word)
+      (word))
+    (ranged_verbatim_content)
+    (ranged_verbatim_content)
+    (ranged_verbatim_content))
+  (ranged_verbatim_tag
+    (tag_name
+      (word))
+    (ERROR
+      (word)
+      (word)
+      (word)
+      (word)
+      (word)
+      (word)))
+  (ERROR
+    (tag_name
+      (word))
+    (ranged_verbatim_content)))
+
+================================================================================
+Ranged Verbatim Tag with Parameters
+================================================================================
+@tag
+this is some content
+@end
+--------------------------------------------------------------------------------
+
+(document
+  (ranged_verbatim_tag
+    (tag_name
+      (word))
+    (ranged_verbatim_content)))

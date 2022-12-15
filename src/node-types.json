@@ -102,6 +102,14 @@
       {
         "type": "infirm_tag",
         "named": true
+      },
+      {
+        "type": "ranged_tag",
+        "named": true
+      },
+      {
+        "type": "ranged_verbatim_tag",
+        "named": true
       }
     ]
   },
@@ -1334,6 +1342,86 @@
     }
   },
   {
+    "type": "ranged_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "paragraph_segment",
+          "named": true
+        },
+        {
+          "type": "ranged_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ranged_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ranged_content",
+          "named": true
+        },
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ranged_verbatim_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ranged_verbatim_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ranged_verbatim_content",
+          "named": true
+        },
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "single_definition",
     "named": true,
     "fields": {
@@ -1692,6 +1780,10 @@
     }
   },
   {
+    "type": "\u0000",
+    "named": false
+  },
+  {
     "type": "\n",
     "named": false
   },
@@ -1830,6 +1922,10 @@
   {
     "type": "definition_end",
     "named": true
+  },
+  {
+    "type": "end",
+    "named": false
   },
   {
     "type": "footnote_end",

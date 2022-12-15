@@ -1,11 +1,13 @@
 let i = token.immediate;
-let line_break = i("\n");
+let line_break = choice(i('\0'), i('\n'));
 
 module.exports = grammar({
     name: "norg",
 
     externals: $ => [
         $.infirm_tag_begin,
+        $._ranged_tag_begin,
+        $._ranged_verbatim_tag_begin,
     ],
 
     conflicts: $ => [
@@ -32,7 +34,7 @@ module.exports = grammar({
                 $.tags,
                 $.non_structural,
                 $.strong_delimiting_modifier,
-            ),
+            )
         ),
 
         // ------------------------------------------------------------------------
@@ -40,12 +42,12 @@ module.exports = grammar({
         _word: _ => /[^\s\\]+/,
         _whitespace: _ => i(/[\t                　]+/),
 
-        paragraph_segment: $ => repeat1(
+        paragraph_segment: $ => prec.right(repeat1(
             choice(
                 $._word,
                 $.escape_sequence,
             ),
-        ),
+        )),
 
         paragraph_break: $ => /\n+/,
 
@@ -222,6 +224,8 @@ module.exports = grammar({
 
         tags: $ => choice(
             $.infirm_tag,
+            $.ranged_tag,
+            $.ranged_verbatim_tag,
         ),
 
         tag_name: $ => prec.right(
@@ -242,6 +246,36 @@ module.exports = grammar({
             $.infirm_tag_begin,
             $.tag_name,
             repeat($.tag_parameter),
+            line_break,
+        ),
+
+        ranged_tag: $ => seq(
+            $._ranged_tag_begin,
+            $.tag_name,
+            repeat($.tag_parameter),
+            line_break,
+
+            alias(repeat(choice(
+                seq($.paragraph_segment, line_break),
+                $.ranged_tag,
+            )), $.ranged_content),
+
+            $._ranged_tag_begin,
+            i("end"),
+            line_break,
+        ),
+         
+        ranged_verbatim_tag: $ => seq(
+            $._ranged_verbatim_tag_begin,
+            $.tag_name,
+            repeat($.tag_parameter),
+            line_break,
+
+            repeat(seq(alias($.paragraph_segment, $.ranged_verbatim_content), line_break)),
+
+            $._ranged_verbatim_tag_begin,
+            i("end"),
+            line_break,
         ),
     },
 });
