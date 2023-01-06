@@ -91,12 +91,20 @@ module.exports = grammar({
             $._newline,
         ),
 
-        unordered_list_item1: $ => gen_unordered_list($, 1),
-        unordered_list_item2: $ => gen_unordered_list($, 2),
-        unordered_list_item3: $ => gen_unordered_list($, 3),
-        unordered_list_item4: $ => gen_unordered_list($, 4),
-        unordered_list_item5: $ => gen_unordered_list($, 5),
-        unordered_list_item6: $ => gen_unordered_list($, 6),
+        unordered_list_item1: $ => gen_list_item($, "unordered", "-", 1),
+        unordered_list_item2: $ => gen_list_item($, "unordered", "-", 2),
+        unordered_list_item3: $ => gen_list_item($, "unordered", "-", 3),
+        unordered_list_item4: $ => gen_list_item($, "unordered", "-", 4),
+        unordered_list_item5: $ => gen_list_item($, "unordered", "-", 5),
+        unordered_list_item6: $ => gen_list_item($, "unordered", "-", 6),
+
+        ordered_list_item1: $ => gen_list_item($, "ordered", "~", 1),
+        ordered_list_item2: $ => gen_list_item($, "ordered", "~", 2),
+        ordered_list_item3: $ => gen_list_item($, "ordered", "~", 3),
+        ordered_list_item4: $ => gen_list_item($, "ordered", "~", 4),
+        ordered_list_item5: $ => gen_list_item($, "ordered", "~", 5),
+        ordered_list_item6: $ => gen_list_item($, "ordered", "~", 6),
+
 
         list: $ => prec.right(
             repeat1(
@@ -107,6 +115,12 @@ module.exports = grammar({
                     $.unordered_list_item4,
                     $.unordered_list_item5,
                     $.unordered_list_item6,
+                    $.ordered_list_item1,
+                    $.ordered_list_item2,
+                    $.ordered_list_item3,
+                    $.ordered_list_item4,
+                    $.ordered_list_item5,
+                    $.ordered_list_item6,
                 ),
             ),
         ),
@@ -137,10 +151,10 @@ function gen_heading($, level) {
     );
 }
 
-function gen_unordered_list($, level) {
+function gen_list_item($, type, chr, level) {
     return prec.right(
         seq(
-            get_detached_mod_prefix($, "-", level),
+            get_detached_mod_prefix($, chr, level),
 
             $._whitespace,
 
@@ -148,7 +162,7 @@ function gen_unordered_list($, level) {
 
             repeat(
                 choice(
-                    ...get_lower_level_items($, "unordered_list_item", level),
+                    ...get_lower_level_items($, type + "_list_item", level),
                 ),
             ),
         ),

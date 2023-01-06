@@ -1,0 +1,234 @@
+================================================================================
+Level 1 Ordered list
+================================================================================
+~ Ordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (ordered_list_item1
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 2 Ordered list
+================================================================================
+~~ Ordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (ordered_list_item2
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 3 Ordered list
+================================================================================
+~~~ Ordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (ordered_list_item3
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 4 Ordered list
+================================================================================
+~~~~ Ordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (ordered_list_item4
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 5 Ordered list
+================================================================================
+~~~~~ Ordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (ordered_list_item5
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 6 Ordered list
+================================================================================
+~~~~~~ Ordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (ordered_list_item6
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Nested Ordered list
+================================================================================
+~~ item 2
+~~~ item 3
+~~~~ item 4
+~~ item 2
+~ item 1
+~~~~~~ item 6
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (ordered_list_item2
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)))
+      (ordered_list_item3
+        (prefix)
+        (paragraph
+          (paragraph_segment
+            (word)
+            (word)))
+        (ordered_list_item4
+          (prefix)
+          (paragraph
+            (paragraph_segment
+              (word)
+              (word))))))
+    (ordered_list_item2
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word))))
+    (ordered_list_item1
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)))
+      (ordered_list_item6
+        (prefix)
+        (paragraph
+          (paragraph_segment
+            (word)
+            (word)))))))
+
+================================================================================
+Ordered list Starting With Level Greater than 1
+================================================================================
+~~~~~ Level 5 Ordered list
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (ordered_list_item5
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word)
+          (word))))))
