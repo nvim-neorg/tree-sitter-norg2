@@ -6,56 +6,16 @@
 using namespace std;
 
 enum TokenType : char {
-    INFIRM_TAG_BEGIN,
-    RANGED_TAG_BEGIN,
-    RANGED_VERBATIM_TAG_BEGIN,
-    WEAK_CARRYOVER_TAG_BEGIN,
-    STRONG_CARRYOVER_TAG_BEGIN,
 };
 
 struct Scanner {
     TSLexer* lexer;
 
     bool scan(const bool *valid_symbols) {
-        // const bool is_on_new_line = (lexer->get_column(lexer) == 0);
-
-        while (iswspace(lexer->lookahead))
-            skip();
-
-        // Tag Parsing
-        // This is required because the grammar-based approach fails under certain
-        // circumstances.
-
-        if (valid_symbols[INFIRM_TAG_BEGIN] && lexer->lookahead == '.') {
-            advance();
-            lexer->result_symbol = INFIRM_TAG_BEGIN;
-            return true;
-        }
-
-        if (valid_symbols[RANGED_VERBATIM_TAG_BEGIN] && lexer->lookahead == '@') {
-            advance();
-            lexer->result_symbol = RANGED_VERBATIM_TAG_BEGIN;
-            return true;
-        }
-
-        if (valid_symbols[WEAK_CARRYOVER_TAG_BEGIN] && lexer->lookahead == '+') {
-            advance();
-            lexer->result_symbol = WEAK_CARRYOVER_TAG_BEGIN;
-            return true;
-        }
-
-        if (valid_symbols[STRONG_CARRYOVER_TAG_BEGIN] && lexer->lookahead == '#') {
-            advance();
-            lexer->result_symbol = STRONG_CARRYOVER_TAG_BEGIN;
-            return true;
-        }
-
-        return false;
     }
 
-    inline void skip() { lexer->advance(lexer, true); }
-
-    inline void advance() { lexer->advance(lexer, false); }
+    void skip() { lexer->advance(lexer, true); }
+    void advance() { lexer->advance(lexer, false); }
 };
 
 extern "C" {
