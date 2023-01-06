@@ -28,6 +28,7 @@ module.exports = grammar({
                 $.heading,
                 $.paragraph,
                 $._newline,
+                $.strong_delimiting_modifier,
             ),
         ),
 
@@ -75,6 +76,18 @@ module.exports = grammar({
             $.heading5,
             $.heading6,
         ),
+
+        weak_delimiting_modifier: $ => seq(
+            token.immediate("-"),
+            repeat1("-"),
+            $._newline,
+        ),
+
+        strong_delimiting_modifier: $ => seq(
+            token.immediate("="),
+            repeat1("="),
+            $._newline,
+        ),
     },
 });
 
@@ -110,6 +123,8 @@ function gen_nestable_detached_modifier($, type, chr, level) {
                     ...lower_level,
                 ),
             ),
+
+            optional($.weak_delimiting_modifier),
         ),
     );
 }
