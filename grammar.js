@@ -59,6 +59,7 @@ module.exports = grammar({
                 ),
             ),
             $._newline,
+            // TODO: deal with https://github.com/nvim-neorg/norg-specs/issues/8
         )),
 
         heading1: $ => gen_heading($, 1),
