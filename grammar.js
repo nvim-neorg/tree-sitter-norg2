@@ -30,6 +30,7 @@ module.exports = grammar({
                 $._newline,
                 $.strong_delimiting_modifier,
                 $.list,
+                $.quote,
             ),
         ),
 
@@ -91,20 +92,19 @@ module.exports = grammar({
             $._newline,
         ),
 
-        unordered_list_item1: $ => gen_list_item($, "unordered", "-", 1),
-        unordered_list_item2: $ => gen_list_item($, "unordered", "-", 2),
-        unordered_list_item3: $ => gen_list_item($, "unordered", "-", 3),
-        unordered_list_item4: $ => gen_list_item($, "unordered", "-", 4),
-        unordered_list_item5: $ => gen_list_item($, "unordered", "-", 5),
-        unordered_list_item6: $ => gen_list_item($, "unordered", "-", 6),
+        unordered_list_item1: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 1),
+        unordered_list_item2: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 2),
+        unordered_list_item3: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 3),
+        unordered_list_item4: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 4),
+        unordered_list_item5: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 5),
+        unordered_list_item6: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 6),
 
-        ordered_list_item1: $ => gen_list_item($, "ordered", "~", 1),
-        ordered_list_item2: $ => gen_list_item($, "ordered", "~", 2),
-        ordered_list_item3: $ => gen_list_item($, "ordered", "~", 3),
-        ordered_list_item4: $ => gen_list_item($, "ordered", "~", 4),
-        ordered_list_item5: $ => gen_list_item($, "ordered", "~", 5),
-        ordered_list_item6: $ => gen_list_item($, "ordered", "~", 6),
-
+        ordered_list_item1: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 1),
+        ordered_list_item2: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 2),
+        ordered_list_item3: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 3),
+        ordered_list_item4: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 4),
+        ordered_list_item5: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 5),
+        ordered_list_item6: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 6),
 
         list: $ => prec.right(
             repeat1(
@@ -124,10 +124,32 @@ module.exports = grammar({
                 ),
             ),
         ),
+
+        quote_item1: $ => gen_nestable_detached_mod($, "quote_item", ">", 1),
+        quote_item2: $ => gen_nestable_detached_mod($, "quote_item", ">", 2),
+        quote_item3: $ => gen_nestable_detached_mod($, "quote_item", ">", 3),
+        quote_item4: $ => gen_nestable_detached_mod($, "quote_item", ">", 4),
+        quote_item5: $ => gen_nestable_detached_mod($, "quote_item", ">", 5),
+        quote_item6: $ => gen_nestable_detached_mod($, "quote_item", ">", 6),
+
+        quote: $ => prec.right(
+            repeat1(
+                choice(
+                    $.quote_item1,
+                    $.quote_item2,
+                    $.quote_item3,
+                    $.quote_item4,
+                    $.quote_item5,
+                    $.quote_item6,
+                ),
+            ),
+        ),
+
     },
 });
 
 function gen_heading($, level) {
+    // TODO: re-use gen_nestable_detached_mod (?)
     return prec.right(
         seq(
             get_detached_mod_prefix($, "*", level),
@@ -151,7 +173,7 @@ function gen_heading($, level) {
     );
 }
 
-function gen_list_item($, type, chr, level) {
+function gen_nestable_detached_mod($, type, chr, level) {
     return prec.right(
         seq(
             get_detached_mod_prefix($, chr, level),
@@ -162,7 +184,7 @@ function gen_list_item($, type, chr, level) {
 
             repeat(
                 choice(
-                    ...get_lower_level_items($, type + "_list_item", level),
+                    ...get_lower_level_items($, type, level),
                 ),
             ),
         ),
