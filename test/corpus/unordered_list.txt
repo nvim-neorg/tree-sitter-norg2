@@ -1,0 +1,234 @@
+================================================================================
+Level 1 Unordered list
+================================================================================
+- Unordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (unordered_list_item1
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 2 Unordered list
+================================================================================
+-- Unordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (unordered_list_item2
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 3 Unordered list
+================================================================================
+--- Unordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (unordered_list_item3
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 4 Unordered list
+================================================================================
+---- Unordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (unordered_list_item4
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 5 Unordered list
+================================================================================
+----- Unordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (unordered_list_item5
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Level 6 Unordered list
+================================================================================
+------ Unordered list content
+spanning a paragraph
+
+but not further
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (unordered_list_item6
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word)))))
+  (paragraph
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))
+
+================================================================================
+Nested Unordered list
+================================================================================
+-- item 2
+--- item 3
+---- item 4
+-- item 2
+- item 1
+------ item 6
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (unordered_list_item2
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)))
+      (unordered_list_item3
+        (prefix)
+        (paragraph
+          (paragraph_segment
+            (word)
+            (word)))
+        (unordered_list_item4
+          (prefix)
+          (paragraph
+            (paragraph_segment
+              (word)
+              (word))))))
+    (unordered_list_item2
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word))))
+    (unordered_list_item1
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)))
+      (unordered_list_item6
+        (prefix)
+        (paragraph
+          (paragraph_segment
+            (word)
+            (word)))))))
+
+================================================================================
+Unordered list Starting With Level Greater than 1
+================================================================================
+----- Level 5 Unordered list
+--------------------------------------------------------------------------------
+
+(document
+  (list
+    (unordered_list_item5
+      (prefix)
+      (paragraph
+        (paragraph_segment
+          (word)
+          (word)
+          (word)
+          (word))))))

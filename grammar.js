@@ -29,6 +29,7 @@ module.exports = grammar({
                 $.paragraph,
                 $._newline,
                 $.strong_delimiting_modifier,
+                $.list,
             ),
         ),
 
@@ -89,27 +90,33 @@ module.exports = grammar({
             repeat1("="),
             $._newline,
         ),
+
+        unordered_list_item1: $ => gen_unordered_list($, 1),
+        unordered_list_item2: $ => gen_unordered_list($, 2),
+        unordered_list_item3: $ => gen_unordered_list($, 3),
+        unordered_list_item4: $ => gen_unordered_list($, 4),
+        unordered_list_item5: $ => gen_unordered_list($, 5),
+        unordered_list_item6: $ => gen_unordered_list($, 6),
+
+        list: $ => prec.right(
+            repeat1(
+                choice(
+                    $.unordered_list_item1,
+                    $.unordered_list_item2,
+                    $.unordered_list_item3,
+                    $.unordered_list_item4,
+                    $.unordered_list_item5,
+                    $.unordered_list_item6,
+                ),
+            ),
+        ),
     },
 });
 
 function gen_heading($, level) {
-    return gen_nestable_detached_modifier(
-        $,
-        "heading",
-        "*",
-        level,
-    );
-}
-
-function gen_nestable_detached_modifier($, type, chr, level) {
-    let lower_level = []
-    for (let i = 0; i + level < 6; i++) {
-        lower_level[i] = $[type + (i + 1 + level)]
-    }
-
     return prec.right(
         seq(
-            alias(chr.repeat(level), $.prefix),
+            get_detached_mod_prefix($, "*", level),
 
             $._whitespace,
 
@@ -121,11 +128,41 @@ function gen_nestable_detached_modifier($, type, chr, level) {
                 choice(
                     $.paragraph,
 
-                    ...lower_level,
+                    ...get_lower_level_items($, "heading", level),
                 ),
             ),
 
             optional($.weak_delimiting_modifier),
         ),
     );
+}
+
+function gen_unordered_list($, level) {
+    return prec.right(
+        seq(
+            get_detached_mod_prefix($, "-", level),
+
+            $._whitespace,
+
+            field("content", $.paragraph),
+
+            repeat(
+                choice(
+                    ...get_lower_level_items($, "unordered_list_item", level),
+                ),
+            ),
+        ),
+    );
+}
+
+function get_detached_mod_prefix($, chr, level) {
+    return alias(chr.repeat(level), $.prefix);
+}
+
+function get_lower_level_items($, type, level) {
+    let lower_level = []
+    for (let i = 0; i + level < 6; i++) {
+        lower_level[i] = $[type + (i + 1 + level)]
+    }
+    return lower_level;
 }
