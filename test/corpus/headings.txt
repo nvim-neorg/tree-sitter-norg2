@@ -6,7 +6,10 @@ Level 1 Heading
 
 (document
   (heading1
-    (paragraph_segment)))
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word))))
 
 ================================================================================
 Level 2 Heading
@@ -16,7 +19,10 @@ Level 2 Heading
 
 (document
   (heading2
-    (paragraph_segment)))
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word))))
 
 ================================================================================
 Level 3 Heading
@@ -26,7 +32,10 @@ Level 3 Heading
 
 (document
   (heading3
-    (paragraph_segment)))
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word))))
 
 ================================================================================
 Level 4 Heading
@@ -36,7 +45,10 @@ Level 4 Heading
 
 (document
   (heading4
-    (paragraph_segment)))
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word))))
 
 ================================================================================
 Level 5 Heading
@@ -46,7 +58,10 @@ Level 5 Heading
 
 (document
   (heading5
-    (paragraph_segment)))
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word))))
 
 ================================================================================
 Level 6 Heading
@@ -56,7 +71,10 @@ Level 6 Heading
 
 (document
   (heading6
-    (paragraph_segment)))
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word))))
 
 ================================================================================
 Nested Headings
@@ -71,17 +89,35 @@ Nested Headings
 
 (document
   (heading2
-    (paragraph_segment)
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word))
     (heading3
-      (paragraph_segment)
+      (prefix)
+      (paragraph_segment
+        (word)
+        (word))
       (heading4
-        (paragraph_segment))))
+        (prefix)
+        (paragraph_segment
+          (word)
+          (word)))))
   (heading2
-    (paragraph_segment))
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word)))
   (heading1
-    (paragraph_segment)
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word))
     (heading6
-      (paragraph_segment))))
+      (prefix)
+      (paragraph_segment
+        (word)
+        (word)))))
 
 ================================================================================
 Headings Starting With Level Greater than 1
@@ -91,4 +127,8 @@ Headings Starting With Level Greater than 1
 
 (document
   (heading5
-    (paragraph_segment)))
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word)
+      (word))))

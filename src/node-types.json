@@ -8,7 +8,27 @@
       "required": false,
       "types": [
         {
-          "type": "heading",
+          "type": "heading1",
+          "named": true
+        },
+        {
+          "type": "heading2",
+          "named": true
+        },
+        {
+          "type": "heading3",
+          "named": true
+        },
+        {
+          "type": "heading4",
+          "named": true
+        },
+        {
+          "type": "heading5",
+          "named": true
+        },
+        {
+          "type": "heading6",
           "named": true
         },
         {
@@ -34,15 +54,236 @@
     }
   },
   {
-    "type": "heading",
+    "type": "heading1",
     "named": true,
-    "fields": {},
+    "fields": {
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "paragraph_segment",
+          "type": "heading2",
+          "named": true
+        },
+        {
+          "type": "heading3",
+          "named": true
+        },
+        {
+          "type": "heading4",
+          "named": true
+        },
+        {
+          "type": "heading5",
+          "named": true
+        },
+        {
+          "type": "heading6",
+          "named": true
+        },
+        {
+          "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "prefix",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heading2",
+    "named": true,
+    "fields": {
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "heading3",
+          "named": true
+        },
+        {
+          "type": "heading4",
+          "named": true
+        },
+        {
+          "type": "heading5",
+          "named": true
+        },
+        {
+          "type": "heading6",
+          "named": true
+        },
+        {
+          "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "prefix",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heading3",
+    "named": true,
+    "fields": {
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "heading4",
+          "named": true
+        },
+        {
+          "type": "heading5",
+          "named": true
+        },
+        {
+          "type": "heading6",
+          "named": true
+        },
+        {
+          "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "prefix",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heading4",
+    "named": true,
+    "fields": {
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "heading5",
+          "named": true
+        },
+        {
+          "type": "heading6",
+          "named": true
+        },
+        {
+          "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "prefix",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heading5",
+    "named": true,
+    "fields": {
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "heading6",
+          "named": true
+        },
+        {
+          "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "prefix",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heading6",
+    "named": true,
+    "fields": {
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "paragraph",
           "named": true
         },
         {
@@ -87,11 +328,6 @@
     }
   },
   {
-    "type": "prefix",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "word",
     "named": true,
     "fields": {}
@@ -113,15 +349,15 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
     "type": "\\",
     "named": false
   },
   {
     "type": "escape_char",
+    "named": true
+  },
+  {
+    "type": "prefix",
     "named": true
   }
 ]

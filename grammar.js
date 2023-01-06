@@ -14,6 +14,7 @@ module.exports = grammar({
     ],
 
     inline: $ => [
+        $.heading,
     ],
 
     supertypes: $ => [
@@ -59,10 +60,56 @@ module.exports = grammar({
             $._newline,
         )),
 
-        heading: $ => seq(
-            alias(repeat1("*"), $.prefix),
-            $._whitespace,
-            $.paragraph_segment,
+        heading1: $ => gen_heading($, 1),
+        heading2: $ => gen_heading($, 2),
+        heading3: $ => gen_heading($, 3),
+        heading4: $ => gen_heading($, 4),
+        heading5: $ => gen_heading($, 5),
+        heading6: $ => gen_heading($, 6),
+
+        heading: $ => choice(
+            $.heading1,
+            $.heading2,
+            $.heading3,
+            $.heading4,
+            $.heading5,
+            $.heading6,
         ),
     },
 });
+
+function gen_heading($, level) {
+    return gen_nestable_detached_modifier(
+        $,
+        "heading",
+        "*",
+        level,
+    );
+}
+
+function gen_nestable_detached_modifier($, type, chr, level) {
+    let lower_level = []
+    for (let i = 0; i + level < 6; i++) {
+        lower_level[i] = $[type + (i + 1 + level)]
+    }
+
+    return prec.right(
+        seq(
+            alias(chr.repeat(level), $.prefix),
+
+            $._whitespace,
+
+            field("title", $.paragraph_segment),
+
+            $._newline,
+
+            repeat(
+                choice(
+                    $.paragraph,
+
+                    ...lower_level,
+                ),
+            ),
+        ),
+    );
+}
