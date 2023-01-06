@@ -37,7 +37,7 @@
         }
       }
     },
-    "whitespace": {
+    "_whitespace": {
       "type": "PATTERN",
       "value": "[\\t                　]+"
     },
@@ -94,7 +94,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "whitespace"
+              "name": "_whitespace"
             },
             {
               "type": "SYMBOL",
@@ -143,15 +143,18 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "\\*+"
+            "type": "REPEAT1",
+            "content": {
+              "type": "STRING",
+              "value": "*"
+            }
           },
           "named": true,
           "value": "prefix"
         },
         {
           "type": "SYMBOL",
-          "name": "whitespace"
+          "name": "_whitespace"
         },
         {
           "type": "SYMBOL",

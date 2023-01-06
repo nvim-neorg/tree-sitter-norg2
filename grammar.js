@@ -1,7 +1,7 @@
 module.exports = grammar({
     name: "norg",
 
-    // Tell treesitter we want to handle whitespace ourselves
+    // Tell treesitter we want to handle _whitespace ourselves
     extras: _ => [],
 
     externals: $ => [
@@ -32,7 +32,7 @@ module.exports = grammar({
 
         _character: _ => /[^\s]/,
         word: $ => prec.right(repeat1($._character)),
-        whitespace: _ => /[\t                　]+/,
+        _whitespace: _ => /[\t                　]+/,
         _newline: _ => choice("\n", "\r", "\r\n", "\0"),
 
         escape_sequence: $ => seq(
@@ -43,7 +43,7 @@ module.exports = grammar({
         paragraph_segment: $ => prec.right(repeat1(
             choice(
                 $.word,
-                $.whitespace,
+                $._whitespace,
                 $.escape_sequence,
             ),
         )),
@@ -60,8 +60,8 @@ module.exports = grammar({
         )),
 
         heading: $ => seq(
-            alias(/\*+/, $.prefix),
-            $.whitespace,
+            alias(repeat1("*"), $.prefix),
+            $._whitespace,
             $.paragraph_segment,
         ),
     },

@@ -48,10 +48,6 @@
         {
           "type": "prefix",
           "named": true
-        },
-        {
-          "type": "whitespace",
-          "named": true
         }
       ]
     }
@@ -77,14 +73,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "escape_sequence",
-          "named": true
-        },
-        {
-          "type": "whitespace",
           "named": true
         },
         {
@@ -93,6 +85,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "prefix",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "word",
@@ -116,19 +113,15 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
     "type": "\\",
     "named": false
   },
   {
     "type": "escape_char",
-    "named": true
-  },
-  {
-    "type": "prefix",
-    "named": true
-  },
-  {
-    "type": "whitespace",
     "named": true
   }
 ]
