@@ -40,12 +40,29 @@ This is no longer the heading's content.
 
 (document
   (heading1
-    (paragraph_segment)
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word)
+      (word)
+      (word))
     (paragraph
-      (paragraph_segment))
-    (weak_delimiting_modifier))
-  (paragraph
-    (paragraph_segment)))
+      (paragraph_segment
+        (word)
+        (word)
+        (word)
+        (word)
+        (word))
+      (paragraph_segment
+        (word))
+      (paragraph_segment
+        (word)
+        (word)
+        (word)
+        (word)
+        (word)
+        (word)
+        (word)))))
 
 ================================================================================
 Strong Paragraph Delimiter
@@ -61,13 +78,31 @@ Part of nothing.
 
 (document
   (heading1
-    (paragraph_segment)
+    (prefix)
+    (paragraph_segment
+      (word)
+      (word)
+      (word)
+      (word))
     (paragraph
-      (paragraph_segment))
+      (paragraph_segment
+        (word)))
     (heading3
-      (paragraph_segment)
+      (prefix)
+      (paragraph_segment
+        (word)
+        (word)
+        (word)
+        (word)
+        (word)
+        (word))
       (paragraph
-        (paragraph_segment))))
-  (strong_delimiting_modifier)
-  (paragraph
-    (paragraph_segment)))
+        (paragraph_segment
+          (word)
+          (word))
+        (paragraph_segment
+          (word))
+        (paragraph_segment
+          (word)
+          (word)
+          (word))))))

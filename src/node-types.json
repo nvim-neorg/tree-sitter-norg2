@@ -34,6 +34,10 @@
         {
           "type": "paragraph",
           "named": true
+        },
+        {
+          "type": "strong_delimiting_modifier",
+          "named": true
         }
       ]
     }
@@ -99,6 +103,10 @@
         {
           "type": "prefix",
           "named": true
+        },
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
         }
       ]
     }
@@ -145,6 +153,10 @@
         {
           "type": "prefix",
           "named": true
+        },
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
         }
       ]
     }
@@ -187,6 +199,10 @@
         {
           "type": "prefix",
           "named": true
+        },
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
         }
       ]
     }
@@ -225,6 +241,10 @@
         {
           "type": "prefix",
           "named": true
+        },
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
         }
       ]
     }
@@ -259,6 +279,10 @@
         {
           "type": "prefix",
           "named": true
+        },
+        {
+          "type": "weak_delimiting_modifier",
+          "named": true
         }
       ]
     }
@@ -288,6 +312,10 @@
         },
         {
           "type": "prefix",
+          "named": true
+        },
+        {
+          "type": "weak_delimiting_modifier",
           "named": true
         }
       ]
@@ -328,6 +356,16 @@
     }
   },
   {
+    "type": "strong_delimiting_modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "weak_delimiting_modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "word",
     "named": true,
     "fields": {}
@@ -346,6 +384,14 @@
   },
   {
     "type": "\r\n",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {
