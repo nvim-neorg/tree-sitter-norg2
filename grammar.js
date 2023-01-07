@@ -1,3 +1,5 @@
+let newline = choice("\n", "\r", "\r\n", "\0");
+
 module.exports = grammar({
     name: "norg",
 
@@ -14,30 +16,25 @@ module.exports = grammar({
     ],
 
     inline: $ => [
-        $.heading,
     ],
 
     supertypes: $ => [
+        $.non_structural,
+        $.heading,
     ],
-
-    word: $ => $._character,
 
     rules: {
         document: $ => repeat(
             choice(
                 $.heading,
-                $.paragraph,
-                $._newline,
                 $.strong_delimiting_modifier,
-                $.list,
-                $.quote,
+                $.non_structural,
             ),
         ),
 
         _character: _ => /[^\s]/,
-        word: $ => prec.right(repeat1($._character)),
+        _word: $ => prec.right(repeat1($._character)),
         _whitespace: _ => /[\t                　]+/,
-        _newline: _ => choice("\n", "\r", "\r\n", "\0"),
 
         escape_sequence: $ => seq(
             "\\",
@@ -46,7 +43,7 @@ module.exports = grammar({
 
         paragraph_segment: $ => prec.right(repeat1(
             choice(
-                $.word,
+                $._word,
                 $._whitespace,
                 $.escape_sequence,
             ),
@@ -56,20 +53,20 @@ module.exports = grammar({
             $.paragraph_segment,
             repeat(
                 seq(
-                    $._newline,
+                    newline,
                     $.paragraph_segment,
                 ),
             ),
-            $._newline,
+            newline,
             // TODO: deal with https://github.com/nvim-neorg/norg-specs/issues/8
         )),
 
-        heading1: $ => gen_heading($, 1),
-        heading2: $ => gen_heading($, 2),
-        heading3: $ => gen_heading($, 3),
-        heading4: $ => gen_heading($, 4),
-        heading5: $ => gen_heading($, 5),
-        heading6: $ => gen_heading($, 6),
+        heading1: $ => heading($, 1),
+        heading2: $ => heading($, 2),
+        heading3: $ => heading($, 3),
+        heading4: $ => heading($, 4),
+        heading5: $ => heading($, 5),
+        heading6: $ => heading($, 6),
 
         heading: $ => choice(
             $.heading1,
@@ -80,31 +77,31 @@ module.exports = grammar({
             $.heading6,
         ),
 
-        weak_delimiting_modifier: $ => seq(
-            token.immediate("-"),
-            repeat1("-"),
-            $._newline,
-        ),
+        weak_delimiting_modifier: $ => token(seq(
+            "--",
+            repeat("-"),
+            newline,
+        )),
 
-        strong_delimiting_modifier: $ => seq(
-            token.immediate("="),
-            repeat1("="),
-            $._newline,
-        ),
+        strong_delimiting_modifier: $ => token(seq(
+            "==",
+            repeat("="),
+            newline,
+        )),
 
-        unordered_list_item1: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 1),
-        unordered_list_item2: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 2),
-        unordered_list_item3: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 3),
-        unordered_list_item4: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 4),
-        unordered_list_item5: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 5),
-        unordered_list_item6: $ => gen_nestable_detached_mod($, "unordered_list_item", "-", 6),
+        unordered_list_item1: $ => nestable_detached_mod($, "unordered_list_item", "-", 1),
+        unordered_list_item2: $ => nestable_detached_mod($, "unordered_list_item", "-", 2),
+        unordered_list_item3: $ => nestable_detached_mod($, "unordered_list_item", "-", 3),
+        unordered_list_item4: $ => nestable_detached_mod($, "unordered_list_item", "-", 4),
+        unordered_list_item5: $ => nestable_detached_mod($, "unordered_list_item", "-", 5),
+        unordered_list_item6: $ => nestable_detached_mod($, "unordered_list_item", "-", 6),
 
-        ordered_list_item1: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 1),
-        ordered_list_item2: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 2),
-        ordered_list_item3: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 3),
-        ordered_list_item4: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 4),
-        ordered_list_item5: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 5),
-        ordered_list_item6: $ => gen_nestable_detached_mod($, "ordered_list_item", "~", 6),
+        ordered_list_item1: $ => nestable_detached_mod($, "ordered_list_item", "~", 1),
+        ordered_list_item2: $ => nestable_detached_mod($, "ordered_list_item", "~", 2),
+        ordered_list_item3: $ => nestable_detached_mod($, "ordered_list_item", "~", 3),
+        ordered_list_item4: $ => nestable_detached_mod($, "ordered_list_item", "~", 4),
+        ordered_list_item5: $ => nestable_detached_mod($, "ordered_list_item", "~", 5),
+        ordered_list_item6: $ => nestable_detached_mod($, "ordered_list_item", "~", 6),
 
         list: $ => prec.right(
             repeat1(
@@ -125,12 +122,12 @@ module.exports = grammar({
             ),
         ),
 
-        quote_item1: $ => gen_nestable_detached_mod($, "quote_item", ">", 1),
-        quote_item2: $ => gen_nestable_detached_mod($, "quote_item", ">", 2),
-        quote_item3: $ => gen_nestable_detached_mod($, "quote_item", ">", 3),
-        quote_item4: $ => gen_nestable_detached_mod($, "quote_item", ">", 4),
-        quote_item5: $ => gen_nestable_detached_mod($, "quote_item", ">", 5),
-        quote_item6: $ => gen_nestable_detached_mod($, "quote_item", ">", 6),
+        quote_item1: $ => nestable_detached_mod($, "quote_item", ">", 1),
+        quote_item2: $ => nestable_detached_mod($, "quote_item", ">", 2),
+        quote_item3: $ => nestable_detached_mod($, "quote_item", ">", 3),
+        quote_item4: $ => nestable_detached_mod($, "quote_item", ">", 4),
+        quote_item5: $ => nestable_detached_mod($, "quote_item", ">", 5),
+        quote_item6: $ => nestable_detached_mod($, "quote_item", ">", 6),
 
         quote: $ => prec.right(
             repeat1(
@@ -145,26 +142,47 @@ module.exports = grammar({
             ),
         ),
 
+        non_structural: $ => choice(
+            $.paragraph,
+            newline,
+            $.list,
+            $.quote,
+        ),
+
+        heading: $ => choice(
+            $.heading1,
+            $.heading2,
+            $.heading3,
+            $.heading4,
+            $.heading5,
+            $.heading6,
+        ),
+
+        heading1: $ => prec.right(heading($, 1)),
+        heading2: $ => prec.right(heading($, 2)),
+        heading3: $ => prec.right(heading($, 3)),
+        heading4: $ => prec.right(heading($, 4)),
+        heading5: $ => prec.right(heading($, 5)),
+        heading6: $ => prec.right(heading($, 6)),
     },
 });
 
-function gen_heading($, level) {
-    // TODO: re-use gen_nestable_detached_mod (?)
+function heading($, level) {
+    // TODO: re-use nestable_detached_mod (?)
     return prec.right(
         seq(
-            get_detached_mod_prefix($, "*", level),
+            detached_mod_prefix($, "*", level),
 
             $._whitespace,
 
             field("title", $.paragraph_segment),
 
-            $._newline,
+            newline,
 
             repeat(
                 choice(
-                    $.paragraph,
-
-                    ...get_lower_level_items($, "heading", level),
+                    $.non_structural,
+                    ...lower_level_items($, "heading", level),
                 ),
             ),
 
@@ -173,10 +191,10 @@ function gen_heading($, level) {
     );
 }
 
-function gen_nestable_detached_mod($, type, chr, level) {
+function nestable_detached_mod($, type, chr, level) {
     return prec.right(
         seq(
-            get_detached_mod_prefix($, chr, level),
+            detached_mod_prefix($, chr, level),
 
             $._whitespace,
 
@@ -184,18 +202,18 @@ function gen_nestable_detached_mod($, type, chr, level) {
 
             repeat(
                 choice(
-                    ...get_lower_level_items($, type, level),
+                    ...lower_level_items($, type, level),
                 ),
             ),
         ),
     );
 }
 
-function get_detached_mod_prefix($, chr, level) {
+function detached_mod_prefix($, chr, level) {
     return alias(chr.repeat(level), $.prefix);
 }
 
-function get_lower_level_items($, type, level) {
+function lower_level_items($, type, level) {
     let lower_level = []
     for (let i = 0; i + level < 6; i++) {
         lower_level[i] = $[type + (i + 1 + level)]

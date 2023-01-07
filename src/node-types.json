@@ -1,5 +1,69 @@
 [
   {
+    "type": "heading",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "heading1",
+        "named": true
+      },
+      {
+        "type": "heading2",
+        "named": true
+      },
+      {
+        "type": "heading3",
+        "named": true
+      },
+      {
+        "type": "heading4",
+        "named": true
+      },
+      {
+        "type": "heading5",
+        "named": true
+      },
+      {
+        "type": "heading6",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "non_structural",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "\u0000",
+        "named": false
+      },
+      {
+        "type": "\n",
+        "named": false
+      },
+      {
+        "type": "\r",
+        "named": false
+      },
+      {
+        "type": "\r\n",
+        "named": false
+      },
+      {
+        "type": "list",
+        "named": true
+      },
+      {
+        "type": "paragraph",
+        "named": true
+      },
+      {
+        "type": "quote",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -8,39 +72,11 @@
       "required": false,
       "types": [
         {
-          "type": "heading1",
+          "type": "heading",
           "named": true
         },
         {
-          "type": "heading2",
-          "named": true
-        },
-        {
-          "type": "heading3",
-          "named": true
-        },
-        {
-          "type": "heading4",
-          "named": true
-        },
-        {
-          "type": "heading5",
-          "named": true
-        },
-        {
-          "type": "heading6",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "paragraph",
-          "named": true
-        },
-        {
-          "type": "quote",
+          "type": "non_structural",
           "named": true
         },
         {
@@ -105,7 +141,7 @@
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "non_structural",
           "named": true
         },
         {
@@ -155,7 +191,7 @@
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "non_structural",
           "named": true
         },
         {
@@ -201,7 +237,7 @@
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "non_structural",
           "named": true
         },
         {
@@ -243,7 +279,7 @@
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "non_structural",
           "named": true
         },
         {
@@ -281,7 +317,7 @@
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "non_structural",
           "named": true
         },
         {
@@ -315,7 +351,7 @@
       "required": true,
       "types": [
         {
-          "type": "paragraph",
+          "type": "non_structural",
           "named": true
         },
         {
@@ -630,10 +666,6 @@
         {
           "type": "escape_sequence",
           "named": true
-        },
-        {
-          "type": "word",
-          "named": true
         }
       ]
     }
@@ -890,11 +922,6 @@
     }
   },
   {
-    "type": "strong_delimiting_modifier",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "unordered_list_item1",
     "named": true,
     "fields": {
@@ -1111,16 +1138,6 @@
     }
   },
   {
-    "type": "weak_delimiting_modifier",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "word",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "\u0000",
     "named": false
   },
@@ -1137,14 +1154,6 @@
     "named": false
   },
   {
-    "type": "-",
-    "named": false
-  },
-  {
-    "type": "=",
-    "named": false
-  },
-  {
     "type": "\\",
     "named": false
   },
@@ -1154,6 +1163,14 @@
   },
   {
     "type": "prefix",
+    "named": true
+  },
+  {
+    "type": "strong_delimiting_modifier",
+    "named": true
+  },
+  {
+    "type": "weak_delimiting_modifier",
     "named": true
   }
 ]
