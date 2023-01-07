@@ -22,8 +22,11 @@
       }
     },
     "_character": {
-      "type": "PATTERN",
-      "value": "[^\\s]"
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\s]"
+      }
     },
     "_word": {
       "type": "PREC_RIGHT",
@@ -37,8 +40,11 @@
       }
     },
     "_whitespace": {
-      "type": "PATTERN",
-      "value": "[\\t                　]+"
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[\\t                　]+"
+      }
     },
     "escape_sequence": {
       "type": "SEQ",

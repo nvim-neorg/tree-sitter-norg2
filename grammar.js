@@ -32,9 +32,9 @@ module.exports = grammar({
             ),
         ),
 
-        _character: _ => /[^\s]/,
+        _character: _ => token(/[^\s]/),
         _word: $ => prec.right(repeat1($._character)),
-        _whitespace: _ => /[\t                　]+/,
+        _whitespace: _ => token(/[\t                　]+/),
 
         escape_sequence: $ => seq(
             "\\",
