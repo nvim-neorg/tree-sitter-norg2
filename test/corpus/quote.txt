@@ -12,18 +12,10 @@ but not further
     (quote_item1
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 2 Quote
@@ -39,18 +31,10 @@ but not further
     (quote_item2
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 3 Quote
@@ -66,18 +50,10 @@ but not further
     (quote_item3
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 4 Quote
@@ -93,18 +69,10 @@ but not further
     (quote_item4
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 5 Quote
@@ -120,18 +88,10 @@ but not further
     (quote_item5
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 6 Quote
@@ -147,18 +107,10 @@ but not further
     (quote_item6
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Nested Quote
@@ -176,39 +128,27 @@ Nested Quote
     (quote_item2
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)))
+        (paragraph_segment))
       (quote_item3
         (prefix)
         (paragraph
-          (paragraph_segment
-            (word)
-            (word)))
+          (paragraph_segment))
         (quote_item4
           (prefix)
           (paragraph
-            (paragraph_segment
-              (word)
-              (word))))))
+            (paragraph_segment)))))
     (quote_item2
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word))))
+        (paragraph_segment)))
     (quote_item1
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)))
+        (paragraph_segment))
       (quote_item6
         (prefix)
         (paragraph
-          (paragraph_segment
-            (word)
-            (word)))))))
+          (paragraph_segment))))))
 
 ================================================================================
 Quote Starting With Level Greater than 1
@@ -221,7 +161,4 @@ Quote Starting With Level Greater than 1
     (quote_item5
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)
-          (word))))))
+        (paragraph_segment)))))

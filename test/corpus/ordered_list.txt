@@ -12,19 +12,10 @@ but not further
     (ordered_list_item1
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 2 Ordered list
@@ -40,19 +31,10 @@ but not further
     (ordered_list_item2
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 3 Ordered list
@@ -68,19 +50,10 @@ but not further
     (ordered_list_item3
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 4 Ordered list
@@ -96,19 +69,10 @@ but not further
     (ordered_list_item4
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 5 Ordered list
@@ -124,19 +88,10 @@ but not further
     (ordered_list_item5
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Level 6 Ordered list
@@ -152,19 +107,10 @@ but not further
     (ordered_list_item6
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)
-          (word))
-        (paragraph_segment
-          (word)
-          (word)
-          (word)))))
+        (paragraph_segment)
+        (paragraph_segment))))
   (paragraph
-    (paragraph_segment
-      (word)
-      (word)
-      (word))))
+    (paragraph_segment)))
 
 ================================================================================
 Nested Ordered list
@@ -182,39 +128,27 @@ Nested Ordered list
     (ordered_list_item2
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)))
+        (paragraph_segment))
       (ordered_list_item3
         (prefix)
         (paragraph
-          (paragraph_segment
-            (word)
-            (word)))
+          (paragraph_segment))
         (ordered_list_item4
           (prefix)
           (paragraph
-            (paragraph_segment
-              (word)
-              (word))))))
+            (paragraph_segment)))))
     (ordered_list_item2
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word))))
+        (paragraph_segment)))
     (ordered_list_item1
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)))
+        (paragraph_segment))
       (ordered_list_item6
         (prefix)
         (paragraph
-          (paragraph_segment
-            (word)
-            (word)))))))
+          (paragraph_segment))))))
 
 ================================================================================
 Ordered list Starting With Level Greater than 1
@@ -227,8 +161,4 @@ Ordered list Starting With Level Greater than 1
     (ordered_list_item5
       (prefix)
       (paragraph
-        (paragraph_segment
-          (word)
-          (word)
-          (word)
-          (word))))))
+        (paragraph_segment)))))

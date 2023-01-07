@@ -37,7 +37,6 @@ so is this.
   (paragraph
     (paragraph_segment)
     (paragraph_segment))
-  (paragraph_break)
   (paragraph
     (paragraph_segment)
     (paragraph_segment)))
