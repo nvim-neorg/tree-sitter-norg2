@@ -12,10 +12,13 @@ module.exports = grammar({
     conflicts: $ => [
         [$.bold, $._markup_conflict],
         [$.italic, $._markup_conflict],
+        [$.strikethrough, $._markup_conflict],
+        [$.underline, $._markup_conflict],
     ],
 
     precedences: $ => [
         [$.heading1, $._markup_conflict],
+        [$.unordered_list_item1, $._markup_conflict],
     ],
 
     inline: $ => [
@@ -176,14 +179,20 @@ module.exports = grammar({
         attached_modifier: $ => choice(
             $.bold,
             $.italic,
+            $.strikethrough,
+            $.underline,
         ),
 
-        bold: $ => prec.dynamic(1, prec.right(attached_mod($, "*"))),
-        italic: $ => prec.dynamic(1, prec.right(attached_mod($, "/"))),
+        bold: $ => prec.dynamic(1, prec.left(attached_mod($, "*"))),
+        italic: $ => prec.dynamic(1, prec.left(attached_mod($, "/"))),
+        strikethrough: $ => prec.dynamic(1, prec.left(attached_mod($, "-"))),
+        underline: $ => prec.dynamic(1, prec.left(attached_mod($, "_"))),
 
         _markup_conflict: $ => choice(
             "*",
             "/",
+            "-",
+            "_",
         ),
     },
 });
@@ -247,6 +256,7 @@ function attached_mod($, char) {
         $._word,
         // TODO: The following input: `*/hello/*` does not register
         $.attached_modifier,
+        $._markup_conflict,
     );
 
     return seq(
@@ -255,7 +265,7 @@ function attached_mod($, char) {
         optional(
             seq(
                 repeat(
-                    prec.left(choice(
+                    prec.right(choice(
                         anyobject,
                         $._whitespace,
                     )),

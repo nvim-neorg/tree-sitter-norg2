@@ -8,7 +8,15 @@
         "named": false
       },
       {
+        "type": "-",
+        "named": false
+      },
+      {
         "type": "/",
+        "named": false
+      },
+      {
+        "type": "_",
         "named": false
       }
     ]
@@ -23,6 +31,14 @@
       },
       {
         "type": "italic",
+        "named": true
+      },
+      {
+        "type": "strikethrough",
+        "named": true
+      },
+      {
+        "type": "underline",
         "named": true
       }
     ]
@@ -99,6 +115,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "_markup_conflict",
+          "named": true
+        },
         {
           "type": "attached_modifier",
           "named": true
@@ -416,6 +436,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "_markup_conflict",
+          "named": true
+        },
         {
           "type": "attached_modifier",
           "named": true
@@ -988,6 +1012,44 @@
     }
   },
   {
+    "type": "strikethrough",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_markup_conflict",
+          "named": true
+        },
+        {
+          "type": "attached_modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "underline",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_markup_conflict",
+          "named": true
+        },
+        {
+          "type": "attached_modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "unordered_list_item1",
     "named": true,
     "fields": {
@@ -1224,11 +1286,19 @@
     "named": false
   },
   {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
   {
     "type": "\\",
+    "named": false
+  },
+  {
+    "type": "_",
     "named": false
   },
   {
