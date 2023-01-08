@@ -6,12 +6,32 @@
 using namespace std;
 
 enum TokenType : char {
+    BOLD_OPEN,
+    BOLD_CLOSE,
+
+    ITALIC_OPEN,
+    ITALIC_CLOSE,
+
+    UNDERLINE_OPEN,
+    UNDERLINE_CLOSE,
+
+    STRIKETHROUGH_OPEN,
+    STRIKETHROUGH_CLOSE,
+
+    SUPERSCRIPT_OPEN,
+    SUPERSCRIPT_CLOSE,
+
+    SUBSCRIPT_OPEN,
+    SUBSCRIPT_CLOSE,
 };
 
 struct Scanner {
     TSLexer* lexer;
+    int32_t m_Previous = 0;
 
     bool scan(const bool *valid_symbols) {
+        m_Previous = lexer->lookahead;
+        return false;
     }
 
     void skip() { lexer->advance(lexer, true); }

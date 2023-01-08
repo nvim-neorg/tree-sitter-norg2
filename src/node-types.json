@@ -1,5 +1,33 @@
 [
   {
+    "type": "_markup_conflict",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "*",
+        "named": false
+      },
+      {
+        "type": "/",
+        "named": false
+      }
+    ]
+  },
+  {
+    "type": "attached_modifier",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "bold",
+        "named": true
+      },
+      {
+        "type": "italic",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "heading",
     "named": true,
     "subtypes": [
@@ -62,6 +90,21 @@
         "named": true
       }
     ]
+  },
+  {
+    "type": "bold",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attached_modifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "document",
@@ -366,6 +409,21 @@
     }
   },
   {
+    "type": "italic",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attached_modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "list",
     "named": true,
     "fields": {},
@@ -663,6 +721,14 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "_markup_conflict",
+          "named": true
+        },
+        {
+          "type": "attached_modifier",
+          "named": true
+        },
         {
           "type": "escape_sequence",
           "named": true
@@ -1151,6 +1217,14 @@
   },
   {
     "type": "\r\n",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "/",
     "named": false
   },
   {

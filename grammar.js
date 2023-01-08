@@ -3,16 +3,19 @@ let newline = choice("\n", "\r", "\r\n", "\0");
 module.exports = grammar({
     name: "norg",
 
-    // Tell treesitter we want to handle _whitespace ourselves
+    // Tell treesitter we want to handle whitespace ourselves
     extras: _ => [],
 
     externals: $ => [
     ],
 
     conflicts: $ => [
+        [$.bold, $._markup_conflict],
+        [$.italic, $._markup_conflict],
     ],
 
     precedences: $ => [
+        [$.heading1, $._markup_conflict],
     ],
 
     inline: $ => [
@@ -21,6 +24,8 @@ module.exports = grammar({
     supertypes: $ => [
         $.non_structural,
         $.heading,
+        $.attached_modifier,
+        $._markup_conflict,
     ],
 
     rules: {
@@ -46,6 +51,8 @@ module.exports = grammar({
                 $._word,
                 $._whitespace,
                 $.escape_sequence,
+                prec.dynamic(1, $.attached_modifier),
+                $._markup_conflict,
             ),
         )),
 
@@ -164,6 +171,20 @@ module.exports = grammar({
         heading4: $ => prec.right(heading($, 4)),
         heading5: $ => prec.right(heading($, 5)),
         heading6: $ => prec.right(heading($, 6)),
+
+
+        attached_modifier: $ => choice(
+            $.bold,
+            $.italic,
+        ),
+
+        bold: $ => prec.right(attached_mod($, "*")),
+        italic: $ => prec.right(attached_mod($, "/")),
+
+        _markup_conflict: $ => choice(
+            "*",
+            "/",
+        ),
     },
 });
 
@@ -219,4 +240,31 @@ function lower_level_items($, type, level) {
         lower_level[i] = $[type + (i + 1 + level)]
     }
     return lower_level;
+}
+
+function attached_mod($, char) {
+    const anyobject = choice(
+        $._word,
+        // TODO: When you allow a whole `attached_modifier` here it seems to bug for the following input:
+        // `/hello *world*`
+        // Perhaps just a dynamic precedence issue
+        $.italic,
+    );
+
+    return seq(
+        char,
+        anyobject,
+        optional(
+            seq(
+                repeat(
+                    prec.left(choice(
+                        anyobject,
+                        $._whitespace,
+                    )),
+                ),
+                anyobject,
+            ),
+        ),
+        char,
+    );
 }
