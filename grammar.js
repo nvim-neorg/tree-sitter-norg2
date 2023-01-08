@@ -178,8 +178,8 @@ module.exports = grammar({
             $.italic,
         ),
 
-        bold: $ => prec.right(attached_mod($, "*")),
-        italic: $ => prec.right(attached_mod($, "/")),
+        bold: $ => prec.dynamic(1, prec.right(attached_mod($, "*"))),
+        italic: $ => prec.dynamic(1, prec.right(attached_mod($, "/"))),
 
         _markup_conflict: $ => choice(
             "*",
@@ -245,10 +245,8 @@ function lower_level_items($, type, level) {
 function attached_mod($, char) {
     const anyobject = choice(
         $._word,
-        // TODO: When you allow a whole `attached_modifier` here it seems to bug for the following input:
-        // `/hello *world*`
-        // Perhaps just a dynamic precedence issue
-        $.italic,
+        // TODO: The following input: `*/hello/*` does not register
+        $.attached_modifier,
     );
 
     return seq(
