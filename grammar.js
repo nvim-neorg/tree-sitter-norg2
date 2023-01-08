@@ -254,7 +254,6 @@ function lower_level_items($, type, level) {
 function attached_mod($, char) {
     const anyobject = choice(
         $._word,
-        // TODO: The following input: `*/hello/*` does not register
         $.attached_modifier,
         $._markup_conflict,
     );
