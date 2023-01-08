@@ -194,6 +194,36 @@ module.exports = grammar({
             "-",
             "_",
         ),
+
+        attribute_identifier: $ => seq(
+            alias($._word, $.attribute_name),
+            repeat(
+                seq(
+                    ":",
+                    alias($._word, $.attribute_name),
+                ),
+            ),
+        ),
+
+        attached_modifier_extension: $ => seq(
+            "(",
+            $.attribute_identifier,
+            repeat(
+                seq(
+                    // NOTE(vhyrro): Yes, this is the only real way to represent this.
+                    // It works somehow!
+                    optional($._whitespace),
+                    optional(newline),
+                    optional($._whitespace),
+                    "|",
+                    optional($._whitespace),
+                    optional(newline),
+                    optional($._whitespace),
+                    $.attribute_identifier,
+                ),
+            ),
+            ")",
+        ),
     },
 });
 
@@ -273,5 +303,6 @@ function attached_mod($, char) {
             ),
         ),
         char,
+        optional($.attached_modifier_extension),
     );
 }

@@ -108,6 +108,41 @@
     ]
   },
   {
+    "type": "attached_modifier_extension",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "bold",
     "named": true,
     "fields": {},
@@ -121,6 +156,10 @@
         },
         {
           "type": "attached_modifier",
+          "named": true
+        },
+        {
+          "type": "attached_modifier_extension",
           "named": true
         }
       ]
@@ -442,6 +481,10 @@
         },
         {
           "type": "attached_modifier",
+          "named": true
+        },
+        {
+          "type": "attached_modifier_extension",
           "named": true
         }
       ]
@@ -1026,6 +1069,10 @@
         {
           "type": "attached_modifier",
           "named": true
+        },
+        {
+          "type": "attached_modifier_extension",
+          "named": true
         }
       ]
     }
@@ -1044,6 +1091,10 @@
         },
         {
           "type": "attached_modifier",
+          "named": true
+        },
+        {
+          "type": "attached_modifier_extension",
           "named": true
         }
       ]
@@ -1282,6 +1333,14 @@
     "named": false
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
     "type": "*",
     "named": false
   },
@@ -1291,6 +1350,10 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
@@ -1316,5 +1379,9 @@
   {
     "type": "weak_delimiting_modifier",
     "named": true
+  },
+  {
+    "type": "|",
+    "named": false
   }
 ]
