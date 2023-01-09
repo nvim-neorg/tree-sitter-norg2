@@ -810,6 +810,46 @@
         ]
       }
     },
+    "horizontal_rule": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "__"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "STRING",
+              "value": "_"
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "\n"
+              },
+              {
+                "type": "STRING",
+                "value": "\r"
+              },
+              {
+                "type": "STRING",
+                "value": "\r\n"
+              },
+              {
+                "type": "STRING",
+                "value": "\u0000"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "unordered_list_item1": {
       "type": "PREC_RIGHT",
       "value": 0,
@@ -1802,6 +1842,10 @@
         {
           "type": "SYMBOL",
           "name": "quote"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "horizontal_rule"
         }
       ]
     },

@@ -99,6 +99,12 @@ module.exports = grammar({
             newline,
         )),
 
+        horizontal_rule: $ => token(seq(
+            "__",
+            repeat("_"),
+            newline,
+        )),
+
         unordered_list_item1: $ => nestable_detached_mod($, "unordered_list_item", "-", 1),
         unordered_list_item2: $ => nestable_detached_mod($, "unordered_list_item", "-", 2),
         unordered_list_item3: $ => nestable_detached_mod($, "unordered_list_item", "-", 3),
@@ -157,6 +163,7 @@ module.exports = grammar({
             newline,
             $.list,
             $.quote,
+            $.horizontal_rule,
         ),
 
         heading: $ => choice(

@@ -94,6 +94,10 @@
         "named": false
       },
       {
+        "type": "horizontal_rule",
+        "named": true
+      },
+      {
         "type": "list",
         "named": true
       },
@@ -1366,6 +1370,10 @@
   },
   {
     "type": "escape_char",
+    "named": true
+  },
+  {
+    "type": "horizontal_rule",
     "named": true
   },
   {
