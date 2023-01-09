@@ -479,21 +479,30 @@ function rangeable_multi_detached_mod($, chr) {
             newline,
 
             field("content",
-                prec.left(
-                    repeat1(
-                        $.non_structural,
+                repeat1(
+                    prec.left(
+                        choice(
+                            $.paragraph,
+                            newline,
+                            $.list,
+                            $.quote,
+                            $.horizontal_rule,
+                            $.tag,
+                        ),
                     ),
                 ),
             ),
 
-            newline,
+            seq(
+                newline,
 
-            optional($._whitespace),
+                optional($._whitespace),
 
-            token(
-                seq(
-                    chr,
-                    newline,
+                token(
+                    seq(
+                        chr,
+                        newline,
+                    ),
                 ),
             ),
         ),

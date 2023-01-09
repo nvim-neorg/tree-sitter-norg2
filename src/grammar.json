@@ -2529,82 +2529,129 @@
             "type": "FIELD",
             "name": "content",
             "content": {
-              "type": "PREC_LEFT",
-              "value": 0,
+              "type": "REPEAT1",
               "content": {
-                "type": "REPEAT1",
+                "type": "PREC_LEFT",
+                "value": 0,
                 "content": {
-                  "type": "SYMBOL",
-                  "name": "non_structural"
-                }
-              }
-            }
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "\n"
-              },
-              {
-                "type": "STRING",
-                "value": "\r"
-              },
-              {
-                "type": "STRING",
-                "value": "\r\n"
-              },
-              {
-                "type": "STRING",
-                "value": "\u0000"
-              }
-            ]
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_whitespace"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "$$"
-                },
-                {
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "STRING",
-                      "value": "\n"
+                      "type": "SYMBOL",
+                      "name": "paragraph"
                     },
                     {
-                      "type": "STRING",
-                      "value": "\r"
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "\r"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "\r\n"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "\u0000"
+                        }
+                      ]
                     },
                     {
-                      "type": "STRING",
-                      "value": "\r\n"
+                      "type": "SYMBOL",
+                      "name": "list"
                     },
                     {
-                      "type": "STRING",
-                      "value": "\u0000"
+                      "type": "SYMBOL",
+                      "name": "quote"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "horizontal_rule"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "tag"
                     }
                   ]
                 }
-              ]
+              }
             }
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\r"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\r\n"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\u0000"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_whitespace"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "$$"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "\r"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "\r\n"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "\u0000"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
           }
         ]
       }
