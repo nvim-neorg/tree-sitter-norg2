@@ -170,6 +170,73 @@
     }
   },
   {
+    "type": "cancelled",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "detached_modifier_extension",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "cancelled",
+          "named": true
+        },
+        {
+          "type": "done",
+          "named": true
+        },
+        {
+          "type": "on_hold",
+          "named": true
+        },
+        {
+          "type": "pending",
+          "named": true
+        },
+        {
+          "type": "recurring",
+          "named": true
+        },
+        {
+          "type": "timestamp",
+          "named": true
+        },
+        {
+          "type": "uncertain",
+          "named": true
+        },
+        {
+          "type": "undone",
+          "named": true
+        },
+        {
+          "type": "urgent",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "detached_modifier_extensions",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "detached_modifier_extension",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -227,6 +294,10 @@
       "required": true,
       "types": [
         {
+          "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
           "type": "heading2",
           "named": true
         },
@@ -281,6 +352,10 @@
       "required": true,
       "types": [
         {
+          "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
           "type": "heading3",
           "named": true
         },
@@ -331,6 +406,10 @@
       "required": true,
       "types": [
         {
+          "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
           "type": "heading4",
           "named": true
         },
@@ -377,6 +456,10 @@
       "required": true,
       "types": [
         {
+          "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
           "type": "heading5",
           "named": true
         },
@@ -419,6 +502,10 @@
       "required": true,
       "types": [
         {
+          "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
           "type": "heading6",
           "named": true
         },
@@ -456,6 +543,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "detached_modifier_extensions",
+          "named": true
+        },
         {
           "type": "non_structural",
           "named": true
@@ -808,6 +899,11 @@
     }
   },
   {
+    "type": "pending",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "quote",
     "named": true,
     "fields": {},
@@ -1080,6 +1176,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "timestamp",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "underline",
@@ -1369,6 +1470,10 @@
     "named": false
   },
   {
+    "type": "done",
+    "named": true
+  },
+  {
     "type": "escape_char",
     "named": true
   },
@@ -1377,11 +1482,31 @@
     "named": true
   },
   {
+    "type": "on_hold",
+    "named": true
+  },
+  {
     "type": "prefix",
     "named": true
   },
   {
+    "type": "recurring",
+    "named": true
+  },
+  {
     "type": "strong_delimiting_modifier",
+    "named": true
+  },
+  {
+    "type": "uncertain",
+    "named": true
+  },
+  {
+    "type": "undone",
+    "named": true
+  },
+  {
+    "type": "urgent",
     "named": true
   },
   {

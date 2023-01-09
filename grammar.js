@@ -182,6 +182,48 @@ module.exports = grammar({
         heading5: $ => prec.right(heading($, 5)),
         heading6: $ => prec.right(heading($, 6)),
 
+        undone: _ => " ",
+        done: _ => "x",
+        pending: _ => "-",
+        uncertain: _ => "?",
+        on_hold: _ => "=",
+        cancelled: _ => "_",
+        urgent: _ => "!",
+
+        detached_modifier_extension: $ => choice(
+            $.undone,
+            $.done,
+            $.pending,
+            $.uncertain,
+            $.on_hold,
+            $.cancelled,
+            $.urgent,
+            
+            prec.right(seq(
+                alias("+", $.recurring),
+                alias(repeat(choice($._word, $._whitespace)), $.timestamp),
+            )),
+        ),
+
+        detached_modifier_extensions: $ => seq(
+            "(",
+            $.detached_modifier_extension,
+            repeat(
+                seq(
+                    // NOTE(vhyrro): Yes, this is the only real way to represent this.
+                    // It works somehow!
+                    optional($._whitespace),
+                    optional(newline),
+                    optional($._whitespace),
+                    "|",
+                    optional($._whitespace),
+                    optional(newline),
+                    optional($._whitespace),
+                    $.detached_modifier_extension,
+                ),
+            ),
+            ")",
+        ),
 
         attached_modifier: $ => choice(
             $.bold,
@@ -241,6 +283,13 @@ function heading($, level) {
             detached_mod_prefix($, "*", level),
 
             $._whitespace,
+
+            optional(
+                seq(
+                    $.detached_modifier_extensions,
+                    $._whitespace,
+                ),
+            ),
 
             field("title", $.paragraph_segment),
 
