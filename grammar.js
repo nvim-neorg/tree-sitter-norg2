@@ -336,6 +336,13 @@ function nestable_detached_mod($, type, chr, level) {
 
             $._whitespace,
 
+            optional(
+                seq(
+                    $.detached_modifier_extensions,
+                    $._whitespace,
+                ),
+            ),
+
             field("content", $.paragraph),
 
             repeat(
