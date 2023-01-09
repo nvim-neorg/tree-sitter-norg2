@@ -94,6 +94,10 @@
         "named": false
       },
       {
+        "type": "footnote_list",
+        "named": true
+      },
+      {
         "type": "horizontal_rule",
         "named": true
       },
@@ -308,6 +312,25 @@
       "types": [
         {
           "type": "escape_char",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "footnote_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "multi_footnote",
+          "named": true
+        },
+        {
+          "type": "single_footnote",
           "named": true
         }
       ]
@@ -678,6 +701,42 @@
         },
         {
           "type": "unordered_list_item6",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multi_footnote",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "non_structural",
+            "named": true
+          }
+        ]
+      },
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_extensions",
           "named": true
         }
       ]
@@ -1275,6 +1334,42 @@
     }
   },
   {
+    "type": "single_footnote",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      },
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_extensions",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "start",
     "named": true,
     "fields": {}
@@ -1634,6 +1729,14 @@
   },
   {
     "type": "\r\n",
+    "named": false
+  },
+  {
+    "type": "$",
+    "named": false
+  },
+  {
+    "type": "$$",
     "named": false
   },
   {

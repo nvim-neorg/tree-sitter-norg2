@@ -166,6 +166,7 @@ module.exports = grammar({
             $.quote,
             $.horizontal_rule,
             $.tag,
+            $.footnote_list,
         ),
 
         heading: $ => choice(
@@ -183,6 +184,17 @@ module.exports = grammar({
         heading4: $ => prec.right(heading($, 4)),
         heading5: $ => prec.right(heading($, 5)),
         heading6: $ => prec.right(heading($, 6)),
+
+        footnote_list: $ => prec.right(
+            repeat1(
+                choice(
+                    $.single_footnote,
+                    $.multi_footnote,
+                ),
+            ),
+        ),
+        single_footnote: $ => rangeable_single_detached_mod($, "$"),
+        multi_footnote: $ => rangeable_multi_detached_mod($, "$$"),
 
         undone: _ => " ",
         done: _ => "x",
@@ -207,7 +219,7 @@ module.exports = grammar({
             $.on_hold,
             $.cancelled,
             $.urgent,
-            
+
             prec.right(seq(
                 $.recurring,
                 optional(
@@ -365,7 +377,7 @@ function heading($, level) {
     // TODO: re-use nestable_detached_mod (?)
     return prec.right(
         seq(
-            detached_mod_prefix($, "*", level),
+            nestable_detached_mod_prefix($, "*", level),
 
             $._whitespace,
 
@@ -395,7 +407,7 @@ function heading($, level) {
 function nestable_detached_mod($, type, chr, level) {
     return prec.right(
         seq(
-            detached_mod_prefix($, chr, level),
+            nestable_detached_mod_prefix($, chr, level),
 
             $._whitespace,
 
@@ -417,8 +429,75 @@ function nestable_detached_mod($, type, chr, level) {
     );
 }
 
-function detached_mod_prefix($, chr, level) {
+function nestable_detached_mod_prefix($, chr, level) {
     return alias(chr.repeat(level), $.prefix);
+}
+
+function rangeable_single_detached_mod($, chr) {
+    return prec.right(
+        seq(
+            chr,
+
+            $._whitespace,
+
+            optional(
+                seq(
+                    $.detached_modifier_extensions,
+                    $._whitespace,
+                ),
+            ),
+
+            field("title", $.paragraph_segment),
+
+            newline,
+
+            field("content",
+                choice(
+                    $.paragraph,
+                ),
+            ),
+        ),
+    );
+}
+
+function rangeable_multi_detached_mod($, chr) {
+    return prec.right(
+        seq(
+            chr,
+
+            $._whitespace,
+
+            optional(
+                seq(
+                    $.detached_modifier_extensions,
+                    $._whitespace,
+                ),
+            ),
+
+            field("title", $.paragraph_segment),
+
+            newline,
+
+            field("content",
+                prec.left(
+                    repeat1(
+                        $.non_structural,
+                    ),
+                ),
+            ),
+
+            newline,
+
+            optional($._whitespace),
+
+            token(
+                seq(
+                    chr,
+                    newline,
+                ),
+            ),
+        ),
+    );
 }
 
 function lower_level_items($, type, level) {
