@@ -2003,6 +2003,34 @@
       "type": "STRING",
       "value": "!"
     },
+    "recurring": {
+      "type": "STRING",
+      "value": "+"
+    },
+    "date": {
+      "type": "STRING",
+      "value": "@"
+    },
+    "priority": {
+      "type": "STRING",
+      "value": "#"
+    },
+    "_detached_modifier_extension_parameter": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_word"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_whitespace"
+          }
+        ]
+      }
+    },
     "detached_modifier_extension": {
       "type": "CHOICE",
       "members": [
@@ -2041,34 +2069,86 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "STRING",
-                  "value": "+"
-                },
-                "named": true,
-                "value": "recurring"
+                "type": "SYMBOL",
+                "name": "recurring"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_whitespace"
+                      },
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_detached_modifier_extension_parameter"
+                        },
+                        "named": true,
+                        "value": "timestamp"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "date"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_whitespace"
               },
               {
                 "type": "ALIAS",
                 "content": {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "_word"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_whitespace"
-                      }
-                    ]
-                  }
+                  "type": "SYMBOL",
+                  "name": "_detached_modifier_extension_parameter"
                 },
                 "named": true,
                 "value": "timestamp"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "priority"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_whitespace"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_detached_modifier_extension_parameter"
+                },
+                "named": true,
+                "value": "priorities"
               }
             ]
           }

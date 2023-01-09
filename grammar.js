@@ -189,6 +189,11 @@ module.exports = grammar({
         on_hold: _ => "=",
         cancelled: _ => "_",
         urgent: _ => "!",
+        recurring: _ => "+",
+        date: _ => "@",
+        priority: _ => "#",
+
+        _detached_modifier_extension_parameter: $ => repeat1(choice($._word, $._whitespace)),
 
         detached_modifier_extension: $ => choice(
             $.undone,
@@ -200,8 +205,25 @@ module.exports = grammar({
             $.urgent,
             
             prec.right(seq(
-                alias("+", $.recurring),
-                alias(repeat(choice($._word, $._whitespace)), $.timestamp),
+                $.recurring,
+                optional(
+                    seq(
+                        $._whitespace,
+                        alias($._detached_modifier_extension_parameter, $.timestamp)
+                    ),
+                ),
+            )),
+
+            prec.right(seq(
+                $.date,
+                $._whitespace,
+                alias($._detached_modifier_extension_parameter, $.timestamp),
+            )),
+
+            prec.right(seq(
+                $.priority,
+                $._whitespace,
+                alias($._detached_modifier_extension_parameter, $.priorities),
             )),
         ),
 
