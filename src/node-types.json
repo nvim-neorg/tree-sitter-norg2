@@ -195,6 +195,10 @@
           "named": true
         },
         {
+          "type": "due",
+          "named": true
+        },
+        {
           "type": "on_hold",
           "named": true
         },
@@ -212,6 +216,10 @@
         },
         {
           "type": "recurring",
+          "named": true
+        },
+        {
+          "type": "start",
           "named": true
         },
         {
@@ -1220,6 +1228,11 @@
     }
   },
   {
+    "type": "start",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "strikethrough",
     "named": true,
     "fields": {},
@@ -1551,6 +1564,10 @@
     "named": false
   },
   {
+    "type": ">",
+    "named": false
+  },
+  {
     "type": "\\",
     "named": false
   },
@@ -1564,6 +1581,10 @@
   },
   {
     "type": "done",
+    "named": true
+  },
+  {
+    "type": "due",
     "named": true
   },
   {

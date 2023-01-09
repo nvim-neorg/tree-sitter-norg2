@@ -2393,6 +2393,14 @@
       "type": "STRING",
       "value": "#"
     },
+    "due": {
+      "type": "STRING",
+      "value": "<"
+    },
+    "start": {
+      "type": "STRING",
+      "value": ">"
+    },
     "_detached_modifier_extension_parameter": {
       "type": "REPEAT1",
       "content": {
@@ -2488,6 +2496,58 @@
               {
                 "type": "SYMBOL",
                 "name": "date"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_whitespace"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_detached_modifier_extension_parameter"
+                },
+                "named": true,
+                "value": "timestamp"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "due"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_whitespace"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_detached_modifier_extension_parameter"
+                },
+                "named": true,
+                "value": "timestamp"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "start"
               },
               {
                 "type": "SYMBOL",

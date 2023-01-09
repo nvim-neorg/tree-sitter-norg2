@@ -192,6 +192,8 @@ module.exports = grammar({
         recurring: _ => "+",
         date: _ => "@",
         priority: _ => "#",
+        due: _ => "<",
+        start: _ => ">",
 
         _detached_modifier_extension_parameter: $ => repeat1(choice($._word, $._whitespace)),
 
@@ -214,8 +216,21 @@ module.exports = grammar({
                 ),
             )),
 
+            // TODO(vhyrro): Abstract this
             prec.right(seq(
                 $.date,
+                $._whitespace,
+                alias($._detached_modifier_extension_parameter, $.timestamp),
+            )),
+
+            prec.right(seq(
+                $.due,
+                $._whitespace,
+                alias($._detached_modifier_extension_parameter, $.timestamp),
+            )),
+
+            prec.right(seq(
+                $.start,
                 $._whitespace,
                 alias($._detached_modifier_extension_parameter, $.timestamp),
             )),
