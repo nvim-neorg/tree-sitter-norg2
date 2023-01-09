@@ -108,6 +108,20 @@
       {
         "type": "quote",
         "named": true
+      },
+      {
+        "type": "tag",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "tag",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "ranged_verbatim_tag",
+        "named": true
       }
     ]
   },
@@ -171,6 +185,11 @@
   },
   {
     "type": "cancelled",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "date",
     "named": true,
     "fields": {}
   },
@@ -1228,6 +1247,34 @@
     }
   },
   {
+    "type": "ranged_verbatim_content",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ranged_verbatim_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ranged_verbatim_content",
+          "named": true
+        },
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameters",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "start",
     "named": true,
     "fields": {}
@@ -1250,6 +1297,51 @@
         },
         {
           "type": "attached_modifier_extension",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag_parameter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag_parameters",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_parameter",
           "named": true
         }
       ]
@@ -1524,6 +1616,11 @@
     }
   },
   {
+    "type": "word",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\u0000",
     "named": false
   },
@@ -1556,6 +1653,10 @@
     "named": false
   },
   {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
@@ -1568,16 +1669,20 @@
     "named": false
   },
   {
+    "type": "@",
+    "named": false
+  },
+  {
+    "type": "@end",
+    "named": false
+  },
+  {
     "type": "\\",
     "named": false
   },
   {
     "type": "_",
     "named": false
-  },
-  {
-    "type": "date",
-    "named": true
   },
   {
     "type": "done",

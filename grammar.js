@@ -29,6 +29,7 @@ module.exports = grammar({
         $.heading,
         $.attached_modifier,
         $._markup_conflict,
+        $.tag,
     ],
 
     rules: {
@@ -164,6 +165,7 @@ module.exports = grammar({
             $.list,
             $.quote,
             $.horizontal_rule,
+            $.tag,
         ),
 
         heading: $ => choice(
@@ -310,6 +312,52 @@ module.exports = grammar({
             ),
             ")",
         ),
+
+        tag: $ => choice(
+            $.ranged_verbatim_tag,
+        ),
+
+        tag_name: $ => seq(
+            alias($._word, $.word),
+            repeat(
+                seq(
+                    ".",
+                    alias($._word, $.word),
+                ),
+            ),
+        ),
+
+        tag_parameter: $ => prec.right(repeat1(
+            choice(
+                $._word,
+                $.escape_sequence,
+            ),
+        )),
+
+        tag_parameters: $ => prec.right(seq(
+            $.tag_parameter,
+            repeat(
+                seq(
+                    $._whitespace,
+                    $.tag_parameter,
+                ),
+            ),
+        )),
+
+        ranged_verbatim_tag: $ => prec.right(seq(
+            ...tag($, "@"),
+            alias(repeat(
+                choice(
+                    $._word,
+                    $._whitespace,
+                    newline,
+                ),
+            ), $.ranged_verbatim_content),
+            seq(
+                token("@end"),
+                newline,
+            ),
+        )),
     },
 });
 
@@ -405,4 +453,18 @@ function attached_mod($, char) {
         char,
         optional($.attached_modifier_extension),
     );
+}
+
+function tag($, char) {
+    return [
+        "@",
+        $.tag_name,
+        choice(
+            seq(
+                optional($._whitespace),
+                newline,
+            ),
+            seq($._whitespace, $.tag_parameters, optional($._whitespace), newline),
+        )
+    ];
 }
