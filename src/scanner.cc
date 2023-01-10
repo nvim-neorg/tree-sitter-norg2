@@ -6,31 +6,26 @@
 using namespace std;
 
 enum TokenType : char {
-    BOLD_OPEN,
-    BOLD_CLOSE,
-
-    ITALIC_OPEN,
-    ITALIC_CLOSE,
-
-    UNDERLINE_OPEN,
-    UNDERLINE_CLOSE,
-
-    STRIKETHROUGH_OPEN,
-    STRIKETHROUGH_CLOSE,
-
-    SUPERSCRIPT_OPEN,
-    SUPERSCRIPT_CLOSE,
-
-    SUBSCRIPT_OPEN,
-    SUBSCRIPT_CLOSE,
+    WHITESPACE,
 };
 
 struct Scanner {
     TSLexer* lexer;
-    int32_t m_Previous = 0;
 
     bool scan(const bool *valid_symbols) {
-        m_Previous = lexer->lookahead;
+        if (lexer->get_column(lexer) == 0) {
+            const bool found_whitespace = iswspace(lexer->lookahead) && lexer->lookahead != '\n' && lexer->lookahead != '\r';
+
+            if (!found_whitespace)
+                return false;
+
+            while (iswspace(lexer->lookahead) && lexer->lookahead != '\n' && lexer->lookahead != '\r')
+                advance();
+
+            lexer->result_symbol = WHITESPACE;
+            return true;
+        }
+
         return false;
     }
 

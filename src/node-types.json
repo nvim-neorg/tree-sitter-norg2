@@ -1,27 +1,5 @@
 [
   {
-    "type": "_markup_conflict",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "*",
-        "named": false
-      },
-      {
-        "type": "-",
-        "named": false
-      },
-      {
-        "type": "/",
-        "named": false
-      },
-      {
-        "type": "_",
-        "named": false
-      }
-    ]
-  },
-  {
     "type": "attached_modifier",
     "named": true,
     "subtypes": [
@@ -172,10 +150,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "_markup_conflict",
-          "named": true
-        },
         {
           "type": "attached_modifier",
           "named": true
@@ -633,10 +607,6 @@
       "required": false,
       "types": [
         {
-          "type": "_markup_conflict",
-          "named": true
-        },
-        {
           "type": "attached_modifier",
           "named": true
         },
@@ -1038,10 +1008,6 @@
       "required": false,
       "types": [
         {
-          "type": "_markup_conflict",
-          "named": true
-        },
-        {
           "type": "attached_modifier",
           "named": true
         },
@@ -1402,11 +1368,6 @@
     }
   },
   {
-    "type": "start",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "strikethrough",
     "named": true,
     "fields": {},
@@ -1414,10 +1375,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "_markup_conflict",
-          "named": true
-        },
         {
           "type": "attached_modifier",
           "named": true
@@ -1487,10 +1444,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "_markup_conflict",
-          "named": true
-        },
         {
           "type": "attached_modifier",
           "named": true
@@ -1800,10 +1753,6 @@
     "named": false
   },
   {
-    "type": ">",
-    "named": false
-  },
-  {
     "type": "@",
     "named": false
   },
@@ -1849,6 +1798,10 @@
   },
   {
     "type": "recurring",
+    "named": true
+  },
+  {
+    "type": "start",
     "named": true
   },
   {

@@ -43,9 +43,10 @@ This is no longer the heading's content.
     (prefix)
     (paragraph_segment)
     (paragraph
-      (paragraph_segment)
-      (paragraph_segment)
-      (paragraph_segment))))
+      (paragraph_segment))
+    (weak_delimiting_modifier))
+  (paragraph
+    (paragraph_segment)))
 
 ================================================================================
 Strong Paragraph Delimiter
@@ -54,7 +55,7 @@ Strong Paragraph Delimiter
   Content.
 *** This is a level 3 heading
     More content.
-    ===
+    ==
 Part of nothing.
 
 --------------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Part of nothing.
       (prefix)
       (paragraph_segment)
       (paragraph
-        (paragraph_segment)
-        (paragraph_segment)
-        (paragraph_segment)))))
+        (paragraph_segment))))
+  (strong_delimiting_modifier)
+  (paragraph
+    (paragraph_segment)))

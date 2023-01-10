@@ -4,10 +4,8 @@ module.exports = grammar({
     name: "norg",
 
     // Tell treesitter we want to handle whitespace ourselves
-    extras: _ => [],
-
-    externals: $ => [
-    ],
+    extras: $ => [$._preceding_whitespace],
+    externals: $ => [$._preceding_whitespace],
 
     conflicts: $ => [
         [$.bold, $._markup_conflict],
@@ -28,7 +26,6 @@ module.exports = grammar({
         $.non_structural,
         $.heading,
         $.attached_modifier,
-        $._markup_conflict,
         $.tag,
     ],
 
@@ -50,15 +47,23 @@ module.exports = grammar({
             alias(/./, $.escape_char),
         ),
 
-        paragraph_segment: $ => prec.right(repeat1(
+        paragraph_segment: $ => seq(
             choice(
                 $._word,
-                $._whitespace,
                 $.escape_sequence,
                 prec.dynamic(1, $.attached_modifier),
                 $._markup_conflict,
             ),
-        )),
+            repeat(
+                choice(
+                    $._word,
+                    $._whitespace,
+                    $.escape_sequence,
+                    prec.dynamic(1, $.attached_modifier),
+                    $._markup_conflict,
+                ),
+            ),
+        ),
 
         paragraph: $ => prec.right(seq(
             $.paragraph_segment,
@@ -88,11 +93,11 @@ module.exports = grammar({
             $.heading6,
         ),
 
-        weak_delimiting_modifier: $ => token(seq(
+        weak_delimiting_modifier: $ => token(prec(1, seq(
             "--",
             repeat("-"),
             newline,
-        )),
+        ))),
 
         strong_delimiting_modifier: $ => token(seq(
             "==",
@@ -168,22 +173,6 @@ module.exports = grammar({
             $.tag,
             $.footnote_list,
         ),
-
-        heading: $ => choice(
-            $.heading1,
-            $.heading2,
-            $.heading3,
-            $.heading4,
-            $.heading5,
-            $.heading6,
-        ),
-
-        heading1: $ => prec.right(heading($, 1)),
-        heading2: $ => prec.right(heading($, 2)),
-        heading3: $ => prec.right(heading($, 3)),
-        heading4: $ => prec.right(heading($, 4)),
-        heading5: $ => prec.right(heading($, 5)),
-        heading6: $ => prec.right(heading($, 6)),
 
         footnote_list: $ => prec.right(
             repeat1(
@@ -288,12 +277,12 @@ module.exports = grammar({
         strikethrough: $ => prec.dynamic(1, prec.left(attached_mod($, "-"))),
         underline: $ => prec.dynamic(1, prec.left(attached_mod($, "_"))),
 
-        _markup_conflict: $ => choice(
+        _markup_conflict: $ => token(choice(
             "*",
             "/",
             "-",
             "_",
-        ),
+        )),
 
         attribute_identifier: $ => seq(
             alias($._word, $.attribute_name),
@@ -375,33 +364,31 @@ module.exports = grammar({
 
 function heading($, level) {
     // TODO: re-use nestable_detached_mod (?)
-    return prec.right(
-        seq(
-            nestable_detached_mod_prefix($, "*", level),
+    return prec.right(seq(
+        nestable_detached_mod_prefix($, "*", level),
 
-            $._whitespace,
+        $._whitespace,
 
-            optional(
-                seq(
-                    $.detached_modifier_extensions,
-                    $._whitespace,
-                ),
+        optional(
+            seq(
+                $.detached_modifier_extensions,
+                $._whitespace,
             ),
-
-            field("title", $.paragraph_segment),
-
-            newline,
-
-            repeat(
-                choice(
-                    $.non_structural,
-                    ...lower_level_items($, "heading", level),
-                ),
-            ),
-
-            optional($.weak_delimiting_modifier),
         ),
-    );
+
+        field("title", $.paragraph_segment),
+
+        newline,
+
+        repeat(
+            choice(
+                $.non_structural,
+                ...lower_level_items($, "heading", level),
+            ),
+        ),
+
+        optional($.weak_delimiting_modifier),
+    ));
 }
 
 function nestable_detached_mod($, type, chr, level) {
@@ -430,7 +417,7 @@ function nestable_detached_mod($, type, chr, level) {
 }
 
 function nestable_detached_mod_prefix($, chr, level) {
-    return alias(chr.repeat(level), $.prefix);
+    return alias(token(prec(1, chr.repeat(level))), $.prefix);
 }
 
 function rangeable_single_detached_mod($, chr) {
@@ -511,8 +498,8 @@ function rangeable_multi_detached_mod($, chr) {
 
 function lower_level_items($, type, level) {
     let lower_level = []
-    for (let i = 0; i + level < 6; i++) {
-        lower_level[i] = $[type + (i + 1 + level)]
+    for (let i = level + 1; i <= 6; i++) {
+        lower_level.push($[type + i]);
     }
     return lower_level;
 }
