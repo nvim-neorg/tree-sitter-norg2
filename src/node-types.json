@@ -56,10 +56,6 @@
     "named": true,
     "subtypes": [
       {
-        "type": "\u0000",
-        "named": false
-      },
-      {
         "type": "\n",
         "named": false
       },
@@ -685,39 +681,7 @@
         "required": true,
         "types": [
           {
-            "type": "\u0000",
-            "named": false
-          },
-          {
-            "type": "\n",
-            "named": false
-          },
-          {
-            "type": "\r",
-            "named": false
-          },
-          {
-            "type": "\r\n",
-            "named": false
-          },
-          {
-            "type": "horizontal_rule",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "paragraph",
-            "named": true
-          },
-          {
-            "type": "quote",
-            "named": true
-          },
-          {
-            "type": "tag",
+            "type": "non_structural",
             "named": true
           }
         ]

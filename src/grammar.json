@@ -155,10 +155,6 @@
                     {
                       "type": "STRING",
                       "value": "\r\n"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "\u0000"
                     }
                   ]
                 },
@@ -2506,10 +2502,6 @@
             {
               "type": "STRING",
               "value": "\r\n"
-            },
-            {
-              "type": "STRING",
-              "value": "\u0000"
             }
           ]
         },
@@ -2612,10 +2604,6 @@
               {
                 "type": "STRING",
                 "value": "\r\n"
-              },
-              {
-                "type": "STRING",
-                "value": "\u0000"
               }
             ]
           },
@@ -2642,8 +2630,15 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "STRING",
-            "value": "$$"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "STRING",
+                "value": "$$"
+              }
+            }
           },
           {
             "type": "SYMBOL",
@@ -2692,10 +2687,6 @@
               {
                 "type": "STRING",
                 "value": "\r\n"
-              },
-              {
-                "type": "STRING",
-                "value": "\u0000"
               }
             ]
           },
@@ -2705,125 +2696,52 @@
             "content": {
               "type": "REPEAT1",
               "content": {
-                "type": "PREC_LEFT",
-                "value": 0,
-                "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "paragraph"
-                    },
-                    {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "\n"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "\r"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "\r\n"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "\u0000"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "list"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "quote"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "horizontal_rule"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "tag"
-                    }
-                  ]
-                }
+                "type": "SYMBOL",
+                "name": "non_structural"
               }
             }
           },
           {
-            "type": "SEQ",
+            "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "\n"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "\r"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "\r\n"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "\u0000"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "_preceding_whitespace"
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "_whitespace"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "STRING",
+                "value": "$$"
+              }
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "\n"
               },
               {
-                "type": "TOKEN",
-                "content": {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "$$"
-                    },
-                    {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "\n"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "\r"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "\r\n"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "\u0000"
-                        }
-                      ]
-                    }
-                  ]
-                }
+                "type": "STRING",
+                "value": "\r"
+              },
+              {
+                "type": "STRING",
+                "value": "\r\n"
+              },
+              {
+                "type": "STRING",
+                "value": "\u0000"
               }
             ]
           }
@@ -3115,10 +3033,6 @@
                       {
                         "type": "STRING",
                         "value": "\r\n"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "\u0000"
                       }
                     ]
                   },
@@ -3172,10 +3086,6 @@
                       {
                         "type": "STRING",
                         "value": "\r\n"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "\u0000"
                       }
                     ]
                   },
@@ -3786,10 +3696,6 @@
                       {
                         "type": "STRING",
                         "value": "\r\n"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "\u0000"
                       }
                     ]
                   },
@@ -3843,10 +3749,6 @@
                       {
                         "type": "STRING",
                         "value": "\r\n"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "\u0000"
                       }
                     ]
                   },
@@ -4019,10 +3921,6 @@
                       {
                         "type": "STRING",
                         "value": "\r\n"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "\u0000"
                       }
                     ]
                   }
@@ -4065,10 +3963,6 @@
                       {
                         "type": "STRING",
                         "value": "\r\n"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "\u0000"
                       }
                     ]
                   }
@@ -4105,10 +3999,6 @@
                       {
                         "type": "STRING",
                         "value": "\r\n"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "\u0000"
                       }
                     ]
                   }

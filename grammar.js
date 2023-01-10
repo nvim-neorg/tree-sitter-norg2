@@ -1,4 +1,5 @@
-let newline = choice("\n", "\r", "\r\n", "\0");
+let newline = choice("\n", "\r", "\r\n");
+let newline_or_eof = choice("\n", "\r", "\r\n", "\0");
 
 module.exports = grammar({
     name: "norg",
@@ -19,7 +20,7 @@ module.exports = grammar({
         [$.unordered_list_item1, $._markup_conflict],
     ],
 
-    inline: $ => [
+    inlines: $ => [
     ],
 
     supertypes: $ => [
@@ -73,7 +74,7 @@ module.exports = grammar({
                     $.paragraph_segment,
                 ),
             ),
-            newline,
+            newline_or_eof,
             // TODO: deal with https://github.com/nvim-neorg/norg-specs/issues/8
         )),
 
@@ -96,19 +97,19 @@ module.exports = grammar({
         weak_delimiting_modifier: $ => token(prec(1, seq(
             "--",
             repeat("-"),
-            newline,
+            newline_or_eof,
         ))),
 
         strong_delimiting_modifier: $ => token(seq(
             "==",
             repeat("="),
-            newline,
+            newline_or_eof,
         )),
 
         horizontal_rule: $ => token(seq(
             "__",
             repeat("_"),
-            newline,
+            newline_or_eof,
         )),
 
         unordered_list_item1: $ => nestable_detached_mod($, "unordered_list_item", "-", 1),
@@ -356,7 +357,7 @@ module.exports = grammar({
             ), $.ranged_verbatim_content),
             seq(
                 token("@end"),
-                newline,
+                newline_or_eof,
             ),
         )),
     },
@@ -378,7 +379,7 @@ function heading($, level) {
 
         field("title", $.paragraph_segment),
 
-        newline,
+        newline_or_eof,
 
         repeat(
             choice(
@@ -450,7 +451,7 @@ function rangeable_single_detached_mod($, chr) {
 function rangeable_multi_detached_mod($, chr) {
     return prec.right(
         seq(
-            chr,
+            token(prec(1, chr)),
 
             $._whitespace,
 
@@ -465,33 +466,11 @@ function rangeable_multi_detached_mod($, chr) {
 
             newline,
 
-            field("content",
-                repeat1(
-                    prec.left(
-                        choice(
-                            $.paragraph,
-                            newline,
-                            $.list,
-                            $.quote,
-                            $.horizontal_rule,
-                            $.tag,
-                        ),
-                    ),
-                ),
-            ),
+            field("content", repeat1($.non_structural)),
 
-            seq(
-                newline,
-
-                optional($._whitespace),
-
-                token(
-                    seq(
-                        chr,
-                        newline,
-                    ),
-                ),
-            ),
+            optional($._preceding_whitespace),
+            token(prec(1, chr)),
+            newline_or_eof,
         ),
     );
 }
