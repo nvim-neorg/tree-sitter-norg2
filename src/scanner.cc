@@ -7,12 +7,31 @@ using namespace std;
 
 enum TokenType : char {
     WHITESPACE,
+    WEAK_DELIMITING_MODIFIER,
 };
 
 struct Scanner {
     TSLexer* lexer;
 
     bool scan(const bool *valid_symbols) {
+        if (valid_symbols[WEAK_DELIMITING_MODIFIER] && lexer->lookahead == '-') {
+            lexer->mark_end(lexer);
+            unsigned long long count = 0;
+
+            while (lexer->lookahead == '-') {
+                advance();
+                count++;
+            }
+
+            if (count >= 2 && (lexer->lookahead == '\n' || lexer->lookahead == '\r' || lexer->eof(lexer))) {
+                lexer->mark_end(lexer);
+                lexer->result_symbol = WEAK_DELIMITING_MODIFIER;
+                return true;
+            }
+
+            return false;
+        }
+
         if (lexer->get_column(lexer) == 0) {
             const bool found_whitespace = iswspace(lexer->lookahead) && lexer->lookahead != '\n' && lexer->lookahead != '\r';
 

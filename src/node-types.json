@@ -595,6 +595,11 @@
     }
   },
   {
+    "type": "horizontal_rule",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "italic",
     "named": true,
     "fields": {},
@@ -707,6 +712,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "on_hold",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "ordered_list_item1",
@@ -1332,6 +1342,11 @@
     }
   },
   {
+    "type": "start",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "strikethrough",
     "named": true,
     "fields": {},
@@ -1349,6 +1364,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "strong_delimiting_modifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "tag_name",
@@ -1660,6 +1680,11 @@
     }
   },
   {
+    "type": "weak_delimiting_modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "word",
     "named": true,
     "fields": {}
@@ -1717,6 +1742,18 @@
     "named": false
   },
   {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "==",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
     "type": "@",
     "named": false
   },
@@ -1733,6 +1770,10 @@
     "named": false
   },
   {
+    "type": "__",
+    "named": false
+  },
+  {
     "type": "done",
     "named": true
   },
@@ -1742,14 +1783,6 @@
   },
   {
     "type": "escape_char",
-    "named": true
-  },
-  {
-    "type": "horizontal_rule",
-    "named": true
-  },
-  {
-    "type": "on_hold",
     "named": true
   },
   {
@@ -1765,14 +1798,6 @@
     "named": true
   },
   {
-    "type": "start",
-    "named": true
-  },
-  {
-    "type": "strong_delimiting_modifier",
-    "named": true
-  },
-  {
     "type": "uncertain",
     "named": true
   },
@@ -1782,10 +1807,6 @@
   },
   {
     "type": "urgent",
-    "named": true
-  },
-  {
-    "type": "weak_delimiting_modifier",
     "named": true
   },
   {
