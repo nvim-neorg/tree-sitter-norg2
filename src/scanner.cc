@@ -8,6 +8,12 @@ using namespace std;
 enum TokenType : char {
     WHITESPACE,
     WEAK_DELIMITING_MODIFIER,
+    HEADING_PREFIX1,
+    HEADING_PREFIX2,
+    HEADING_PREFIX3,
+    HEADING_PREFIX4,
+    HEADING_PREFIX5,
+    HEADING_PREFIX6,
 };
 
 struct Scanner {
@@ -16,7 +22,7 @@ struct Scanner {
     bool scan(const bool *valid_symbols) {
         if (valid_symbols[WEAK_DELIMITING_MODIFIER] && lexer->lookahead == '-') {
             lexer->mark_end(lexer);
-            unsigned long long count = 0;
+            unsigned long count = 0;
 
             while (lexer->lookahead == '-') {
                 advance();
@@ -26,6 +32,24 @@ struct Scanner {
             if (count >= 2 && (lexer->lookahead == '\n' || lexer->lookahead == '\r' || lexer->eof(lexer))) {
                 lexer->mark_end(lexer);
                 lexer->result_symbol = WEAK_DELIMITING_MODIFIER;
+                return true;
+            }
+
+            return false;
+        }
+
+        if (*reinterpret_cast<const unsigned int*>(&valid_symbols[HEADING_PREFIX1]) != 0 && lexer->lookahead == '*') {
+            lexer->mark_end(lexer);
+            unsigned long count = 0;
+
+            while (lexer->lookahead == '*') {
+                advance();
+                count++;
+            }
+
+            if (iswspace(lexer->lookahead) || lexer->eof(lexer)) {
+                lexer->mark_end(lexer);
+                lexer->result_symbol = HEADING_PREFIX1 + count - 1;
                 return true;
             }
 

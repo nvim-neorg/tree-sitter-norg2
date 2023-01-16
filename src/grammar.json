@@ -190,8 +190,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "STRING",
-              "value": "*"
+              "type": "SYMBOL",
+              "name": "heading_prefix1"
             },
             "named": true,
             "value": "prefix"
@@ -306,8 +306,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "STRING",
-              "value": "**"
+              "type": "SYMBOL",
+              "name": "heading_prefix2"
             },
             "named": true,
             "value": "prefix"
@@ -418,8 +418,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "STRING",
-              "value": "***"
+              "type": "SYMBOL",
+              "name": "heading_prefix3"
             },
             "named": true,
             "value": "prefix"
@@ -526,8 +526,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "STRING",
-              "value": "****"
+              "type": "SYMBOL",
+              "name": "heading_prefix4"
             },
             "named": true,
             "value": "prefix"
@@ -630,8 +630,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "STRING",
-              "value": "*****"
+              "type": "SYMBOL",
+              "name": "heading_prefix5"
             },
             "named": true,
             "value": "prefix"
@@ -730,8 +730,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "STRING",
-              "value": "******"
+              "type": "SYMBOL",
+              "name": "heading_prefix6"
             },
             "named": true,
             "value": "prefix"
@@ -3763,6 +3763,30 @@
     {
       "type": "SYMBOL",
       "name": "_weak_delimiting_modifier"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "heading_prefix1"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "heading_prefix2"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "heading_prefix3"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "heading_prefix4"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "heading_prefix5"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "heading_prefix6"
     }
   ],
   "inline": [],

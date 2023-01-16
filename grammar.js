@@ -6,7 +6,17 @@ module.exports = grammar({
 
     // Tell treesitter we want to handle whitespace ourselves
     extras: $ => [$._preceding_whitespace],
-    externals: $ => [$._preceding_whitespace, $._weak_delimiting_modifier],
+    externals: $ => [
+        $._preceding_whitespace,
+        $._weak_delimiting_modifier,
+
+        $.heading_prefix1,
+        $.heading_prefix2,
+        $.heading_prefix3,
+        $.heading_prefix4,
+        $.heading_prefix5,
+        $.heading_prefix6,
+    ],
 
     conflicts: $ => [
     ],
@@ -351,7 +361,7 @@ function heading($, level) {
     // TODO: re-use nestable_detached_mod (?)
     return prec.right(
         seq(
-            nestable_detached_mod_prefix($, "*", level),
+            alias($["heading_prefix" + level], $.prefix),
 
             $._whitespace,
 
