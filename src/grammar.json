@@ -85,6 +85,10 @@
                 "type": "SYMBOL",
                 "name": "attached_modifier"
               }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_attached_modifier_conflict"
             }
           ]
         },
@@ -112,6 +116,10 @@
                   "type": "SYMBOL",
                   "name": "attached_modifier"
                 }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_attached_modifier_conflict"
               }
             ]
           }
@@ -190,8 +198,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "heading_prefix1"
+              "type": "STRING",
+              "value": "*"
             },
             "named": true,
             "value": "prefix"
@@ -306,8 +314,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "heading_prefix2"
+              "type": "STRING",
+              "value": "**"
             },
             "named": true,
             "value": "prefix"
@@ -418,8 +426,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "heading_prefix3"
+              "type": "STRING",
+              "value": "***"
             },
             "named": true,
             "value": "prefix"
@@ -526,8 +534,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "heading_prefix4"
+              "type": "STRING",
+              "value": "****"
             },
             "named": true,
             "value": "prefix"
@@ -630,8 +638,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "heading_prefix5"
+              "type": "STRING",
+              "value": "*****"
             },
             "named": true,
             "value": "prefix"
@@ -730,8 +738,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "heading_prefix6"
+              "type": "STRING",
+              "value": "******"
             },
             "named": true,
             "value": "prefix"
@@ -3318,6 +3326,43 @@
         }
       }
     },
+    "_attached_modifier_conflict": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_bold_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_bold_close"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_italic_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_italic_close"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_strikethrough_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_strikethrough_close"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_underline_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_underline_close"
+        }
+      ]
+    },
     "attribute_identifier": {
       "type": "SEQ",
       "members": [
@@ -3753,7 +3798,24 @@
       "name": "_preceding_whitespace"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "bold",
+      "_attached_modifier_conflict"
+    ],
+    [
+      "italic",
+      "_attached_modifier_conflict"
+    ],
+    [
+      "strikethrough",
+      "_attached_modifier_conflict"
+    ],
+    [
+      "underline",
+      "_attached_modifier_conflict"
+    ]
+  ],
   "precedences": [],
   "externals": [
     {
@@ -3766,27 +3828,35 @@
     },
     {
       "type": "SYMBOL",
-      "name": "heading_prefix1"
+      "name": "_bold_open"
     },
     {
       "type": "SYMBOL",
-      "name": "heading_prefix2"
+      "name": "_bold_close"
     },
     {
       "type": "SYMBOL",
-      "name": "heading_prefix3"
+      "name": "_italic_open"
     },
     {
       "type": "SYMBOL",
-      "name": "heading_prefix4"
+      "name": "_italic_close"
     },
     {
       "type": "SYMBOL",
-      "name": "heading_prefix5"
+      "name": "_strikethrough_open"
     },
     {
       "type": "SYMBOL",
-      "name": "heading_prefix6"
+      "name": "_strikethrough_close"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_underline_open"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_underline_close"
     }
   ],
   "inline": [],
@@ -3794,7 +3864,8 @@
     "non_structural",
     "heading",
     "attached_modifier",
-    "tag"
+    "tag",
+    "_attached_modifier_conflict"
   ]
 }
 

@@ -1,5 +1,10 @@
 [
   {
+    "type": "_attached_modifier_conflict",
+    "named": true,
+    "subtypes": []
+  },
+  {
     "type": "attached_modifier",
     "named": true,
     "subtypes": [
@@ -981,6 +986,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "_attached_modifier_conflict",
+          "named": true
+        },
         {
           "type": "attached_modifier",
           "named": true

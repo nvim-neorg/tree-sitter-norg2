@@ -10,15 +10,21 @@ module.exports = grammar({
         $._preceding_whitespace,
         $._weak_delimiting_modifier,
 
-        $.heading_prefix1,
-        $.heading_prefix2,
-        $.heading_prefix3,
-        $.heading_prefix4,
-        $.heading_prefix5,
-        $.heading_prefix6,
+        $._bold_open,
+        $._bold_close,
+        $._italic_open,
+        $._italic_close,
+        $._strikethrough_open,
+        $._strikethrough_close,
+        $._underline_open,
+        $._underline_close,
     ],
 
     conflicts: $ => [
+        [$.bold, $._attached_modifier_conflict],
+        [$.italic, $._attached_modifier_conflict],
+        [$.strikethrough, $._attached_modifier_conflict],
+        [$.underline, $._attached_modifier_conflict],
     ],
 
     precedences: $ => [
@@ -32,6 +38,7 @@ module.exports = grammar({
         $.heading,
         $.attached_modifier,
         $.tag,
+        $._attached_modifier_conflict,
     ],
 
     rules: {
@@ -57,6 +64,7 @@ module.exports = grammar({
                 $._word,
                 $.escape_sequence,
                 prec.dynamic(1, $.attached_modifier),
+                $._attached_modifier_conflict,
             ),
             repeat(
                 choice(
@@ -64,6 +72,7 @@ module.exports = grammar({
                     $._whitespace,
                     $.escape_sequence,
                     prec.dynamic(1, $.attached_modifier),
+                    $._attached_modifier_conflict,
                 ),
             ),
         ),
@@ -279,6 +288,17 @@ module.exports = grammar({
         strikethrough: $ => prec.dynamic(1, prec.left(attached_mod($, "-"))),
         underline: $ => prec.dynamic(1, prec.left(attached_mod($, "_"))),
 
+        _attached_modifier_conflict: $ => choice(
+            $._bold_open,
+            $._bold_close,
+            $._italic_open,
+            $._italic_close,
+            $._strikethrough_open,
+            $._strikethrough_close,
+            $._underline_open,
+            $._underline_close,
+        ),
+
         attribute_identifier: $ => seq(
             alias($._word, $.attribute_name),
             repeat(
@@ -361,7 +381,7 @@ function heading($, level) {
     // TODO: re-use nestable_detached_mod (?)
     return prec.right(
         seq(
-            alias($["heading_prefix" + level], $.prefix),
+            nestable_detached_mod_prefix($, "*", level),
 
             $._whitespace,
 
