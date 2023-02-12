@@ -2932,8 +2932,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "*"
+              "type": "SYMBOL",
+              "name": "_bold_open"
             },
             {
               "type": "CHOICE",
@@ -3004,8 +3004,8 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "*"
+              "type": "SYMBOL",
+              "name": "_bold_close"
             },
             {
               "type": "CHOICE",
@@ -3033,8 +3033,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "/"
+              "type": "SYMBOL",
+              "name": "_italic_open"
             },
             {
               "type": "CHOICE",
@@ -3105,8 +3105,8 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "/"
+              "type": "SYMBOL",
+              "name": "_italic_close"
             },
             {
               "type": "CHOICE",
@@ -3134,8 +3134,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "-"
+              "type": "SYMBOL",
+              "name": "_strikethrough_open"
             },
             {
               "type": "CHOICE",
@@ -3206,8 +3206,8 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "-"
+              "type": "SYMBOL",
+              "name": "_strikethrough_close"
             },
             {
               "type": "CHOICE",
@@ -3235,8 +3235,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "_"
+              "type": "SYMBOL",
+              "name": "_underline_open"
             },
             {
               "type": "CHOICE",
@@ -3307,8 +3307,8 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "_"
+              "type": "SYMBOL",
+              "name": "_underline_close"
             },
             {
               "type": "CHOICE",

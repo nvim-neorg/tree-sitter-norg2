@@ -283,10 +283,10 @@ module.exports = grammar({
             $.underline,
         ),
 
-        bold: $ => prec.dynamic(1, prec.left(attached_mod($, "*"))),
-        italic: $ => prec.dynamic(1, prec.left(attached_mod($, "/"))),
-        strikethrough: $ => prec.dynamic(1, prec.left(attached_mod($, "-"))),
-        underline: $ => prec.dynamic(1, prec.left(attached_mod($, "_"))),
+        bold: $ => prec.dynamic(1, prec.left(attached_mod($, "bold"))),
+        italic: $ => prec.dynamic(1, prec.left(attached_mod($, "italic"))),
+        strikethrough: $ => prec.dynamic(1, prec.left(attached_mod($, "strikethrough"))),
+        underline: $ => prec.dynamic(1, prec.left(attached_mod($, "underline"))),
 
         _attached_modifier_conflict: $ => choice(
             $._bold_open,
@@ -378,7 +378,6 @@ module.exports = grammar({
 });
 
 function heading($, level) {
-    // TODO: re-use nestable_detached_mod (?)
     return prec.right(
         seq(
             nestable_detached_mod_prefix($, "*", level),
@@ -496,14 +495,14 @@ function lower_level_items($, type, level) {
     return lower_level;
 }
 
-function attached_mod($, char) {
+function attached_mod($, name) {
     const anyobject = choice(
         $._word,
         $.attached_modifier,
     );
 
     return seq(
-        char,
+        $["_" + name + "_open"],
         anyobject,
         optional(
             seq(
@@ -516,7 +515,7 @@ function attached_mod($, char) {
                 anyobject,
             ),
         ),
-        char,
+        $["_" + name + "_close"],
         optional($.attached_modifier_extension),
     );
 }

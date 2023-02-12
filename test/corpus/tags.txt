@@ -62,21 +62,12 @@ test @end
     (tag_name
       (word)
       (word))
-    (ranged_verbatim_content)
-    (ranged_verbatim_content)
     (ranged_verbatim_content))
   (ranged_verbatim_tag
-    (ERROR
-      (tag_name
-        (word)))
     (tag_name
       (word))
-    (tag_parameter)
-    (tag_parameter)
-    (tag_parameter)
-    (tag_parameter)
-    (tag_parameter))
-  (ERROR
+    (ranged_verbatim_content))
+  (ranged_verbatim_tag
     (tag_name
       (word))
     (ranged_verbatim_content)))
