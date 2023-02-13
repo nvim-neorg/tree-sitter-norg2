@@ -2950,6 +2950,10 @@
         {
           "type": "SYMBOL",
           "name": "spoiler"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "verbatim"
         }
       ]
     },
@@ -3367,6 +3371,59 @@
           {
             "type": "SYMBOL",
             "name": "_spoiler_close"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "verbatim": {
+      "type": "PREC_DYNAMIC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_verbatim_open"
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_word"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_whitespace"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "escape_sequence"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_attached_modifier_conflict"
+                }
+              ]
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_verbatim_close"
           },
           {
             "type": "CHOICE",
@@ -3863,6 +3920,10 @@
     [
       "spoiler",
       "_attached_modifier_conflict"
+    ],
+    [
+      "verbatim",
+      "_attached_modifier_conflict"
     ]
   ],
   "precedences": [],
@@ -3914,6 +3975,14 @@
     {
       "type": "SYMBOL",
       "name": "_spoiler_close"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_verbatim_open"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_verbatim_close"
     }
   ],
   "inline": [],

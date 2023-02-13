@@ -20,6 +20,8 @@ module.exports = grammar({
         $._underline_close,
         $._spoiler_open,
         $._spoiler_close,
+        $._verbatim_open,
+        $._verbatim_close,
     ],
 
     conflicts: $ => [
@@ -28,6 +30,7 @@ module.exports = grammar({
         [$.strikethrough, $._attached_modifier_conflict],
         [$.underline, $._attached_modifier_conflict],
         [$.spoiler, $._attached_modifier_conflict],
+        [$.verbatim, $._attached_modifier_conflict],
     ],
 
     precedences: $ => [
@@ -294,13 +297,15 @@ module.exports = grammar({
             $.strikethrough,
             $.underline,
             $.spoiler,
+            $.verbatim,
         ),
 
-        bold: $ => prec.dynamic(1, attached_mod($, "bold")),
-        italic: $ => prec.dynamic(1, attached_mod($, "italic")),
-        strikethrough: $ => prec.dynamic(1, attached_mod($, "strikethrough")),
-        underline: $ => prec.dynamic(1, attached_mod($, "underline")),
-        spoiler: $ => prec.dynamic(1, attached_mod($, "spoiler")),
+        bold: $ => prec.dynamic(1, attached_mod($, "bold", false)),
+        italic: $ => prec.dynamic(1, attached_mod($, "italic", false)),
+        strikethrough: $ => prec.dynamic(1, attached_mod($, "strikethrough", false)),
+        underline: $ => prec.dynamic(1, attached_mod($, "underline", false)),
+        spoiler: $ => prec.dynamic(1, attached_mod($, "spoiler", false)),
+        verbatim: $ => prec.dynamic(1, attached_mod($, "verbatim", true)),
 
         _attached_modifier_conflict: $ => choice(
             $._bold_open,
@@ -506,7 +511,24 @@ function lower_level_items($, type, level) {
     return lower_level;
 }
 
-function attached_mod($, name) {
+// TODO: Handle the following case: `/hello /`
+function attached_mod($, name, verbatim) {
+    if (verbatim) {
+        return seq(
+            $["_" + name + "_open"],
+            repeat1(
+                choice(
+                    $._word,
+                    $._whitespace,
+                    $.escape_sequence,
+                    $._attached_modifier_conflict,
+                ),
+            ),
+            $["_" + name + "_close"],
+            optional($.attached_modifier_extension),
+        );
+    }
+
     return seq(
         $["_" + name + "_open"],
         choice(

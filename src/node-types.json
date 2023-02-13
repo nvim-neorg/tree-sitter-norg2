@@ -27,6 +27,10 @@
       {
         "type": "underline",
         "named": true
+      },
+      {
+        "type": "verbatim",
+        "named": true
       }
     ]
   },
@@ -1746,6 +1750,29 @@
         },
         {
           "type": "prefix",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "verbatim",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_attached_modifier_conflict",
+          "named": true
+        },
+        {
+          "type": "attached_modifier_extension",
+          "named": true
+        },
+        {
+          "type": "escape_sequence",
           "named": true
         }
       ]

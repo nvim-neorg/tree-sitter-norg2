@@ -22,6 +22,8 @@ enum TokenType : char {
     UNDERLINE_CLOSE,
     SPOILER_OPEN,
     SPOILER_CLOSE,
+    VERBATIM_OPEN,
+    VERBATIM_CLOSE,
 
     _NUM_ELEMENTS, // Used to track the size of the `valid_symbols` array
 };
@@ -30,7 +32,7 @@ struct Scanner {
     TSLexer* lexer;
     const std::unordered_map<int32_t, TokenType> attached_modifier_lookup = {
         {'*', BOLD_OPEN},        {'/', ITALIC_OPEN},       {'-', STRIKETHROUGH_OPEN},
-        {'_', UNDERLINE_OPEN},   {'!', SPOILER_OPEN}, /*     {'`', VERBATIM_OPEN},
+        {'_', UNDERLINE_OPEN},   {'!', SPOILER_OPEN},      {'`', VERBATIM_OPEN},/*
         {'^', SUPERSCRIPT_OPEN}, {',', SUBSCRIPT_OPEN},    {'%', INLINE_COMMENT_OPEN},
         {'$', INLINE_MATH_OPEN}, {'&', INLINE_MACRO_OPEN},*/
     };
@@ -39,6 +41,7 @@ struct Scanner {
         if (lexer->eof(lexer))
             return false;
 
+        // TODO: Maybe remove this part from the scanner? Is it doable?
         if (valid_symbols[WEAK_DELIMITING_MODIFIER] && lexer->lookahead == '-') {
             lexer->mark_end(lexer);
             unsigned long count = 0;
