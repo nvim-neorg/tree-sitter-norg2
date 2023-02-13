@@ -28,6 +28,8 @@ module.exports = grammar({
     ],
 
     precedences: $ => [
+        [$.heading1, $._attached_modifier_conflict],
+        [$.unordered_list_item1, $._attached_modifier_conflict],
     ],
 
     inlines: $ => [
@@ -64,7 +66,6 @@ module.exports = grammar({
                 $._word,
                 $.escape_sequence,
                 prec.dynamic(1, $.attached_modifier),
-                $._attached_modifier_conflict,
             ),
             repeat(
                 choice(
@@ -283,20 +284,16 @@ module.exports = grammar({
             $.underline,
         ),
 
-        bold: $ => prec.dynamic(1, prec.left(attached_mod($, "bold"))),
-        italic: $ => prec.dynamic(1, prec.left(attached_mod($, "italic"))),
-        strikethrough: $ => prec.dynamic(1, prec.left(attached_mod($, "strikethrough"))),
-        underline: $ => prec.dynamic(1, prec.left(attached_mod($, "underline"))),
+        bold: $ => prec.dynamic(1, attached_mod($, "*", "bold")),
+        italic: $ => prec.dynamic(1, attached_mod($, "/", "italic")),
+        strikethrough: $ => prec.dynamic(1, attached_mod($, "-", "strikethrough")),
+        underline: $ => prec.dynamic(1, attached_mod($, "_", "underline")),
 
         _attached_modifier_conflict: $ => choice(
-            $._bold_open,
-            $._bold_close,
-            $._italic_open,
-            $._italic_close,
-            $._strikethrough_open,
-            $._strikethrough_close,
-            $._underline_open,
-            $._underline_close,
+            "*",
+            "/",
+            "_",
+            "-",
         ),
 
         attribute_identifier: $ => seq(
@@ -495,24 +492,16 @@ function lower_level_items($, type, level) {
     return lower_level;
 }
 
-function attached_mod($, name) {
-    const anyobject = choice(
-        $._word,
-        $.attached_modifier,
-    );
-
+function attached_mod($, char, name) {
     return seq(
         $["_" + name + "_open"],
-        anyobject,
-        optional(
-            seq(
-                repeat(
-                    prec.right(choice(
-                        anyobject,
-                        $._whitespace,
-                    )),
-                ),
-                anyobject,
+        repeat1(
+            choice(
+                $._character,
+                $._whitespace,
+                $.escape_sequence,
+                prec.dynamic(1, $.attached_modifier),
+                $._attached_modifier_conflict,
             ),
         ),
         $["_" + name + "_close"],

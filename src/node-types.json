@@ -2,7 +2,24 @@
   {
     "type": "_attached_modifier_conflict",
     "named": true,
-    "subtypes": []
+    "subtypes": [
+      {
+        "type": "*",
+        "named": false
+      },
+      {
+        "type": "-",
+        "named": false
+      },
+      {
+        "type": "/",
+        "named": false
+      },
+      {
+        "type": "_",
+        "named": false
+      }
+    ]
   },
   {
     "type": "attached_modifier",
@@ -152,11 +169,19 @@
       "required": false,
       "types": [
         {
+          "type": "_attached_modifier_conflict",
+          "named": true
+        },
+        {
           "type": "attached_modifier",
           "named": true
         },
         {
           "type": "attached_modifier_extension",
+          "named": true
+        },
+        {
+          "type": "escape_sequence",
           "named": true
         }
       ]
@@ -613,11 +638,19 @@
       "required": false,
       "types": [
         {
+          "type": "_attached_modifier_conflict",
+          "named": true
+        },
+        {
           "type": "attached_modifier",
           "named": true
         },
         {
           "type": "attached_modifier_extension",
+          "named": true
+        },
+        {
+          "type": "escape_sequence",
           "named": true
         }
       ]
@@ -1364,11 +1397,19 @@
       "required": false,
       "types": [
         {
+          "type": "_attached_modifier_conflict",
+          "named": true
+        },
+        {
           "type": "attached_modifier",
           "named": true
         },
         {
           "type": "attached_modifier_extension",
+          "named": true
+        },
+        {
+          "type": "escape_sequence",
           "named": true
         }
       ]
@@ -1438,11 +1479,19 @@
       "required": false,
       "types": [
         {
+          "type": "_attached_modifier_conflict",
+          "named": true
+        },
+        {
           "type": "attached_modifier",
           "named": true
         },
         {
           "type": "attached_modifier_extension",
+          "named": true
+        },
+        {
+          "type": "escape_sequence",
           "named": true
         }
       ]
@@ -1731,11 +1780,19 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
     "type": "-",
     "named": false
   },
   {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": "/",
     "named": false
   },
   {

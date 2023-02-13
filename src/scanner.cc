@@ -70,31 +70,26 @@ struct Scanner {
         const auto attached_mod = attached_modifier_lookup.find(lexer->lookahead);
 
         if (attached_mod != attached_modifier_lookup.end()) {
-            for (size_t i = 0; i <= UNDERLINE_CLOSE - BOLD_OPEN; i++) {
-                if (!valid_symbols[BOLD_OPEN + i])
-                    continue;
-
-                const auto previous = lexer->lookahead;
-
-                lexer->mark_end(lexer);
-
-                advance();
-
-                if (lexer->lookahead == attached_mod->first)
-                    return false;
-
-                if ((!lexer->lookahead || iswspace(lexer->lookahead)) && i % 2 != 0) {
-                    lexer->mark_end(lexer);
-                    lexer->result_symbol = attached_mod->second + 1;
-                    return true;
-                } else if (!iswspace(lexer->lookahead) && i % 2 == 0) {
-                    lexer->mark_end(lexer);
-                    lexer->result_symbol = attached_mod->second;
-                    return true;
-                }
-
+            if (!valid_symbols[attached_mod->second] && !valid_symbols[attached_mod->second + 1])
                 return false;
-            }
+
+            lexer->mark_end(lexer);
+            advance();
+
+            if (lexer->lookahead == attached_mod->first)
+                return false;
+
+            if (valid_symbols[attached_mod->second] && lexer->lookahead && !iswspace(lexer->lookahead) && lexer->lookahead != '\n' && lexer->lookahead != '\r') {
+                lexer->mark_end(lexer);
+                lexer->result_symbol = attached_mod->second;
+                return true;
+            } else if (valid_symbols[attached_mod->second + 1] && (!lexer->lookahead || iswspace(lexer->lookahead) || iswpunct(lexer->lookahead))) {
+                lexer->mark_end(lexer);
+                lexer->result_symbol = attached_mod->second + 1;
+                return true;
+            } 
+
+            return false;
         }
 
         return false;
@@ -119,7 +114,9 @@ extern "C" {
     }
 
     unsigned tree_sitter_norg_external_scanner_serialize(void *payload,
-            char *buffer) { return 0; }
+            char *buffer) {
+        return 0;
+    }
 
     void tree_sitter_norg_external_scanner_deserialize(void *payload,
             const char *buffer,
