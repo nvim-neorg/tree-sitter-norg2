@@ -20,6 +20,8 @@ enum TokenType : char {
     STRIKETHROUGH_CLOSE,
     UNDERLINE_OPEN,
     UNDERLINE_CLOSE,
+    SPOILER_OPEN,
+    SPOILER_CLOSE,
 
     _NUM_ELEMENTS, // Used to track the size of the `valid_symbols` array
 };
@@ -28,7 +30,7 @@ struct Scanner {
     TSLexer* lexer;
     const std::unordered_map<int32_t, TokenType> attached_modifier_lookup = {
         {'*', BOLD_OPEN},        {'/', ITALIC_OPEN},       {'-', STRIKETHROUGH_OPEN},
-        {'_', UNDERLINE_OPEN},/*   {'!', SPOILER_OPEN},      {'`', VERBATIM_OPEN},
+        {'_', UNDERLINE_OPEN},   {'!', SPOILER_OPEN}, /*     {'`', VERBATIM_OPEN},
         {'^', SUPERSCRIPT_OPEN}, {',', SUBSCRIPT_OPEN},    {'%', INLINE_COMMENT_OPEN},
         {'$', INLINE_MATH_OPEN}, {'&', INLINE_MACRO_OPEN},*/
     };

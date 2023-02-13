@@ -17,6 +17,10 @@
         "named": true
       },
       {
+        "type": "spoiler",
+        "named": true
+      },
+      {
         "type": "strikethrough",
         "named": true
       },
@@ -1361,6 +1365,33 @@
       "types": [
         {
           "type": "detached_modifier_extensions",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "spoiler",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_attached_modifier_conflict",
+          "named": true
+        },
+        {
+          "type": "attached_modifier",
+          "named": true
+        },
+        {
+          "type": "attached_modifier_extension",
+          "named": true
+        },
+        {
+          "type": "escape_sequence",
           "named": true
         }
       ]

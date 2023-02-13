@@ -18,6 +18,8 @@ module.exports = grammar({
         $._strikethrough_close,
         $._underline_open,
         $._underline_close,
+        $._spoiler_open,
+        $._spoiler_close,
     ],
 
     conflicts: $ => [
@@ -25,6 +27,7 @@ module.exports = grammar({
         [$.italic, $._attached_modifier_conflict],
         [$.strikethrough, $._attached_modifier_conflict],
         [$.underline, $._attached_modifier_conflict],
+        [$.spoiler, $._attached_modifier_conflict],
     ],
 
     precedences: $ => [
@@ -290,18 +293,21 @@ module.exports = grammar({
             $.italic,
             $.strikethrough,
             $.underline,
+            $.spoiler,
         ),
 
-        bold: $ => prec.dynamic(1, attached_mod($, "*", "bold")),
-        italic: $ => prec.dynamic(1, attached_mod($, "/", "italic")),
-        strikethrough: $ => prec.dynamic(1, attached_mod($, "-", "strikethrough")),
-        underline: $ => prec.dynamic(1, attached_mod($, "_", "underline")),
+        bold: $ => prec.dynamic(1, attached_mod($, "bold")),
+        italic: $ => prec.dynamic(1, attached_mod($, "italic")),
+        strikethrough: $ => prec.dynamic(1, attached_mod($, "strikethrough")),
+        underline: $ => prec.dynamic(1, attached_mod($, "underline")),
+        spoiler: $ => prec.dynamic(1, attached_mod($, "spoiler")),
 
         _attached_modifier_conflict: $ => choice(
             $._bold_open,
             $._italic_open,
             $._strikethrough_open,
             $._underline_open,
+            $._spoiler_open,
         ),
 
         attribute_identifier: $ => seq(
@@ -500,7 +506,7 @@ function lower_level_items($, type, level) {
     return lower_level;
 }
 
-function attached_mod($, char, name) {
+function attached_mod($, name) {
     return seq(
         $["_" + name + "_open"],
         choice(
