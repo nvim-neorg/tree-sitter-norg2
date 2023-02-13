@@ -24,6 +24,16 @@ enum TokenType : char {
     SPOILER_CLOSE,
     VERBATIM_OPEN,
     VERBATIM_CLOSE,
+    SUPERSCRIPT_OPEN,
+    SUPERSCRIPT_CLOSE,
+    SUBSCRIPT_OPEN,
+    SUBSCRIPT_CLOSE,
+    INLINE_COMMENT_OPEN,
+    INLINE_COMMENT_CLOSE,
+    INLINE_MATH_OPEN,
+    INLINE_MATH_CLOSE,
+    INLINE_MACRO_OPEN,
+    INLINE_MACRO_CLOSE,
 
     _NUM_ELEMENTS, // Used to track the size of the `valid_symbols` array
 };
@@ -32,9 +42,9 @@ struct Scanner {
     TSLexer* lexer;
     const std::unordered_map<int32_t, TokenType> attached_modifier_lookup = {
         {'*', BOLD_OPEN},        {'/', ITALIC_OPEN},       {'-', STRIKETHROUGH_OPEN},
-        {'_', UNDERLINE_OPEN},   {'!', SPOILER_OPEN},      {'`', VERBATIM_OPEN},/*
+        {'_', UNDERLINE_OPEN},   {'!', SPOILER_OPEN},      {'`', VERBATIM_OPEN},
         {'^', SUPERSCRIPT_OPEN}, {',', SUBSCRIPT_OPEN},    {'%', INLINE_COMMENT_OPEN},
-        {'$', INLINE_MATH_OPEN}, {'&', INLINE_MACRO_OPEN},*/
+        {'$', INLINE_MATH_OPEN}, {'&', INLINE_MACRO_OPEN},
     };
 
     bool scan(const bool *valid_symbols) {

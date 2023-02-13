@@ -22,6 +22,16 @@ module.exports = grammar({
         $._spoiler_close,
         $._verbatim_open,
         $._verbatim_close,
+        $._superscript_open,
+        $._superscript_close,
+        $._subscript_open,
+        $._subscript_close,
+        $._inline_comment_open,
+        $._inline_comment_close,
+        $._inline_math_open,
+        $._inline_math_close,
+        $._inline_macro_open,
+        $._inline_macro_close,
     ],
 
     conflicts: $ => [
@@ -31,6 +41,11 @@ module.exports = grammar({
         [$.underline, $._attached_modifier_conflict],
         [$.spoiler, $._attached_modifier_conflict],
         [$.verbatim, $._attached_modifier_conflict],
+        [$.superscript, $._attached_modifier_conflict],
+        [$.subscript, $._attached_modifier_conflict],
+        [$.inline_comment, $._attached_modifier_conflict],
+        [$.inline_math, $._attached_modifier_conflict],
+        [$.inline_macro, $._attached_modifier_conflict],
     ],
 
     precedences: $ => [
@@ -298,6 +313,11 @@ module.exports = grammar({
             $.underline,
             $.spoiler,
             $.verbatim,
+            $.superscript,
+            $.subscript,
+            $.inline_comment,
+            $.inline_math,
+            $.inline_macro,
         ),
 
         bold: $ => prec.dynamic(1, attached_mod($, "bold", false)),
@@ -306,6 +326,11 @@ module.exports = grammar({
         underline: $ => prec.dynamic(1, attached_mod($, "underline", false)),
         spoiler: $ => prec.dynamic(1, attached_mod($, "spoiler", false)),
         verbatim: $ => prec.dynamic(1, attached_mod($, "verbatim", true)),
+        superscript: $ => prec.dynamic(1, attached_mod($, "superscript", false)),
+        subscript: $ => prec.dynamic(1, attached_mod($, "subscript", false)),
+        inline_comment: $ => prec.dynamic(1, attached_mod($, "inline_comment", false)),
+        inline_math: $ => prec.dynamic(1, attached_mod($, "inline_math", true)),
+        inline_macro: $ => prec.dynamic(1, attached_mod($, "inline_macro", true)),
 
         _attached_modifier_conflict: $ => choice(
             $._bold_open,
@@ -313,6 +338,11 @@ module.exports = grammar({
             $._strikethrough_open,
             $._underline_open,
             $._spoiler_open,
+            $._superscript_open,
+            $._subscript_open,
+            $._inline_comment_open,
+            $._inline_math_open,
+            $._inline_macro_open,
         ),
 
         attribute_identifier: $ => seq(

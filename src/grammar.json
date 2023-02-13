@@ -2954,6 +2954,26 @@
         {
           "type": "SYMBOL",
           "name": "verbatim"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "superscript"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "subscript"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "inline_comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "inline_math"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "inline_macro"
         }
       ]
     },
@@ -3440,6 +3460,370 @@
         ]
       }
     },
+    "superscript": {
+      "type": "PREC_DYNAMIC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_superscript_open"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_word"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              },
+              {
+                "type": "PREC_DYNAMIC",
+                "value": 1,
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "attached_modifier"
+                }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_attached_modifier_conflict"
+              }
+            ]
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_word"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_whitespace"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "escape_sequence"
+                },
+                {
+                  "type": "PREC_DYNAMIC",
+                  "value": 1,
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "attached_modifier"
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_attached_modifier_conflict"
+                }
+              ]
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_superscript_close"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "subscript": {
+      "type": "PREC_DYNAMIC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_subscript_open"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_word"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              },
+              {
+                "type": "PREC_DYNAMIC",
+                "value": 1,
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "attached_modifier"
+                }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_attached_modifier_conflict"
+              }
+            ]
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_word"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_whitespace"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "escape_sequence"
+                },
+                {
+                  "type": "PREC_DYNAMIC",
+                  "value": 1,
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "attached_modifier"
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_attached_modifier_conflict"
+                }
+              ]
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_subscript_close"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "inline_comment": {
+      "type": "PREC_DYNAMIC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_inline_comment_open"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_word"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              },
+              {
+                "type": "PREC_DYNAMIC",
+                "value": 1,
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "attached_modifier"
+                }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_attached_modifier_conflict"
+              }
+            ]
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_word"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_whitespace"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "escape_sequence"
+                },
+                {
+                  "type": "PREC_DYNAMIC",
+                  "value": 1,
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "attached_modifier"
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_attached_modifier_conflict"
+                }
+              ]
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline_comment_close"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "inline_math": {
+      "type": "PREC_DYNAMIC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_inline_math_open"
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_word"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_whitespace"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "escape_sequence"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_attached_modifier_conflict"
+                }
+              ]
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline_math_close"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "inline_macro": {
+      "type": "PREC_DYNAMIC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_inline_macro_open"
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_word"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_whitespace"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "escape_sequence"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_attached_modifier_conflict"
+                }
+              ]
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline_macro_close"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "_attached_modifier_conflict": {
       "type": "CHOICE",
       "members": [
@@ -3462,6 +3846,26 @@
         {
           "type": "SYMBOL",
           "name": "_spoiler_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_superscript_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_subscript_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_inline_comment_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_inline_math_open"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_inline_macro_open"
         }
       ]
     },
@@ -3924,6 +4328,26 @@
     [
       "verbatim",
       "_attached_modifier_conflict"
+    ],
+    [
+      "superscript",
+      "_attached_modifier_conflict"
+    ],
+    [
+      "subscript",
+      "_attached_modifier_conflict"
+    ],
+    [
+      "inline_comment",
+      "_attached_modifier_conflict"
+    ],
+    [
+      "inline_math",
+      "_attached_modifier_conflict"
+    ],
+    [
+      "inline_macro",
+      "_attached_modifier_conflict"
     ]
   ],
   "precedences": [],
@@ -3983,6 +4407,46 @@
     {
       "type": "SYMBOL",
       "name": "_verbatim_close"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_superscript_open"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_superscript_close"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_subscript_open"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_subscript_close"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_inline_comment_open"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_inline_comment_close"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_inline_math_open"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_inline_math_close"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_inline_macro_open"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_inline_macro_close"
     }
   ],
   "inline": [],
