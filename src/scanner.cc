@@ -79,15 +79,15 @@ struct Scanner {
             if (lexer->lookahead == attached_mod->first)
                 return false;
 
-            if (valid_symbols[attached_mod->second] && lexer->lookahead && !iswspace(lexer->lookahead) && lexer->lookahead != '\n' && lexer->lookahead != '\r') {
-                lexer->mark_end(lexer);
-                lexer->result_symbol = attached_mod->second;
-                return true;
-            } else if (valid_symbols[attached_mod->second + 1] && (!lexer->lookahead || iswspace(lexer->lookahead) || iswpunct(lexer->lookahead))) {
+            if (valid_symbols[attached_mod->second + 1] && (!lexer->lookahead || iswspace(lexer->lookahead) || iswpunct(lexer->lookahead))) {
                 lexer->mark_end(lexer);
                 lexer->result_symbol = attached_mod->second + 1;
                 return true;
-            } 
+            } else if (valid_symbols[attached_mod->second] && lexer->lookahead && !iswspace(lexer->lookahead) && lexer->lookahead != '\n' && lexer->lookahead != '\r') {
+                lexer->mark_end(lexer);
+                lexer->result_symbol = attached_mod->second;
+                return true;
+            }  
 
             return false;
         }

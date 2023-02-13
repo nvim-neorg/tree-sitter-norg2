@@ -28,8 +28,6 @@ module.exports = grammar({
     ],
 
     precedences: $ => [
-        [$.heading1, $._attached_modifier_conflict],
-        [$.unordered_list_item1, $._attached_modifier_conflict],
     ],
 
     inlines: $ => [
@@ -69,11 +67,21 @@ module.exports = grammar({
             ),
             repeat(
                 choice(
-                    $._word,
-                    $._whitespace,
-                    $.escape_sequence,
-                    prec.dynamic(1, $.attached_modifier),
-                    $._attached_modifier_conflict,
+                    seq(
+                        $._whitespace,
+                        choice(
+                            $._word,
+                            $._whitespace,
+                            $.escape_sequence,
+                            prec.dynamic(1, $.attached_modifier),
+                            $._attached_modifier_conflict,
+                        ),
+                    ),
+                    choice(
+                        $._word,
+                        $.escape_sequence,
+                        $._attached_modifier_conflict,
+                    ),
                 ),
             ),
         ),
@@ -290,10 +298,10 @@ module.exports = grammar({
         underline: $ => prec.dynamic(1, attached_mod($, "_", "underline")),
 
         _attached_modifier_conflict: $ => choice(
-            "*",
-            "/",
-            "_",
-            "-",
+            $._bold_open,
+            $._italic_open,
+            $._strikethrough_open,
+            $._underline_open,
         ),
 
         attribute_identifier: $ => seq(
@@ -495,9 +503,15 @@ function lower_level_items($, type, level) {
 function attached_mod($, char, name) {
     return seq(
         $["_" + name + "_open"],
-        repeat1(
+        choice(
+            $._word,
+            $.escape_sequence,
+            prec.dynamic(1, $.attached_modifier),
+            $._attached_modifier_conflict,
+        ),
+        repeat(
             choice(
-                $._character,
+                $._word,
                 $._whitespace,
                 $.escape_sequence,
                 prec.dynamic(1, $.attached_modifier),

@@ -2,24 +2,7 @@
   {
     "type": "_attached_modifier_conflict",
     "named": true,
-    "subtypes": [
-      {
-        "type": "*",
-        "named": false
-      },
-      {
-        "type": "-",
-        "named": false
-      },
-      {
-        "type": "/",
-        "named": false
-      },
-      {
-        "type": "_",
-        "named": false
-      }
-    ]
+    "subtypes": []
   },
   {
     "type": "attached_modifier",
@@ -1780,19 +1763,11 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
     "type": "-",
     "named": false
   },
   {
     "type": ".",
-    "named": false
-  },
-  {
-    "type": "/",
     "named": false
   },
   {
