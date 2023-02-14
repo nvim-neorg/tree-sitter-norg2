@@ -741,6 +741,11 @@
     }
   },
   {
+    "type": "link_modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "list",
     "named": true,
     "fields": {},
@@ -1113,6 +1118,10 @@
         },
         {
           "type": "escape_sequence",
+          "named": true
+        },
+        {
+          "type": "link_modifier",
           "named": true
         }
       ]

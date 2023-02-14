@@ -80,11 +80,28 @@ module.exports = grammar({
             alias(/./, $.escape_char),
         ),
 
+        // TODO: Fix `hello ,*world*` failing`
+        // TODO: Fix `:*hello*` not printing any bold
+        // perhaps do something like `alias(":", $._word)`?
         paragraph_segment: $ => seq(
             choice(
                 $._word,
                 $.escape_sequence,
-                prec.dynamic(1, $.attached_modifier),
+                seq(
+                    optional(
+                        seq(
+                            $._word,
+                            $.link_modifier,
+                        ),
+                    ),
+                    prec.dynamic(1, $.attached_modifier),
+                    optional(
+                        seq(
+                            $.link_modifier,
+                            $._word,
+                        ),
+                    ),
+                ),
             ),
             repeat(
                 choice(
@@ -96,6 +113,21 @@ module.exports = grammar({
                             $.escape_sequence,
                             prec.dynamic(1, $.attached_modifier),
                             $._attached_modifier_conflict,
+                            seq(
+                                optional(
+                                    seq(
+                                        $._word,
+                                        $.link_modifier,
+                                    ),
+                                ),
+                                prec.dynamic(1, $.attached_modifier),
+                                optional(
+                                    seq(
+                                        $.link_modifier,
+                                        $._word,
+                                    ),
+                                ),
+                            ),
                         ),
                     ),
                     choice(
@@ -374,6 +406,8 @@ module.exports = grammar({
             ),
             ")",
         ),
+
+        link_modifier: _ => ":",
 
         tag: $ => choice(
             $.ranged_verbatim_tag,
