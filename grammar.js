@@ -412,6 +412,7 @@ module.exports = grammar({
         tag: $ => choice(
             $.ranged_verbatim_tag,
             $.infirm_tag,
+            $.standard_ranged_tag,
         ),
 
         tag_name: $ => seq(
@@ -458,6 +459,21 @@ module.exports = grammar({
 
         infirm_tag: $ => seq(
             ...tag($, ".")
+        ),
+
+        standard_ranged_tag: $ => seq(
+            ...tag($, "|"),
+            alias(repeat(
+                choice(
+                    $.heading,
+                    $.strong_delimiting_modifier,
+                    $.non_structural,
+                ),
+            ), $.ranged_tag_content),
+            seq(
+                token("|end"),
+                newline_or_eof,
+            ),
         ),
     },
 });

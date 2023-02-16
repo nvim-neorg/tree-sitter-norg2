@@ -4151,6 +4151,10 @@
         {
           "type": "SYMBOL",
           "name": "infirm_tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "standard_ranged_tag"
         }
       ]
     },
@@ -4510,6 +4514,166 @@
                       "value": "\u0000"
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "standard_ranged_tag": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "|"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tag_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_whitespace"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\r"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\r\n"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\u0000"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_whitespace"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "tag_parameters"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_whitespace"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\r"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\r\n"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\u0000"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "heading"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "strong_delimiting_modifier"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "non_structural"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "ranged_tag_content"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "|end"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "\n"
+                },
+                {
+                  "type": "STRING",
+                  "value": "\r"
+                },
+                {
+                  "type": "STRING",
+                  "value": "\r\n"
+                },
+                {
+                  "type": "STRING",
+                  "value": "\u0000"
                 }
               ]
             }

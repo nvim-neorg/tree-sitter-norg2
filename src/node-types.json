@@ -137,6 +137,10 @@
       {
         "type": "ranged_verbatim_tag",
         "named": true
+      },
+      {
+        "type": "standard_ranged_tag",
+        "named": true
       }
     ]
   },
@@ -1436,6 +1440,29 @@
     }
   },
   {
+    "type": "ranged_tag_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "heading",
+          "named": true
+        },
+        {
+          "type": "non_structural",
+          "named": true
+        },
+        {
+          "type": "strong_delimiting_modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ranged_verbatim_content",
     "named": true,
     "fields": {}
@@ -1521,6 +1548,29 @@
         },
         {
           "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "standard_ranged_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ranged_tag_content",
+          "named": true
+        },
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameters",
           "named": true
         }
       ]
@@ -2081,6 +2131,10 @@
   },
   {
     "type": "|",
+    "named": false
+  },
+  {
+    "type": "|end",
     "named": false
   }
 ]
