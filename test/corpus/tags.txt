@@ -1,6 +1,5 @@
 ================================================================================
 Infirm Tag
-      TODO: FIX
 ================================================================================
 .infirm-one
 .infirm-two.with.nested.content
@@ -9,7 +8,9 @@ Infirm Tag
 (document
   (infirm_tag
     (tag_name
-      (word)
+      (word)))
+  (infirm_tag
+    (tag_name
       (word)
       (word)
       (word)
@@ -20,18 +21,31 @@ Infirm Tag with Parameters
 ================================================================================
 .infirm parameter
 .infirm-two parameter second-parameter
+.infirm-three parameter\ one parameter\ two
 --------------------------------------------------------------------------------
 
 (document
   (infirm_tag
     (tag_name
       (word))
-    (tag_parameter))
+    (tag_parameters
+      (tag_parameter)))
   (infirm_tag
     (tag_name
       (word))
-    (tag_parameter)
-    (tag_parameter)))
+    (tag_parameters
+      (tag_parameter)
+      (tag_parameter)))
+  (infirm_tag
+    (tag_name
+      (word))
+    (tag_parameters
+      (tag_parameter
+        (escape_sequence
+          (escape_char)))
+      (tag_parameter
+        (escape_sequence
+          (escape_char))))))
 
 ================================================================================
 Ranged Verbatim Tag

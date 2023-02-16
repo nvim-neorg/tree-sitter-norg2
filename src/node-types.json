@@ -131,6 +131,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "infirm_tag",
+        "named": true
+      },
+      {
         "type": "ranged_verbatim_tag",
         "named": true
       }
@@ -639,6 +643,25 @@
     "type": "horizontal_rule",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "infirm_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameters",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "inline_comment",

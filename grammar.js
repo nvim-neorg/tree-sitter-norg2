@@ -411,6 +411,7 @@ module.exports = grammar({
 
         tag: $ => choice(
             $.ranged_verbatim_tag,
+            $.infirm_tag,
         ),
 
         tag_name: $ => seq(
@@ -454,6 +455,10 @@ module.exports = grammar({
                 newline_or_eof,
             ),
         )),
+
+        infirm_tag: $ => seq(
+            ...tag($, ".")
+        ),
     },
 });
 
@@ -617,14 +622,14 @@ function attached_mod($, name, verbatim) {
 
 function tag($, char) {
     return [
-        "@",
+        char,
         $.tag_name,
         choice(
             seq(
                 optional($._whitespace),
-                newline,
+                newline_or_eof,
             ),
-            seq($._whitespace, $.tag_parameters, optional($._whitespace), newline),
+            seq($._whitespace, $.tag_parameters, optional($._whitespace), newline_or_eof),
         )
     ];
 }
