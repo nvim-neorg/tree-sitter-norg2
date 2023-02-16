@@ -413,6 +413,8 @@ module.exports = grammar({
             $.ranged_verbatim_tag,
             $.infirm_tag,
             $.standard_ranged_tag,
+            $.strong_carryover_tag,
+            $.weak_carryover_tag,
         ),
 
         tag_name: $ => seq(
@@ -475,6 +477,16 @@ module.exports = grammar({
                 newline_or_eof,
             ),
         ),
+
+        strong_carryover_tag: $ => prec.right(seq(
+            ...tag($, "#"),
+            repeat(prec(1, newline)),
+        )),
+
+        weak_carryover_tag: $ => prec.right(seq(
+            ...tag($, "+"),
+            repeat(prec(1, newline)),
+        )),
     },
 });
 

@@ -141,6 +141,14 @@
       {
         "type": "standard_ranged_tag",
         "named": true
+      },
+      {
+        "type": "strong_carryover_tag",
+        "named": true
+      },
+      {
+        "type": "weak_carryover_tag",
+        "named": true
       }
     ]
   },
@@ -1165,6 +1173,11 @@
     "fields": {}
   },
   {
+    "type": "priority",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "quote",
     "named": true,
     "fields": {},
@@ -1491,6 +1504,11 @@
     }
   },
   {
+    "type": "recurring",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "single_footnote",
     "named": true,
     "fields": {
@@ -1603,6 +1621,25 @@
         },
         {
           "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "strong_carryover_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameters",
           "named": true
         }
       ]
@@ -2008,6 +2045,25 @@
     }
   },
   {
+    "type": "weak_carryover_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameters",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "weak_delimiting_modifier",
     "named": true,
     "fields": {}
@@ -2034,6 +2090,10 @@
     "named": false
   },
   {
+    "type": "#",
+    "named": false
+  },
+  {
     "type": "$",
     "named": false
   },
@@ -2047,6 +2107,10 @@
   },
   {
     "type": ")",
+    "named": false
+  },
+  {
+    "type": "+",
     "named": false
   },
   {
@@ -2107,14 +2171,6 @@
   },
   {
     "type": "prefix",
-    "named": true
-  },
-  {
-    "type": "priority",
-    "named": true
-  },
-  {
-    "type": "recurring",
     "named": true
   },
   {
