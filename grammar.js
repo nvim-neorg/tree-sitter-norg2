@@ -512,6 +512,9 @@ module.exports = grammar({
 
         linkable: $ => choice(
             $.inline_link_target,
+            $.link,
+            $.anchor_declaration,
+            $.anchor_definition,
         ),
 
         _inline_link_target_conflict_open: $ => seq("<", newline_or_eof),
@@ -519,6 +522,8 @@ module.exports = grammar({
         inline_link_target: $ => seq(
             "<",
             /[^\n\r>]/,
+            // TODO: Try to convert this to just an array of paragraph segments like in the
+            // link description node?
             repeat(
                 choice(
                     /[^\s\n\r>]/,
@@ -545,6 +550,66 @@ module.exports = grammar({
                 ),
             ),
             ">",
+        ),
+
+        weak_paragraph: $ => seq(
+            $.paragraph_segment,
+            repeat(
+                seq(
+                    newline,
+                    $.paragraph_segment,
+                ),
+            ),
+        ),
+
+        _link_target: $ => choice(
+            link_target($, /\*+/, "heading"),
+            link_target($, "?", "wiki"),
+            link_target($, "#", "generic"),
+            link_target($, "/", "external_file"),
+            link_target($, "@", "timestamp"),
+            link_target($, "$", "definition"),
+            link_target($, "^", "footnote"),
+            field("target", alias(token(prec(-1, /[^}]+/)), $.url)),
+            field("target", alias(/\d+/, $.line_number)),
+        ),
+
+        link_location: $ => seq(
+            "{",
+            choice(
+                seq(
+                    ":",
+                    alias(/[^\n\r:]+/, $.filepath),
+                    ":",
+                    optional($._link_target),
+                ),
+                $._link_target,
+            ),
+            "}",
+        ),
+
+        link_description: $ => seq(
+            "[",
+            $.weak_paragraph,
+            "]",
+        ),
+
+        link: $ => seq(
+            $.link_location,
+            optional($.link_description),
+            optional($.attached_modifier_extension)
+        ),
+
+        anchor_declaration: $ => seq(
+            $.link_description,
+            optional($.link_description),
+            optional($.attached_modifier_extension)
+        ),
+
+        anchor_definition: $ => seq(
+            $.link_description,
+            $.link_location,
+            optional($.attached_modifier_extension)
         ),
     },
 });
@@ -719,4 +784,12 @@ function tag($, char) {
             seq($._whitespace, $.tag_parameters, optional($._whitespace), newline_or_eof),
         )
     ];
+}
+
+function link_target($, identifier, name) {
+    return seq(
+        field("target", alias(identifier, $[name])),
+        $._whitespace,
+        $.weak_paragraph,
+    );
 }

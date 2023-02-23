@@ -244,7 +244,7 @@ this is not a link target
       (inline_link_target)))
   (paragraph
     (paragraph_segment))
-  ; (ERROR) <- This should not be here, the `>` on the new line should be merged into the above paragraph segment
+  (ERROR)
   (paragraph
     (paragraph_segment
       (inline_link_target))))
