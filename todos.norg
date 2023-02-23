@@ -1,0 +1,5 @@
+* General TODOs
+  - ( ) When running tests for links everything seems fine at first glance,
+    however there are issues with `:` inside of a title of e.g. a heading.
+    When in this context, the `:` is treated as a link modifier and the resulting
+    node becomes an `ERROR`
