@@ -99,3 +99,125 @@ this is some content
     (tag_name
       (word))
     (ranged_verbatim_content)))
+
+================================================================================
+Ranged Tag
+================================================================================
+|tag
+|end
+
+|tag.subtag
+* This is a heading inside of the tag
+  and its content
+|end
+
+|tag parameter1
+|nested.tag parameter1 parameter2
+|even.more.nested parameter1\ parameter1
+ some content
+|end
+|end
+|end
+--------------------------------------------------------------------------------
+
+(document
+  (standard_ranged_tag
+    (tag_name
+      (word)))
+  (standard_ranged_tag
+    (tag_name
+      (word)
+      (word))
+    (ranged_tag_content
+      (heading1
+        (prefix)
+        (paragraph_segment)
+        (paragraph
+          (paragraph_segment)))))
+  (standard_ranged_tag
+    (tag_name
+      (word))
+    (tag_parameters
+      (tag_parameter))
+    (ranged_tag_content
+      (standard_ranged_tag
+        (tag_name
+          (word)
+          (word))
+        (tag_parameters
+          (tag_parameter)
+          (tag_parameter))
+        (ranged_tag_content
+          (standard_ranged_tag
+            (tag_name
+              (word)
+              (word)
+              (word))
+            (tag_parameters
+              (tag_parameter
+                (escape_sequence
+                  (escape_char))))
+            (ranged_tag_content
+              (paragraph
+                (paragraph_segment)))))))))
+
+================================================================================
+Macro Tag
+================================================================================
+=tag
+=end
+
+=tag.subtag
+* This is a heading inside of the tag
+  and its content
+=end
+
+=tag parameter1
+=nested.tag parameter1 parameter2
+=even.more.nested parameter1\ parameter1
+ some content
+=end
+=end
+=end
+--------------------------------------------------------------------------------
+
+(document
+  (macro_tag
+    (tag_name
+      (word)))
+  (macro_tag
+    (tag_name
+      (word)
+      (word))
+    (ranged_tag_content
+      (heading1
+        (prefix)
+        (paragraph_segment)
+        (paragraph
+          (paragraph_segment)))))
+  (macro_tag
+    (tag_name
+      (word))
+    (tag_parameters
+      (tag_parameter))
+    (ranged_tag_content
+      (macro_tag
+        (tag_name
+          (word)
+          (word))
+        (tag_parameters
+          (tag_parameter)
+          (tag_parameter))
+        (ranged_tag_content
+          (macro_tag
+            (tag_name
+              (word)
+              (word)
+              (word))
+            (tag_parameters
+              (tag_parameter
+                (escape_sequence
+                  (escape_char))))
+            (ranged_tag_content
+              (paragraph
+                (paragraph_segment)))))))))

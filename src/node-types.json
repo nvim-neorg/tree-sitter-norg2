@@ -135,6 +135,10 @@
         "named": true
       },
       {
+        "type": "macro_tag",
+        "named": true
+      },
+      {
         "type": "ranged_verbatim_tag",
         "named": true
       },
@@ -834,6 +838,29 @@
         },
         {
           "type": "unordered_list_item6",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ranged_tag_content",
+          "named": true
+        },
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_parameters",
           "named": true
         }
       ]
@@ -2131,6 +2158,10 @@
   },
   {
     "type": "==",
+    "named": false
+  },
+  {
+    "type": "=end",
     "named": false
   },
   {

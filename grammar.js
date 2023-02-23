@@ -415,6 +415,7 @@ module.exports = grammar({
             $.standard_ranged_tag,
             $.strong_carryover_tag,
             $.weak_carryover_tag,
+            $.macro_tag,
         ),
 
         tag_name: $ => seq(
@@ -474,6 +475,21 @@ module.exports = grammar({
             ), $.ranged_tag_content),
             seq(
                 token("|end"),
+                newline_or_eof,
+            ),
+        ),
+
+        macro_tag: $ => seq(
+            ...tag($, "="),
+            alias(repeat(
+                choice(
+                    $.heading,
+                    $.strong_delimiting_modifier,
+                    $.non_structural,
+                ),
+            ), $.ranged_tag_content),
+            seq(
+                token("=end"),
                 newline_or_eof,
             ),
         ),
