@@ -562,16 +562,24 @@ module.exports = grammar({
             ),
         ),
 
-        _link_target: $ => choice(
-            link_target($, /\*+/, "heading"),
-            link_target($, "?", "wiki"),
-            link_target($, "#", "generic"),
-            link_target($, "/", "external_file"),
-            link_target($, "@", "timestamp"),
-            link_target($, "$", "definition"),
-            link_target($, "^", "footnote"),
-            field("target", alias(token(prec(-1, /[^}]+/)), $.url)),
-            field("target", alias(/\d+/, $.line_number)),
+        _link_target: $ => seq(
+            choice(
+                link_target($, /\*+/, "heading"),
+                link_target($, "?", "wiki"),
+                link_target($, "#", "generic"),
+                link_target($, "/", "external_file"),
+                link_target($, "@", "timestamp"),
+                link_target($, "$", "definition"),
+                link_target($, "^", "footnote"),
+                field("target", alias(token(prec(-1, /[^}]+/)), $.url)),
+                field("target", alias(/\d+/, $.line_number)),
+            ),
+            optional(
+                seq(
+                    alias(/\s+:\s+/, $.scope),
+                    $._link_target,
+                ),
+            ),
         ),
 
         link_location: $ => seq(

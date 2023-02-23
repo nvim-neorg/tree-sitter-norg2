@@ -1112,7 +1112,8 @@ Anchor with custom description
 Scoped links
 ================================================================================
 {* Heading level 1 : ** heading level 2}
-
+{$ Definition 1 : $ Definition 2}
+{^ Footnote : url} - semantically invalid, but syntactically correct
 --------------------------------------------------------------------------------
 
 (document
@@ -1120,8 +1121,28 @@ Scoped links
     (paragraph_segment
       (link
         (link_location
-          (link_target_heading1)
-          (paragraph)
-          (link_target_scope)
-          (link_target_heading2)
-          (paragraph))))))
+          (heading)
+          (weak_paragraph
+            (paragraph_segment))
+          (scope)
+          (heading)
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (link
+        (link_location
+          (definition)
+          (weak_paragraph
+            (paragraph_segment))
+          (scope)
+          (definition)
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (link
+        (link_location
+          (footnote)
+          (weak_paragraph
+            (paragraph_segment))
+          (scope)
+          (url))))))

@@ -918,7 +918,7 @@
     "named": true,
     "fields": {
       "target": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -966,6 +966,10 @@
       "types": [
         {
           "type": "filepath",
+          "named": true
+        },
+        {
+          "type": "scope",
           "named": true
         },
         {
@@ -2458,6 +2462,10 @@
   },
   {
     "type": "prefix",
+    "named": true
+  },
+  {
+    "type": "scope",
     "named": true
   },
   {
