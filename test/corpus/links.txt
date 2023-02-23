@@ -1112,7 +1112,7 @@ Anchor with custom description
 Scoped links
 ================================================================================
 {* Heading level 1 : ** heading level 2}
-{$ Definition 1 : $ Definition 2}
+{# Generic Search : $ Definition 1 : $ Definition 2}
 {^ Footnote : url} - semantically invalid, but syntactically correct
 --------------------------------------------------------------------------------
 
@@ -1131,6 +1131,10 @@ Scoped links
     (paragraph_segment
       (link
         (link_location
+          (generic)
+          (weak_paragraph
+            (paragraph_segment))
+          (scope)
           (definition)
           (weak_paragraph
             (paragraph_segment))
