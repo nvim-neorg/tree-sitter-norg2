@@ -5532,6 +5532,32 @@
               ]
             },
             {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "target",
+                  "content": {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    "named": true,
+                    "value": "extendable"
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_whitespace"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "weak_paragraph"
+                }
+              ]
+            },
+            {
               "type": "FIELD",
               "name": "target",
               "content": {

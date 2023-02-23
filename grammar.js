@@ -571,6 +571,7 @@ module.exports = grammar({
                 link_target($, "@", "timestamp"),
                 link_target($, "$", "definition"),
                 link_target($, "^", "footnote"),
+                link_target($, "=", "extendable"),
                 field("target", alias(token(prec(-1, /[^}]+/)), $.url)),
                 field("target", alias(/\d+/, $.line_number)),
             ),

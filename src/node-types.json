@@ -926,6 +926,10 @@
             "named": true
           },
           {
+            "type": "extendable",
+            "named": true
+          },
+          {
             "type": "external_file",
             "named": true
           },
@@ -2438,6 +2442,10 @@
   },
   {
     "type": "escape_char",
+    "named": true
+  },
+  {
+    "type": "extendable",
     "named": true
   },
   {

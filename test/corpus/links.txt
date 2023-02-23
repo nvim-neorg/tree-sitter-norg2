@@ -12,6 +12,7 @@ Basic Links
 {# Generic}
 {$ Definition}
 {^ Footnote}
+{= Extendable}
 {:norg_file:}
 {:norg_file:* Heading level 1}
 {:norg_file:** Heading level 2}
@@ -23,6 +24,7 @@ Basic Links
 {:norg_file:# Generic}
 {:norg_file:$ Definition}
 {:norg_file:^ Footnote}
+{:norg_file:= Extendable}
 {:norg_file:100}
 {https://github.com/}
 {100}
@@ -105,6 +107,12 @@ Basic Links
     (paragraph_segment
       (link
         (link_location
+          target: (extendable)
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (link
+        (link_location
           (filepath))))
     (paragraph_segment
       (link
@@ -180,6 +188,13 @@ Basic Links
       (link
         (link_location
           (filepath)
+          target: (extendable)
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (link
+        (link_location
+          (filepath)
           target: (line_number))))
     (paragraph_segment
       (link
@@ -243,6 +258,7 @@ Links with text
 {# Generic}[custom text]
 {$ Definition}[custom text]
 {^ Footnote}[custom text]
+{= Extendable}[custom text]
 {:norg_file:}[custom text]
 {:norg_file:* Heading level 1}[custom text]
 {:norg_file:** Heading level 2}[custom text]
@@ -254,6 +270,7 @@ Links with text
 {:norg_file:# Generic}[custom text]
 {:norg_file:$ Definition}[custom text]
 {:norg_file:^ Footnote}[custom text]
+{:norg_file:= Extendable}[custom text]
 {:norg_file:100}[custom text]
 {https://github.com/}[custom text]
 {100}[custom text]
@@ -361,6 +378,15 @@ Links with text
       (link
         (link_location
           target: (footnote)
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (link
+        (link_location
+          target: (extendable)
           (weak_paragraph
             (paragraph_segment)))
         (link_description
@@ -477,6 +503,16 @@ Links with text
       (link
         (link_location
           (filepath)
+          target: (extendable)
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (link
+        (link_location
+          (filepath)
           target: (line_number))
         (link_description
           (weak_paragraph
@@ -581,6 +617,7 @@ Anchors
 [generic anchor]{# Generic}
 [definition anchor]{$ Definition}
 [footnote anchor]{^ Footnote}
+[extendable anchor]{= Extendable}
 [norg file anchor]{:norg_file:}
 [line number anchor]{123}
 [line number anchor]{:norg_file:123}
@@ -594,6 +631,7 @@ Anchors
 [external generic anchor]{:norg_file:# Generic}
 [external definition anchor]{:norg_file:$ Definition}
 [external footnote anchor]{:norg_file:^ Footnote}
+[external extendable anchor]{:norg_file:= Extendable}
 [non-norg file anchor]{/ external_file.txt}
 [timestamp]{@ Tue 3rd November 2022 8:30 GMT}
 [url anchor]{https://github.com/}
@@ -791,6 +829,15 @@ Anchors
           (weak_paragraph
             (paragraph_segment)))
         (link_location
+          target: (extendable)
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_definition
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_location
           (filepath))))
     (paragraph_segment
       (anchor_definition
@@ -905,6 +952,16 @@ Anchors
         (link_location
           (filepath)
           target: (footnote)
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_definition
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_location
+          (filepath)
+          target: (extendable)
           (weak_paragraph
             (paragraph_segment)))))
     (paragraph_segment
@@ -1064,8 +1121,8 @@ Anchors inside unordered list. Regression test against #28
 ================================================================================
 Whitespace rules of linkables
 ================================================================================
-This is [ not a link ] description.
-This is { not a link } location.
+This is [ a link ] description.
+This is { a link } location.
 --------------------------------------------------------------------------------
 
 (document
