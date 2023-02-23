@@ -131,20 +131,6 @@ This sentence contains a &inline macro& reference.
       (inline_macro))))
 
 ================================================================================
-Inline Link Target
-================================================================================
-This sentence contains an <inline link target>.
-And this is NOT a valid < link target > because it has whitespaces on the inside.
---------------------------------------------------------------------------------
-
-(document
-  (paragraph
-    (paragraph_segment
-      (inline_link_target
-        (paragraph)))
-    (paragraph_segment)))
-
-================================================================================
 Nesting into Bold
 ================================================================================
 *Bold and /italic/*

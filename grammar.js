@@ -60,6 +60,7 @@ module.exports = grammar({
         $.attached_modifier,
         $.tag,
         $._attached_modifier_conflict,
+        $.linkable,
     ],
 
     rules: {
@@ -87,6 +88,8 @@ module.exports = grammar({
             choice(
                 $._word,
                 $.escape_sequence,
+                $.linkable,
+                $._inline_link_target_conflict_open,
                 seq(
                     optional(
                         seq(
@@ -113,6 +116,8 @@ module.exports = grammar({
                             $.escape_sequence,
                             prec.dynamic(1, $.attached_modifier),
                             $._attached_modifier_conflict,
+                            $.linkable,
+                            $._inline_link_target_conflict_open,
                             seq(
                                 optional(
                                     seq(
@@ -134,6 +139,7 @@ module.exports = grammar({
                         $._word,
                         $.escape_sequence,
                         $._attached_modifier_conflict,
+                        $._inline_link_target_conflict_open,
                     ),
                 ),
             ),
@@ -503,6 +509,43 @@ module.exports = grammar({
             ...tag($, "+"),
             repeat(prec(1, newline)),
         )),
+
+        linkable: $ => choice(
+            $.inline_link_target,
+        ),
+
+        _inline_link_target_conflict_open: $ => seq("<", newline_or_eof),
+
+        inline_link_target: $ => seq(
+            "<",
+            /[^\n\r>]/,
+            repeat(
+                choice(
+                    /[^\s\n\r>]/,
+                    newline,
+                    $._whitespace,
+                    $.escape_sequence,
+                    prec.dynamic(1, $.attached_modifier),
+                    $._attached_modifier_conflict,
+                    seq(
+                        optional(
+                            seq(
+                                /[^\s\n\r>]/,
+                                $.link_modifier,
+                            ),
+                        ),
+                        prec.dynamic(1, $.attached_modifier),
+                        optional(
+                            seq(
+                                $.link_modifier,
+                                /[^\s\n\r>]/,
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            ">",
+        ),
     },
 });
 

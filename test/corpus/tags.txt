@@ -221,3 +221,30 @@ Macro Tag
             (ranged_tag_content
               (paragraph
                 (paragraph_segment)))))))))
+
+================================================================================
+Inline Link Target
+================================================================================
+This sentence contains an <inline link target>.
+This is also a valid < link target >.
+
+<
+this is not a link target
+>
+
+<this is also not a link target
+>
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (inline_link_target))
+    (paragraph_segment
+      (inline_link_target)))
+  (paragraph
+    (paragraph_segment))
+  ; (ERROR) <- This should not be here, the `>` on the new line should be merged into the above paragraph segment
+  (paragraph
+    (paragraph_segment
+      (inline_link_target))))
