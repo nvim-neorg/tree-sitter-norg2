@@ -98,7 +98,7 @@ module.exports = grammar({
                             $.link_modifier,
                         ),
                     ),
-                    prec.dynamic(1, $.attached_modifier),
+                    $.attached_modifier,
                     optional(
                         seq(
                             $.link_modifier,
@@ -115,7 +115,7 @@ module.exports = grammar({
                             $._word,
                             $._whitespace,
                             $.escape_sequence,
-                            prec.dynamic(1, $.attached_modifier),
+                            $.attached_modifier,
                             $._attached_modifier_conflict,
                             $.linkable,
                             $._inline_link_target_conflict_open,
@@ -126,7 +126,7 @@ module.exports = grammar({
                                         $.link_modifier,
                                     ),
                                 ),
-                                prec.dynamic(1, $.attached_modifier),
+                                $.attached_modifier,
                                 optional(
                                     seq(
                                         $.link_modifier,
@@ -531,7 +531,7 @@ module.exports = grammar({
                     newline,
                     $._whitespace,
                     $.escape_sequence,
-                    prec.dynamic(1, $.attached_modifier),
+                    $.attached_modifier,
                     $._attached_modifier_conflict,
                     seq(
                         optional(
@@ -540,7 +540,7 @@ module.exports = grammar({
                                 $.link_modifier,
                             ),
                         ),
-                        prec.dynamic(1, $.attached_modifier),
+                        $.attached_modifier,
                         optional(
                             seq(
                                 $.link_modifier,
@@ -765,7 +765,7 @@ function attached_mod($, name, verbatim) {
         choice(
             $._word,
             $.escape_sequence,
-            prec.dynamic(1, $.attached_modifier),
+            $.attached_modifier,
             $._attached_modifier_conflict,
             $.linkable,
             $._inline_link_target_conflict_open,
@@ -775,7 +775,7 @@ function attached_mod($, name, verbatim) {
                 $._word,
                 $._whitespace,
                 $.escape_sequence,
-                prec.dynamic(1, $.attached_modifier),
+                $.attached_modifier,
                 $._attached_modifier_conflict,
                 $.linkable,
                 $._inline_link_target_conflict_open,
