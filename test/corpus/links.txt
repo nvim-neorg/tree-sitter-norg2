@@ -1273,7 +1273,8 @@ This is { a link } location.
 
 (document
   (ERROR
-    (ERROR)
+    (ERROR
+      (undone))
     (weak_paragraph
       (paragraph_segment)
       (paragraph_segment

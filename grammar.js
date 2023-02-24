@@ -827,23 +827,26 @@ function attached_mod($, name, verbatim) {
     ].filter(n => n !== name);
 
     if (verbatim) {
-        modifiers = modifiers.map(n => alias($[n], "_word")) + alias($[name], "_word");
+        modifiers = modifiers.map(n => alias($[n], "_word"));
 
         return seq(
             $["_" + name + "_open"],
             choice(
                 seq(
-                    alias("|", $.free_form_open),
+                    alias("|", "free_form_open"),
                     repeat1(
                         choice(
                             $._word,
                             $._whitespace,
                             $._attached_modifier_conflict,
+                            $._free_form_conflict,
                             ...modifiers,
+                            alias($[name], "_word"),
+                            "|",
                             newline,
                         ),
                     ),
-                    alias("|", $.free_form_close),
+                    alias("|", "free_form_close"),
                     $["_" + name + "_close"],
                 ),
                 // TODO: Disallow whitespace to be the first element in a verbatim attached mod
@@ -870,7 +873,7 @@ function attached_mod($, name, verbatim) {
         $["_" + name + "_open"],
         choice(
             seq(
-                alias("|", $.free_form_open),
+                alias("|", "free_form_open"),
                 repeat1(
                     choice(
                         $._word,
@@ -886,7 +889,7 @@ function attached_mod($, name, verbatim) {
                         newline,
                     ),
                 ),
-                alias("|", $.free_form_close),
+                alias("|", "free_form_close"),
                 $["_" + name + "_close"],
             ),
             seq(

@@ -13,29 +13,17 @@ bold |* markup.
 (document
   (paragraph
     (paragraph_segment
-      (bold
-        (free_form_open)
-        (free_form_close)))
+      (bold))
     (paragraph_segment
-      (bold
-        (free_form_open)
-        (free_form_close)))
+      (bold))
     (paragraph_segment
-      (bold
-        (free_form_open)
-        (free_form_close)))
+      (bold))
     (paragraph_segment
-      (bold
-        (free_form_open)
-        (free_form_close)))
+      (bold))
     (paragraph_segment
-      (bold
-        (free_form_open)
-        (free_form_close)))
+      (bold))
     (paragraph_segment
-      (bold
-        (free_form_open)
-        (free_form_close)))))
+      (bold))))
 
 ================================================================================
 Free form Italic
@@ -52,29 +40,17 @@ italic |/ markup.
 (document
   (paragraph
     (paragraph_segment
-      (italic
-        (free_form_open)
-        (free_form_close)))
+      (italic))
     (paragraph_segment
-      (italic
-        (free_form_open)
-        (free_form_close)))
+      (italic))
     (paragraph_segment
-      (italic
-        (free_form_open)
-        (free_form_close)))
+      (italic))
     (paragraph_segment
-      (italic
-        (free_form_open)
-        (free_form_close)))
+      (italic))
     (paragraph_segment
-      (italic
-        (free_form_open)
-        (free_form_close)))
+      (italic))
     (paragraph_segment
-      (italic
-        (free_form_open)
-        (free_form_close)))))
+      (italic))))
 
 ================================================================================
 Free form Strikethrough
@@ -91,29 +67,17 @@ strikethrough |- markup.
 (document
   (paragraph
     (paragraph_segment
-      (strikethrough
-        (free_form_open)
-        (free_form_close)))
+      (strikethrough))
     (paragraph_segment
-      (strikethrough
-        (free_form_open)
-        (free_form_close)))
+      (strikethrough))
     (paragraph_segment
-      (strikethrough
-        (free_form_open)
-        (free_form_close)))
+      (strikethrough))
     (paragraph_segment
-      (strikethrough
-        (free_form_open)
-        (free_form_close)))
+      (strikethrough))
     (paragraph_segment
-      (strikethrough
-        (free_form_open)
-        (free_form_close)))
+      (strikethrough))
     (paragraph_segment
-      (strikethrough
-        (free_form_open)
-        (free_form_close)))))
+      (strikethrough))))
 
 ================================================================================
 Free form Underline
@@ -130,29 +94,17 @@ _| Extend as _far_ as possible |_
 (document
   (paragraph
     (paragraph_segment
-      (underline
-        (free_form_open)
-        (free_form_close)))
+      (underline))
     (paragraph_segment
-      (underline
-        (free_form_open)
-        (free_form_close)))
+      (underline))
     (paragraph_segment
-      (underline
-        (free_form_open)
-        (free_form_close)))
+      (underline))
     (paragraph_segment
-      (underline
-        (free_form_open)
-        (free_form_close)))
+      (underline))
     (paragraph_segment
-      (underline
-        (free_form_open)
-        (free_form_close)))
+      (underline))
     (paragraph_segment
-      (underline
-        (free_form_open)
-        (free_form_close)))))
+      (underline))))
 
 ================================================================================
 Free form Spoiler
@@ -169,29 +121,17 @@ spoiler |! markup.
 (document
   (paragraph
     (paragraph_segment
-      (spoiler
-        (free_form_open)
-        (free_form_close)))
+      (spoiler))
     (paragraph_segment
-      (spoiler
-        (free_form_open)
-        (free_form_close)))
+      (spoiler))
     (paragraph_segment
-      (spoiler
-        (free_form_open)
-        (free_form_close)))
+      (spoiler))
     (paragraph_segment
-      (spoiler
-        (free_form_open)
-        (free_form_close)))
+      (spoiler))
     (paragraph_segment
-      (spoiler
-        (free_form_open)
-        (free_form_close)))
+      (spoiler))
     (paragraph_segment
-      (spoiler
-        (free_form_open)
-        (free_form_close)))))
+      (spoiler))))
 
 ================================================================================
 Free form Superscript
@@ -208,29 +148,17 @@ superscript |^ markup.
 (document
   (paragraph
     (paragraph_segment
-      (superscript
-        (free_form_open)
-        (free_form_close)))
+      (superscript))
     (paragraph_segment
-      (superscript
-        (free_form_open)
-        (free_form_close)))
+      (superscript))
     (paragraph_segment
-      (superscript
-        (free_form_open)
-        (free_form_close)))
+      (superscript))
     (paragraph_segment
-      (superscript
-        (free_form_open)
-        (free_form_close)))
+      (superscript))
     (paragraph_segment
-      (superscript
-        (free_form_open)
-        (free_form_close)))
+      (superscript))
     (paragraph_segment
-      (superscript
-        (free_form_open)
-        (free_form_close)))))
+      (superscript))))
 
 ================================================================================
 Free form Subscript
@@ -247,29 +175,17 @@ subscript |, markup.
 (document
   (paragraph
     (paragraph_segment
-      (subscript
-        (free_form_open)
-        (free_form_close)))
+      (subscript))
     (paragraph_segment
-      (subscript
-        (free_form_open)
-        (free_form_close)))
+      (subscript))
     (paragraph_segment
-      (subscript
-        (free_form_open)
-        (free_form_close)))
+      (subscript))
     (paragraph_segment
-      (subscript
-        (free_form_open)
-        (free_form_close)))
+      (subscript))
     (paragraph_segment
-      (subscript
-        (free_form_open)
-        (free_form_close)))
+      (subscript))
     (paragraph_segment
-      (subscript
-        (free_form_open)
-        (free_form_close)))))
+      (subscript))))
 
 ================================================================================
 Free form Verbatim
@@ -286,29 +202,17 @@ verbatim |` markup.
 (document
   (paragraph
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))))
+      (verbatim))))
 
 ================================================================================
 Free form Inline Comment
@@ -325,29 +229,17 @@ inline_comment |% markup.
 (document
   (paragraph
     (paragraph_segment
-      (inline_comment
-        (free_form_open)
-        (free_form_close)))
+      (inline_comment))
     (paragraph_segment
-      (inline_comment
-        (free_form_open)
-        (free_form_close)))
+      (inline_comment))
     (paragraph_segment
-      (inline_comment
-        (free_form_open)
-        (free_form_close)))
+      (inline_comment))
     (paragraph_segment
-      (inline_comment
-        (free_form_open)
-        (free_form_close)))
+      (inline_comment))
     (paragraph_segment
-      (inline_comment
-        (free_form_open)
-        (free_form_close)))
+      (inline_comment))
     (paragraph_segment
-      (inline_comment
-        (free_form_open)
-        (free_form_close)))))
+      (inline_comment))))
 
 ================================================================================
 Free form Inline Math
@@ -364,29 +256,17 @@ $| Extend as $far$ as possible |$
 (document
   (paragraph
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))))
+      (inline_math))))
 
 ================================================================================
 Free form Inline Macro
@@ -403,29 +283,17 @@ inline macro |& markup.
 (document
   (paragraph
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))))
+      (inline_macro))))
 
 ================================================================================
 Nesting into Free form Bold
@@ -448,76 +316,40 @@ Nesting into Free form Bold
   (paragraph
     (paragraph_segment
       (bold
-        (free_form_open)
-        (italic)
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (strikethrough)
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (underline)
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (spoiler)
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (superscript)
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (subscript)
-        (free_form_close)))
+        (subscript)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (italic
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (strikethrough
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (underline
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (spoiler
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (superscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (bold
-        (free_form_open)
-        (subscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))))
+        (subscript)))))
 
 ================================================================================
 Nesting into Free form Italic
@@ -540,76 +372,40 @@ Nesting into Free form Italic
   (paragraph
     (paragraph_segment
       (italic
-        (free_form_open)
-        (bold)
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (strikethrough)
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (underline)
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (spoiler)
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (superscript)
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (subscript)
-        (free_form_close)))
+        (subscript)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (bold
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (strikethrough
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (underline
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (spoiler
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (superscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (subscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))))
+        (subscript)))))
 
 ================================================================================
 Nesting into Free form Strikethrough
@@ -632,76 +428,40 @@ Nesting into Free form Strikethrough
   (paragraph
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (bold)
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (italic)
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (underline)
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (spoiler)
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (superscript)
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (subscript)
-        (free_form_close)))
+        (subscript)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (bold
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (italic
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (underline
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (spoiler
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (superscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (strikethrough
-        (free_form_open)
-        (subscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))))
+        (subscript)))))
 
 ================================================================================
 Nesting into Free form Underline
@@ -724,76 +484,40 @@ _|Underline and ,|subscript|,|_
   (paragraph
     (paragraph_segment
       (underline
-        (free_form_open)
-        (bold)
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (italic)
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (strikethrough)
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (spoiler)
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (superscript)
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (subscript)
-        (free_form_close)))
+        (subscript)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (bold
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (italic
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (strikethrough
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (spoiler
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (superscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (underline
-        (free_form_open)
-        (subscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))))
+        (subscript)))))
 
 ================================================================================
 Nesting into Free form Spoiler
@@ -816,76 +540,40 @@ Nesting into Free form Spoiler
   (paragraph
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (bold)
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (italic)
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (strikethrough)
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (underline)
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (superscript)
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (subscript)
-        (free_form_close)))
+        (subscript)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (bold
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (italic
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (strikethrough
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (underline
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (superscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (spoiler
-        (free_form_open)
-        (subscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))))
+        (subscript)))))
 
 ================================================================================
 Nesting into Free form Superscript
@@ -908,76 +596,40 @@ Nesting into Free form Superscript
   (paragraph
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (bold)
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (italic)
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (strikethrough)
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (underline)
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (spoiler)
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (subscript)
-        (free_form_close)))
+        (subscript)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (bold
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (italic
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (strikethrough
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (underline
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (spoiler
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (superscript
-        (free_form_open)
-        (subscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))))
+        (subscript)))))
 
 ================================================================================
 Nesting into Free form Subscript
@@ -1000,76 +652,40 @@ Nesting into Free form Subscript
   (paragraph
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (bold)
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (italic)
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (strikethrough)
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (underline)
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (spoiler)
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (superscript)
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (bold
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (italic
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (strikethrough
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (underline
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (spoiler
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (subscript
-        (free_form_open)
-        (superscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))))
+        (superscript)))))
 
 ================================================================================
 Nesting into Inline Comment
@@ -1094,88 +710,46 @@ Nesting into Inline Comment
   (paragraph
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (bold)
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (italic)
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (strikethrough)
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (underline)
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (spoiler)
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (superscript)
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (subscript)
-        (free_form_close)))
+        (subscript)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (bold
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (italic
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (italic)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (strikethrough
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (strikethrough)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (underline
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (underline)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (spoiler
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (spoiler)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (superscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))
+        (superscript)))
     (paragraph_segment
       (inline_comment
-        (free_form_open)
-        (subscript
-          (free_form_open)
-          (free_form_close))
-        (free_form_close)))))
+        (subscript)))))
 
 ================================================================================
 Deep Nesting
@@ -1187,11 +761,9 @@ Deep Nesting
   (paragraph
     (paragraph_segment
       (bold
-        (free_form_open)
         (italic
           (underline
-            (strikethrough)))
-        (free_form_close)))))
+            (strikethrough)))))))
 
 ================================================================================
 No nested markup inside free form verbatim
@@ -1224,93 +796,49 @@ No nested markup inside free form verbatim
 (document
   (paragraph
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))
+      (verbatim))
     (paragraph_segment
-      (verbatim
-        (free_form_open)
-        (free_form_close)))))
+      (verbatim))))
 
 ================================================================================
 No nested markup inside free form inline math
@@ -1343,93 +871,49 @@ $|&|not free form inline macro|&|$
 (document
   (paragraph
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))
+      (inline_math))
     (paragraph_segment
-      (inline_math
-        (free_form_open)
-        (free_form_close)))))
+      (inline_math))))
 
 ================================================================================
 No nested markup inside free form inline macro
@@ -1462,93 +946,49 @@ No nested markup inside free form inline macro
 (document
   (paragraph
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))
+      (inline_macro))
     (paragraph_segment
-      (inline_macro
-        (free_form_open)
-        (free_form_close)))))
+      (inline_macro))))
 
 ================================================================================
 Unclosed free form markup
@@ -1582,15 +1022,9 @@ _| some text ||_
 (document
   (paragraph
     (paragraph_segment
-      (bold
-        (free_form_open)
-        (free_form_close)))
+      (bold))
     (paragraph_segment
       (italic
-        (free_form_open)
-        (bold)
-        (free_form_close)))
+        (bold)))
     (paragraph_segment
-      (underline
-        (free_form_open)
-        (free_form_close)))))
+      (underline))))

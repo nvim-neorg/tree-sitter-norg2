@@ -211,14 +211,6 @@
           "named": true
         },
         {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
-          "named": true
-        },
-        {
           "type": "inline_comment",
           "named": true
         },
@@ -360,14 +352,6 @@
         },
         {
           "type": "escape_sequence",
-          "named": true
-        },
-        {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
           "named": true
         },
         {
@@ -927,14 +911,6 @@
           "named": true
         },
         {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
-          "named": true
-        },
-        {
           "type": "inline_macro",
           "named": true
         },
@@ -1023,14 +999,6 @@
         {
           "type": "escape_sequence",
           "named": true
-        },
-        {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
-          "named": true
         }
       ]
     }
@@ -1053,14 +1021,6 @@
         },
         {
           "type": "escape_sequence",
-          "named": true
-        },
-        {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
           "named": true
         }
       ]
@@ -1088,14 +1048,6 @@
         },
         {
           "type": "escape_sequence",
-          "named": true
-        },
-        {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
           "named": true
         },
         {
@@ -2214,14 +2166,6 @@
           "named": true
         },
         {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
-          "named": true
-        },
-        {
           "type": "inline_comment",
           "named": true
         },
@@ -2317,14 +2261,6 @@
           "named": true
         },
         {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
-          "named": true
-        },
-        {
           "type": "inline_comment",
           "named": true
         },
@@ -2416,14 +2352,6 @@
           "named": true
         },
         {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
-          "named": true
-        },
-        {
           "type": "inline_comment",
           "named": true
         },
@@ -2488,14 +2416,6 @@
         },
         {
           "type": "escape_sequence",
-          "named": true
-        },
-        {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
           "named": true
         },
         {
@@ -2640,14 +2560,6 @@
           "named": true
         },
         {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
-          "named": true
-        },
-        {
           "type": "inline_comment",
           "named": true
         },
@@ -2689,11 +2601,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "undone",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "unordered_list_item1",
@@ -2954,14 +2861,6 @@
         {
           "type": "escape_sequence",
           "named": true
-        },
-        {
-          "type": "free_form_close",
-          "named": true
-        },
-        {
-          "type": "free_form_open",
-          "named": true
         }
       ]
     }
@@ -3027,10 +2926,6 @@
     "named": false
   },
   {
-    "type": " ",
-    "named": false
-  },
-  {
     "type": "#",
     "named": false
   },
@@ -3052,10 +2947,6 @@
   },
   {
     "type": "+",
-    "named": false
-  },
-  {
-    "type": ",",
     "named": false
   },
   {
@@ -3107,10 +2998,6 @@
     "named": false
   },
   {
-    "type": "O",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -3139,24 +3026,12 @@
     "named": false
   },
   {
-    "type": "b",
-    "named": false
-  },
-  {
-    "type": "c",
-    "named": false
-  },
-  {
     "type": "definition",
     "named": true
   },
   {
     "type": "done",
     "named": true
-  },
-  {
-    "type": "e",
-    "named": false
   },
   {
     "type": "escape_char",
@@ -3180,27 +3055,19 @@
   },
   {
     "type": "free_form_close",
-    "named": true
+    "named": false
   },
   {
     "type": "free_form_open",
-    "named": true
+    "named": false
   },
   {
     "type": "generic",
     "named": true
   },
   {
-    "type": "j",
-    "named": false
-  },
-  {
     "type": "line_number",
     "named": true
-  },
-  {
-    "type": "o",
-    "named": false
   },
   {
     "type": "prefix",
@@ -3211,8 +3078,8 @@
     "named": true
   },
   {
-    "type": "t",
-    "named": false
+    "type": "undone",
+    "named": true
   },
   {
     "type": "urgent",
