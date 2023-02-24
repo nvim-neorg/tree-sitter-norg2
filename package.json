@@ -1,7 +1,0 @@
-{
-  "name": "tree-sitter-norg-1.0",
-  "version": "1.0.0",
-  "main": "bindings/node",
-  "author": "Vhyrro <vhyrro@gmail.com>",
-  "license": "GPL v3"
-}
