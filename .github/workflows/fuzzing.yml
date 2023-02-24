@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: out/results/corpus
-          ref: fuzz_corpuses
+          ref: origin/fuzz_corpuses
 
       - name: Make python fuzzer v3
         run: |
