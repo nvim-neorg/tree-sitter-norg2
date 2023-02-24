@@ -278,6 +278,10 @@
         {
           "type": "escape_sequence",
           "named": true
+        },
+        {
+          "type": "linkable",
+          "named": true
         }
       ]
     }
@@ -771,6 +775,10 @@
         {
           "type": "escape_sequence",
           "named": true
+        },
+        {
+          "type": "linkable",
+          "named": true
         }
       ]
     }
@@ -870,6 +878,10 @@
         },
         {
           "type": "escape_sequence",
+          "named": true
+        },
+        {
+          "type": "linkable",
           "named": true
         }
       ]
@@ -1802,6 +1814,10 @@
         {
           "type": "escape_sequence",
           "named": true
+        },
+        {
+          "type": "linkable",
+          "named": true
         }
       ]
     }
@@ -1857,6 +1873,10 @@
         {
           "type": "escape_sequence",
           "named": true
+        },
+        {
+          "type": "linkable",
+          "named": true
         }
       ]
     }
@@ -1908,6 +1928,10 @@
         {
           "type": "escape_sequence",
           "named": true
+        },
+        {
+          "type": "linkable",
+          "named": true
         }
       ]
     }
@@ -1934,6 +1958,10 @@
         },
         {
           "type": "escape_sequence",
+          "named": true
+        },
+        {
+          "type": "linkable",
           "named": true
         }
       ]
@@ -2016,6 +2044,10 @@
         },
         {
           "type": "escape_sequence",
+          "named": true
+        },
+        {
+          "type": "linkable",
           "named": true
         }
       ]

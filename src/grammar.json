@@ -3131,6 +3131,14 @@
               {
                 "type": "SYMBOL",
                 "name": "_attached_modifier_conflict"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "linkable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_inline_link_target_conflict_open"
               }
             ]
           },
@@ -3162,6 +3170,14 @@
                 {
                   "type": "SYMBOL",
                   "name": "_attached_modifier_conflict"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "linkable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_inline_link_target_conflict_open"
                 }
               ]
             }
@@ -3217,6 +3233,14 @@
               {
                 "type": "SYMBOL",
                 "name": "_attached_modifier_conflict"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "linkable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_inline_link_target_conflict_open"
               }
             ]
           },
@@ -3248,6 +3272,14 @@
                 {
                   "type": "SYMBOL",
                   "name": "_attached_modifier_conflict"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "linkable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_inline_link_target_conflict_open"
                 }
               ]
             }
@@ -3303,6 +3335,14 @@
               {
                 "type": "SYMBOL",
                 "name": "_attached_modifier_conflict"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "linkable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_inline_link_target_conflict_open"
               }
             ]
           },
@@ -3334,6 +3374,14 @@
                 {
                   "type": "SYMBOL",
                   "name": "_attached_modifier_conflict"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "linkable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_inline_link_target_conflict_open"
                 }
               ]
             }
@@ -3389,6 +3437,14 @@
               {
                 "type": "SYMBOL",
                 "name": "_attached_modifier_conflict"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "linkable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_inline_link_target_conflict_open"
               }
             ]
           },
@@ -3420,6 +3476,14 @@
                 {
                   "type": "SYMBOL",
                   "name": "_attached_modifier_conflict"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "linkable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_inline_link_target_conflict_open"
                 }
               ]
             }
@@ -3475,6 +3539,14 @@
               {
                 "type": "SYMBOL",
                 "name": "_attached_modifier_conflict"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "linkable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_inline_link_target_conflict_open"
               }
             ]
           },
@@ -3506,6 +3578,14 @@
                 {
                   "type": "SYMBOL",
                   "name": "_attached_modifier_conflict"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "linkable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_inline_link_target_conflict_open"
                 }
               ]
             }
@@ -3614,6 +3694,14 @@
               {
                 "type": "SYMBOL",
                 "name": "_attached_modifier_conflict"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "linkable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_inline_link_target_conflict_open"
               }
             ]
           },
@@ -3645,6 +3733,14 @@
                 {
                   "type": "SYMBOL",
                   "name": "_attached_modifier_conflict"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "linkable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_inline_link_target_conflict_open"
                 }
               ]
             }
@@ -3700,6 +3796,14 @@
               {
                 "type": "SYMBOL",
                 "name": "_attached_modifier_conflict"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "linkable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_inline_link_target_conflict_open"
               }
             ]
           },
@@ -3731,6 +3835,14 @@
                 {
                   "type": "SYMBOL",
                   "name": "_attached_modifier_conflict"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "linkable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_inline_link_target_conflict_open"
                 }
               ]
             }
@@ -3786,6 +3898,14 @@
               {
                 "type": "SYMBOL",
                 "name": "_attached_modifier_conflict"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "linkable"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_inline_link_target_conflict_open"
               }
             ]
           },
@@ -3817,6 +3937,14 @@
                 {
                   "type": "SYMBOL",
                   "name": "_attached_modifier_conflict"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "linkable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_inline_link_target_conflict_open"
                 }
               ]
             }
@@ -5694,70 +5822,78 @@
       ]
     },
     "link": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "link_location"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "link_description"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "attached_modifier_extension"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "link_location"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "link_description"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "anchor_declaration": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "link_description"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "link_description"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "attached_modifier_extension"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "link_description"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "link_description"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attached_modifier_extension"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "anchor_definition": {
       "type": "SEQ",
@@ -5837,7 +5973,18 @@
       "_attached_modifier_conflict"
     ]
   ],
-  "precedences": [],
+  "precedences": [
+    [
+      {
+        "type": "SYMBOL",
+        "name": "anchor_definition"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "anchor_declaration"
+      }
+    ]
+  ],
   "externals": [
     {
       "type": "SYMBOL",

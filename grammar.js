@@ -49,6 +49,7 @@ module.exports = grammar({
     ],
 
     precedences: $ => [
+        [$.anchor_definition, $.anchor_declaration],
     ],
 
     inlines: $ => [
@@ -603,17 +604,17 @@ module.exports = grammar({
             "]",
         ),
 
-        link: $ => seq(
+        link: $ => prec.right(seq(
             $.link_location,
             optional($.link_description),
             optional($.attached_modifier_extension)
-        ),
+        )),
 
-        anchor_declaration: $ => seq(
+        anchor_declaration: $ => prec.right(seq(
             $.link_description,
             optional($.link_description),
             optional($.attached_modifier_extension)
-        ),
+        )),
 
         anchor_definition: $ => seq(
             $.link_description,
@@ -766,6 +767,8 @@ function attached_mod($, name, verbatim) {
             $.escape_sequence,
             prec.dynamic(1, $.attached_modifier),
             $._attached_modifier_conflict,
+            $.linkable,
+            $._inline_link_target_conflict_open,
         ),
         repeat(
             choice(
@@ -774,6 +777,8 @@ function attached_mod($, name, verbatim) {
                 $.escape_sequence,
                 prec.dynamic(1, $.attached_modifier),
                 $._attached_modifier_conflict,
+                $.linkable,
+                $._inline_link_target_conflict_open,
             ),
         ),
         $["_" + name + "_close"],

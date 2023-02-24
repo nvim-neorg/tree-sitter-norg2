@@ -606,6 +606,23 @@ Anchors
 [invalid external with file anchor]
 [invalid url with file anchor]
 
+[heading anchor][custom name]
+[wiki anchor][custom name]
+[generic anchor][custom name]
+[definition anchor][custom name]
+[footnote anchor][custom name]
+[norg file anchor][custom name]
+[line number anchor][custom name]
+[external heading anchor][custom name]
+[external generic anchor][custom name]
+[external definition anchor][custom name]
+[external footnote anchor][custom name]
+[non-norg file anchor][custom name]
+[url anchor][custom name]
+[file anchor][custom name]
+[invalid external with file anchor][custom name]
+[invalid url with file anchor][custom name]
+
 [heading anchor]{* Heading level 1}
 [heading anchor]{** Heading level 2}
 [heading anchor]{*** Heading level 3}
@@ -720,6 +737,135 @@ Anchors
             (paragraph_segment)))))
     (paragraph_segment
       (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment))))))
+  (paragraph
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))))
+    (paragraph_segment
+      (anchor_declaration
+        (link_description
+          (weak_paragraph
+            (paragraph_segment)))
         (link_description
           (weak_paragraph
             (paragraph_segment))))))
@@ -1207,3 +1353,215 @@ Scoped links
             (paragraph_segment))
           (scope)
           (url))))))
+
+================================================================================
+Links with surrounding markup
+================================================================================
+*{* Heading}*
+/{* Heading}/
+_{* Heading}_
+-{* Heading}-
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (bold
+        (link
+          (link_location
+            (heading)
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (italic
+        (link
+          (link_location
+            (heading)
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (underline
+        (link
+          (link_location
+            (heading)
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (strikethrough
+        (link
+          (link_location
+            (heading)
+            (weak_paragraph
+              (paragraph_segment))))))))
+
+================================================================================
+Links with surrounding verbatim markup
+================================================================================
+`{* Heading}`
+&{* Heading}&
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (verbatim))
+    (paragraph_segment
+      (inline_macro))))
+
+================================================================================
+Unclosed links with surrounding verbatim markup
+================================================================================
+`{* `
+&{* &
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (verbatim))
+    (paragraph_segment
+      (inline_macro))))
+
+================================================================================
+Anchor declaration with surrounding markup
+================================================================================
+*[Heading]*
+/[Heading]/
+_[Heading]_
+-[Heading]-
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (bold
+        (anchor_declaration
+          (link_description
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (italic
+        (anchor_declaration
+          (link_description
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (underline
+        (anchor_declaration
+          (link_description
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (strikethrough
+        (anchor_declaration
+          (link_description
+            (weak_paragraph
+              (paragraph_segment))))))))
+
+================================================================================
+Anchor declaration with surrounding verbatim markup
+================================================================================
+`[Heading]`
+&[Heading]&
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (verbatim))
+    (paragraph_segment
+      (inline_macro))))
+
+================================================================================
+Unclosed anchor declaration with surrounding verbatim markup
+================================================================================
+`[text`
+&[text&
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (verbatim))
+    (paragraph_segment
+      (inline_macro))))
+
+================================================================================
+Anchor definition with surrounding markup
+================================================================================
+*[Heading]{* location}*
+/[Heading]{* location}/
+_[Heading]{* location}_
+-[Heading]{* location}-
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (bold
+        (anchor_definition
+          (link_description
+            (weak_paragraph
+              (paragraph_segment)))
+          (link_location
+            (heading)
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (italic
+        (anchor_definition
+          (link_description
+            (weak_paragraph
+              (paragraph_segment)))
+          (link_location
+            (heading)
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (underline
+        (anchor_definition
+          (link_description
+            (weak_paragraph
+              (paragraph_segment)))
+          (link_location
+            (heading)
+            (weak_paragraph
+              (paragraph_segment))))))
+    (paragraph_segment
+      (strikethrough
+        (anchor_definition
+          (link_description
+            (weak_paragraph
+              (paragraph_segment)))
+          (link_location
+            (heading)
+            (weak_paragraph
+              (paragraph_segment))))))))
+
+================================================================================
+Anchor declaration with surrounding verbatim markup
+================================================================================
+`[Heading]{* location}`
+&[Heading]{* location}&
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (verbatim))
+    (paragraph_segment
+      (inline_macro))))
+
+================================================================================
+Unclosed anchor declaration with surrounding verbatim markup
+================================================================================
+`[text]{* `
+&[text]{* &
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (paragraph_segment
+      (verbatim))
+    (paragraph_segment
+      (inline_macro))))
