@@ -618,7 +618,15 @@
           "named": true
         },
         {
+          "type": "intersection",
+          "named": true
+        },
+        {
           "type": "non_structural",
+          "named": true
+        },
+        {
+          "type": "paragraph_segment",
           "named": true
         },
         {
@@ -672,7 +680,15 @@
           "named": true
         },
         {
+          "type": "intersection",
+          "named": true
+        },
+        {
           "type": "non_structural",
+          "named": true
+        },
+        {
+          "type": "paragraph_segment",
           "named": true
         },
         {
@@ -722,7 +738,15 @@
           "named": true
         },
         {
+          "type": "intersection",
+          "named": true
+        },
+        {
           "type": "non_structural",
+          "named": true
+        },
+        {
+          "type": "paragraph_segment",
           "named": true
         },
         {
@@ -768,7 +792,15 @@
           "named": true
         },
         {
+          "type": "intersection",
+          "named": true
+        },
+        {
           "type": "non_structural",
+          "named": true
+        },
+        {
+          "type": "paragraph_segment",
           "named": true
         },
         {
@@ -810,7 +842,15 @@
           "named": true
         },
         {
+          "type": "intersection",
+          "named": true
+        },
+        {
           "type": "non_structural",
+          "named": true
+        },
+        {
+          "type": "paragraph_segment",
           "named": true
         },
         {
@@ -848,7 +888,15 @@
           "named": true
         },
         {
+          "type": "intersection",
+          "named": true
+        },
+        {
           "type": "non_structural",
+          "named": true
+        },
+        {
+          "type": "paragraph_segment",
           "named": true
         },
         {
@@ -1299,6 +1347,10 @@
           {
             "type": "non_structural",
             "named": true
+          },
+          {
+            "type": "paragraph_segment",
+            "named": true
           }
         ]
       },
@@ -1314,11 +1366,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
+          "type": "intersection",
           "named": true
         }
       ]
@@ -1335,6 +1391,10 @@
           {
             "type": "non_structural",
             "named": true
+          },
+          {
+            "type": "paragraph_segment",
+            "named": true
           }
         ]
       },
@@ -1350,11 +1410,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
+          "type": "intersection",
           "named": true
         }
       ]
@@ -1371,6 +1435,10 @@
           {
             "type": "non_structural",
             "named": true
+          },
+          {
+            "type": "paragraph_segment",
+            "named": true
           }
         ]
       },
@@ -1386,11 +1454,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
+          "type": "intersection",
           "named": true
         }
       ]
@@ -2044,6 +2116,10 @@
           {
             "type": "paragraph",
             "named": true
+          },
+          {
+            "type": "paragraph_segment",
+            "named": true
           }
         ]
       },
@@ -2059,11 +2135,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
+          "type": "intersection",
           "named": true
         }
       ]
@@ -2080,6 +2160,10 @@
           {
             "type": "paragraph",
             "named": true
+          },
+          {
+            "type": "paragraph_segment",
+            "named": true
           }
         ]
       },
@@ -2095,11 +2179,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
+          "type": "intersection",
           "named": true
         }
       ]
@@ -2116,6 +2204,10 @@
           {
             "type": "paragraph",
             "named": true
+          },
+          {
+            "type": "paragraph_segment",
+            "named": true
           }
         ]
       },
@@ -2131,11 +2223,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "detached_modifier_extensions",
+          "named": true
+        },
+        {
+          "type": "intersection",
           "named": true
         }
       ]
@@ -3063,6 +3159,10 @@
   },
   {
     "type": "generic",
+    "named": true
+  },
+  {
+    "type": "intersection",
     "named": true
   },
   {

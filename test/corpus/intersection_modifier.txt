@@ -1,0 +1,52 @@
+================================================================================
+Intersecting modifier main motivation: nice tables
+================================================================================
+: A1 : 1
+: A2 : 2
+: A3 : 3
+--------------------------------------------------------------------------------
+
+(document
+  (table
+    (single_table
+      (paragraph_segment)
+      (intersection)
+      (paragraph_segment))
+    (single_table
+      (paragraph_segment)
+      (intersection)
+      (paragraph_segment))
+    (single_table
+      (paragraph_segment)
+      (intersection)
+      (paragraph_segment))))
+
+================================================================================
+Intersecting definitions
+================================================================================
+$ Term : Definition
+$$ Term : Part of the definition
+@code lua
+@end
+
+Rest of the definition
+$$
+--------------------------------------------------------------------------------
+
+(document
+  (definition_list
+    (single_definition
+      (paragraph_segment)
+      (intersection)
+      (paragraph_segment))
+    (multi_definition
+      (paragraph_segment)
+      (intersection)
+      (paragraph_segment)
+      (ranged_verbatim_tag
+        (tag_name
+          (word))
+        (tag_parameters
+          (tag_parameter)))
+      (paragraph
+        (paragraph_segment)))))

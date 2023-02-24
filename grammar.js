@@ -70,6 +70,8 @@ module.exports = grammar({
         [$.inline_comment, $._free_form_conflict, $._attached_modifier_conflict],
         [$.inline_math, $._free_form_conflict, $._attached_modifier_conflict],
         [$.inline_macro, $._free_form_conflict, $._attached_modifier_conflict],
+
+        [$.paragraph_segment],
     ],
 
     precedences: $ => [
@@ -711,7 +713,17 @@ function heading($, level) {
 
             field("title", $.paragraph_segment),
 
-            newline_or_eof,
+            choice(
+                prec.dynamic(1, seq(
+                    $._whitespace,
+                    alias(token(prec(1, ":")), $.intersection),
+                    $._whitespace,
+                    $.paragraph_segment,
+                    newline_or_eof,
+                )),
+
+                newline_or_eof,
+            ),
 
             repeat(
                 choice(
@@ -756,49 +768,67 @@ function nestable_detached_mod_prefix($, chr, level) {
 
 function rangeable_single_detached_mod($, chr) {
     return seq(
-            chr,
+        chr,
 
-            $._whitespace,
+        $._whitespace,
 
-            optional(
-                seq(
-                    $.detached_modifier_extensions,
-                    $._whitespace,
-                ),
+        optional(
+            seq(
+                $.detached_modifier_extensions,
+                $._whitespace,
             ),
+        ),
 
-            field("title", $.paragraph_segment),
+        field("title", $.paragraph_segment),
 
-            newline,
+        choice(
+            prec.dynamic(1, seq(
+                $._whitespace,
+                alias(token(prec(1, ":")), $.intersection),
+                $._whitespace,
+                field("content", $.paragraph_segment),
+                newline_or_eof,
+            )),
 
-            field("content",
-                choice(
-                    $.paragraph,
-                ),
+            seq(
+                newline,
+
+                field("content", $.paragraph),
             ),
-        );
+        ),
+    );
 }
 
 function rangeable_multi_detached_mod($, chr) {
     return seq(
-            chr,
+        chr,
 
-            $._whitespace,
+        $._whitespace,
 
-            optional(
-                seq(
-                    $.detached_modifier_extensions,
-                    $._whitespace,
-                ),
+        optional(
+            seq(
+                $.detached_modifier_extensions,
+                $._whitespace,
             ),
+        ),
 
-            field("title", $.paragraph_segment),
+        field("title", $.paragraph_segment),
 
-            newline,
+        choice(
+            prec.dynamic(1, seq(
+                $._whitespace,
+                alias(token(prec(1, ":")), $.intersection),
+                $._whitespace,
+                field("content", $.paragraph_segment),
+                newline_or_eof,
+            )),
 
-            field("content", repeat($.non_structural)),
+            newline_or_eof,
+        ),
 
-            token(seq(chr, newline_or_eof)),
+        field("content", repeat($.non_structural)),
+
+        token(seq(chr, newline_or_eof)),
     );
 }
 
