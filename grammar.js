@@ -416,12 +416,12 @@ module.exports = grammar({
         strikethrough: $ => prec.dynamic(2, attached_mod($, "strikethrough", false)),
         underline: $ => prec.dynamic(2, attached_mod($, "underline", false)),
         spoiler: $ => prec.dynamic(2, attached_mod($, "spoiler", false)),
-        verbatim: $ => prec.dynamic(2, attached_mod($, "verbatim", true)),
+        verbatim: $ => prec.dynamic(3, attached_mod($, "verbatim", true)),
         superscript: $ => prec.dynamic(2, attached_mod($, "superscript", false)),
         subscript: $ => prec.dynamic(2, attached_mod($, "subscript", false)),
         inline_comment: $ => prec.dynamic(2, attached_mod($, "inline_comment", false)),
-        inline_math: $ => prec.dynamic(2, attached_mod($, "inline_math", true)),
-        inline_macro: $ => prec.dynamic(2, attached_mod($, "inline_macro", true)),
+        inline_math: $ => prec.dynamic(3, attached_mod($, "inline_math", true)),
+        inline_macro: $ => prec.dynamic(3, attached_mod($, "inline_macro", true)),
 
         _attached_modifier_conflict: $ => choice(
             $._bold_open,
@@ -880,6 +880,7 @@ function attached_mod($, name, verbatim) {
                         alias($[name], "_word"),
                         $._attached_modifier_conflict,
                         $._free_form_conflict,
+                        "|",
                         $.linkable,
                         $._inline_link_target_conflict_open,
                         newline,
