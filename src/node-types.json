@@ -123,6 +123,10 @@
         "named": false
       },
       {
+        "type": "definition_list",
+        "named": true
+      },
+      {
         "type": "footnote_list",
         "named": true
       },
@@ -140,6 +144,10 @@
       },
       {
         "type": "quote",
+        "named": true
+      },
+      {
+        "type": "table",
         "named": true
       },
       {
@@ -295,6 +303,25 @@
     "type": "date",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "definition_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "multi_definition",
+          "named": true
+        },
+        {
+          "type": "single_definition",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "detached_modifier_extension",
@@ -1083,12 +1110,84 @@
     }
   },
   {
+    "type": "multi_definition",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "non_structural",
+            "named": true
+          }
+        ]
+      },
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_extensions",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "multi_footnote",
     "named": true,
     "fields": {
       "content": {
         "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "non_structural",
+            "named": true
+          }
+        ]
+      },
+      "title": {
+        "multiple": false,
         "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_extensions",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multi_table",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
             "type": "non_structural",
@@ -1756,7 +1855,79 @@
     "fields": {}
   },
   {
+    "type": "single_definition",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      },
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_extensions",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "single_footnote",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph",
+            "named": true
+          }
+        ]
+      },
+      "title": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "paragraph_segment",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "detached_modifier_extensions",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "single_table",
     "named": true,
     "fields": {
       "content": {
@@ -1962,6 +2133,25 @@
         },
         {
           "type": "linkable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "table",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "multi_table",
+          "named": true
+        },
+        {
+          "type": "single_table",
           "named": true
         }
       ]
@@ -2413,6 +2603,10 @@
     "named": false
   },
   {
+    "type": "::",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -2454,6 +2648,14 @@
   },
   {
     "type": "]",
+    "named": false
+  },
+  {
+    "type": "^",
+    "named": false
+  },
+  {
+    "type": "^^",
     "named": false
   },
   {

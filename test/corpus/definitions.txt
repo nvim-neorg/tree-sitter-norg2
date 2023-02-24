@@ -1,15 +1,15 @@
 ================================================================================
-Single paragraph footnote
+Single paragraph definition
 ================================================================================
-^ Single-paragraph footnote
-This is the actual footnote.
+$ Single-paragraph definition
+This is the actual definition.
 
-This is no longer part of the footnote.
+This is no longer part of the definition.
 --------------------------------------------------------------------------------
 
 (document
-  (footnote_list
-    (single_footnote
+  (definition_list
+    (single_definition
       (paragraph_segment)
       (paragraph
         (paragraph_segment))))
@@ -17,19 +17,19 @@ This is no longer part of the footnote.
     (paragraph_segment)))
 
 ================================================================================
-Multi paragraph footnote
+Multi paragraph definition
 ================================================================================
-^^ Multi-paragraph footnote
-This is the actual footnote.
+$$ Multi-paragraph definition
+This is the actual definition.
 
-This is also still part of the footnote.
-^^
-This is no longer part of the footnote.
+This is also still part of the definition.
+$$
+This is no longer part of the definition.
 --------------------------------------------------------------------------------
 
 (document
-  (footnote_list
-    (multi_footnote
+  (definition_list
+    (multi_definition
       (paragraph_segment)
       (paragraph
         (paragraph_segment))
@@ -39,27 +39,27 @@ This is no longer part of the footnote.
     (paragraph_segment)))
 
 ================================================================================
-Nested multi paragraph footnote
+Nested multi paragraph definition
 ================================================================================
-^^ Multi-paragraph footnote
-This is the actual footnote.
+$$ Multi-paragraph definition
+This is the actual definition.
 
-^^ Here is a nested footnote
-This is also still part of the footnote.
-^^
+$$ Here is a nested definition
+This is also still part of the definition.
+$$
 text
-^^
-This is no longer part of the footnote.
+$$
+This is no longer part of the definition.
 --------------------------------------------------------------------------------
 
 (document
-  (footnote_list
-    (multi_footnote
+  (definition_list
+    (multi_definition
       (paragraph_segment)
       (paragraph
         (paragraph_segment))
-      (footnote_list
-        (multi_footnote
+      (definition_list
+        (multi_definition
           (paragraph_segment)
           (paragraph
             (paragraph_segment))))

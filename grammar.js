@@ -252,6 +252,8 @@ module.exports = grammar({
             $.horizontal_rule,
             $.tag,
             $.footnote_list,
+            $.definition_list,
+            $.table,
         ),
 
         footnote_list: $ => prec.right(
@@ -262,8 +264,30 @@ module.exports = grammar({
                 ),
             ),
         ),
-        single_footnote: $ => rangeable_single_detached_mod($, "$"),
-        multi_footnote: $ => rangeable_multi_detached_mod($, "$$"),
+        single_footnote: $ => rangeable_single_detached_mod($, "^"),
+        multi_footnote: $ => rangeable_multi_detached_mod($, "^^"),
+
+        definition_list: $ => prec.right(
+            repeat1(
+                choice(
+                    $.single_definition,
+                    $.multi_definition,
+                ),
+            ),
+        ),
+        single_definition: $ => rangeable_single_detached_mod($, "$"),
+        multi_definition: $ => rangeable_multi_detached_mod($, "$$"),
+
+        table: $ => prec.right(
+            repeat1(
+                choice(
+                    $.single_table,
+                    $.multi_table,
+                ),
+            ),
+        ),
+        single_table: $ => rangeable_single_detached_mod($, ":"),
+        multi_table: $ => rangeable_multi_detached_mod($, "::"),
 
         undone: _ => " ",
         done: _ => "x",
@@ -684,8 +708,7 @@ function nestable_detached_mod_prefix($, chr, level) {
 }
 
 function rangeable_single_detached_mod($, chr) {
-    return prec.right(
-        seq(
+    return seq(
             chr,
 
             $._whitespace,
@@ -706,8 +729,7 @@ function rangeable_single_detached_mod($, chr) {
                     $.paragraph,
                 ),
             ),
-        ),
-    );
+        );
 }
 
 function rangeable_multi_detached_mod($, chr) {
@@ -727,10 +749,9 @@ function rangeable_multi_detached_mod($, chr) {
 
             newline,
 
-            field("content", repeat1($.non_structural)),
+            field("content", repeat($.non_structural)),
 
-            chr,
-            newline_or_eof,
+            token(seq(chr, newline_or_eof)),
     );
 }
 

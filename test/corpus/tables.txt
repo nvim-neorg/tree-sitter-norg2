@@ -1,15 +1,15 @@
 ================================================================================
-Single paragraph footnote
+Single paragraph table
 ================================================================================
-^ Single-paragraph footnote
-This is the actual footnote.
+: Single-paragraph table
+This is the actual table.
 
-This is no longer part of the footnote.
+This is no longer part of the table.
 --------------------------------------------------------------------------------
 
 (document
-  (footnote_list
-    (single_footnote
+  (table
+    (single_table
       (paragraph_segment)
       (paragraph
         (paragraph_segment))))
@@ -17,19 +17,19 @@ This is no longer part of the footnote.
     (paragraph_segment)))
 
 ================================================================================
-Multi paragraph footnote
+Multi paragraph table
 ================================================================================
-^^ Multi-paragraph footnote
-This is the actual footnote.
+:: Multi-paragraph table
+This is the actual table.
 
-This is also still part of the footnote.
-^^
-This is no longer part of the footnote.
+This is also still part of the table.
+::
+This is no longer part of the table.
 --------------------------------------------------------------------------------
 
 (document
-  (footnote_list
-    (multi_footnote
+  (table
+    (multi_table
       (paragraph_segment)
       (paragraph
         (paragraph_segment))
@@ -39,27 +39,27 @@ This is no longer part of the footnote.
     (paragraph_segment)))
 
 ================================================================================
-Nested multi paragraph footnote
+Nested multi paragraph table
 ================================================================================
-^^ Multi-paragraph footnote
-This is the actual footnote.
+:: Multi-paragraph table
+This is the actual table.
 
-^^ Here is a nested footnote
-This is also still part of the footnote.
-^^
+:: Here is a nested table
+This is also still part of the table.
+::
 text
-^^
-This is no longer part of the footnote.
+::
+This is no longer part of the table.
 --------------------------------------------------------------------------------
 
 (document
-  (footnote_list
-    (multi_footnote
+  (table
+    (multi_table
       (paragraph_segment)
       (paragraph
         (paragraph_segment))
-      (footnote_list
-        (multi_footnote
+      (table
+        (multi_table
           (paragraph_segment)
           (paragraph
             (paragraph_segment))))
