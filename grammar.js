@@ -46,10 +46,35 @@ module.exports = grammar({
         [$.inline_comment, $._attached_modifier_conflict],
         [$.inline_math, $._attached_modifier_conflict],
         [$.inline_macro, $._attached_modifier_conflict],
+
+        [$.bold, $._free_form_conflict],
+        [$.italic, $._free_form_conflict],
+        [$.strikethrough, $._free_form_conflict],
+        [$.underline, $._free_form_conflict],
+        [$.spoiler, $._free_form_conflict],
+        [$.verbatim, $._free_form_conflict],
+        [$.superscript, $._free_form_conflict],
+        [$.subscript, $._free_form_conflict],
+        [$.inline_comment, $._free_form_conflict],
+        [$.inline_math, $._free_form_conflict],
+        [$.inline_macro, $._free_form_conflict],
+
+        [$.bold, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.italic, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.strikethrough, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.underline, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.spoiler, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.verbatim, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.superscript, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.subscript, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.inline_comment, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.inline_math, $._free_form_conflict, $._attached_modifier_conflict],
+        [$.inline_macro, $._free_form_conflict, $._attached_modifier_conflict],
     ],
 
     precedences: $ => [
         [$.anchor_definition, $.anchor_declaration],
+        [$._free_form_conflict, $._attached_modifier_conflict],
     ],
 
     inlines: $ => [
@@ -91,6 +116,7 @@ module.exports = grammar({
                 $.escape_sequence,
                 $.linkable,
                 $._inline_link_target_conflict_open,
+                $._free_form_conflict,
                 seq(
                     optional(
                         seq(
@@ -117,6 +143,7 @@ module.exports = grammar({
                             $.escape_sequence,
                             $.attached_modifier,
                             $._attached_modifier_conflict,
+                            $._free_form_conflict,
                             $.linkable,
                             $._inline_link_target_conflict_open,
                             seq(
@@ -140,6 +167,7 @@ module.exports = grammar({
                         $._word,
                         $.escape_sequence,
                         $._attached_modifier_conflict,
+                        $._free_form_conflict,
                         $._inline_link_target_conflict_open,
                     ),
                 ),
@@ -383,23 +411,24 @@ module.exports = grammar({
             $.inline_macro,
         ),
 
-        bold: $ => prec.dynamic(1, attached_mod($, "bold", false)),
-        italic: $ => prec.dynamic(1, attached_mod($, "italic", false)),
-        strikethrough: $ => prec.dynamic(1, attached_mod($, "strikethrough", false)),
-        underline: $ => prec.dynamic(1, attached_mod($, "underline", false)),
-        spoiler: $ => prec.dynamic(1, attached_mod($, "spoiler", false)),
-        verbatim: $ => prec.dynamic(1, attached_mod($, "verbatim", true)),
-        superscript: $ => prec.dynamic(1, attached_mod($, "superscript", false)),
-        subscript: $ => prec.dynamic(1, attached_mod($, "subscript", false)),
-        inline_comment: $ => prec.dynamic(1, attached_mod($, "inline_comment", false)),
-        inline_math: $ => prec.dynamic(1, attached_mod($, "inline_math", true)),
-        inline_macro: $ => prec.dynamic(1, attached_mod($, "inline_macro", true)),
+        bold: $ => prec.dynamic(2, attached_mod($, "bold", false)),
+        italic: $ => prec.dynamic(2, attached_mod($, "italic", false)),
+        strikethrough: $ => prec.dynamic(2, attached_mod($, "strikethrough", false)),
+        underline: $ => prec.dynamic(2, attached_mod($, "underline", false)),
+        spoiler: $ => prec.dynamic(2, attached_mod($, "spoiler", false)),
+        verbatim: $ => prec.dynamic(2, attached_mod($, "verbatim", true)),
+        superscript: $ => prec.dynamic(2, attached_mod($, "superscript", false)),
+        subscript: $ => prec.dynamic(2, attached_mod($, "subscript", false)),
+        inline_comment: $ => prec.dynamic(2, attached_mod($, "inline_comment", false)),
+        inline_math: $ => prec.dynamic(2, attached_mod($, "inline_math", true)),
+        inline_macro: $ => prec.dynamic(2, attached_mod($, "inline_macro", true)),
 
         _attached_modifier_conflict: $ => choice(
             $._bold_open,
             $._italic_open,
             $._strikethrough_open,
             $._underline_open,
+            $._verbatim_open,
             $._spoiler_open,
             $._superscript_open,
             $._subscript_open,
@@ -407,6 +436,23 @@ module.exports = grammar({
             $._inline_math_open,
             $._inline_macro_open,
         ),
+
+        _free_form_conflict: $ => prec.dynamic(1, seq(
+            choice(
+                $._bold_open,
+                $._italic_open,
+                $._strikethrough_open,
+                $._underline_open,
+                $._verbatim_open,
+                $._spoiler_open,
+                $._superscript_open,
+                $._subscript_open,
+                $._inline_comment_open,
+                $._inline_math_open,
+                $._inline_macro_open,
+            ),
+            "|",
+        )),
 
         attribute_identifier: $ => seq(
             alias($._word, $.attribute_name),
@@ -557,6 +603,7 @@ module.exports = grammar({
                     $.escape_sequence,
                     $.attached_modifier,
                     $._attached_modifier_conflict,
+                    $._free_form_conflict,
                     seq(
                         optional(
                             seq(
@@ -765,44 +812,110 @@ function lower_level_items($, type, level) {
 
 // TODO: Handle the following case: `/hello /`
 function attached_mod($, name, verbatim) {
+    let modifiers = [
+        "bold",
+        "italic",
+        "strikethrough",
+        "underline",
+        "verbatim",
+        "spoiler",
+        "superscript",
+        "subscript",
+        "inline_comment",
+        "inline_math",
+        "inline_macro",
+    ].filter(n => n !== name);
+
     if (verbatim) {
+        modifiers = modifiers.map(n => alias($[n], "_word")) + alias($[name], "_word");
+
         return seq(
             $["_" + name + "_open"],
-            repeat1(
-                choice(
-                    $._word,
-                    $._whitespace,
-                    $.escape_sequence,
-                    $._attached_modifier_conflict,
+            choice(
+                seq(
+                    alias("|", $.free_form_open),
+                    repeat1(
+                        choice(
+                            $._word,
+                            $._whitespace,
+                            $._attached_modifier_conflict,
+                            ...modifiers,
+                            newline,
+                        ),
+                    ),
+                    alias("|", $.free_form_close),
+                    $["_" + name + "_close"],
+                ),
+                // TODO: Disallow whitespace to be the first element in a verbatim attached mod
+                seq(
+                    repeat1(
+                        choice(
+                            $._word,
+                            $._whitespace,
+                            $.escape_sequence,
+                            $._attached_modifier_conflict,
+                            newline,
+                        ),
+                    ),
+                    $["_" + name + "_close"],
                 ),
             ),
-            $["_" + name + "_close"],
             optional($.attached_modifier_extension),
         );
     }
 
+    modifiers = modifiers.map(n => $[n]);
+
     return seq(
         $["_" + name + "_open"],
         choice(
-            $._word,
-            $.escape_sequence,
-            $.attached_modifier,
-            $._attached_modifier_conflict,
-            $.linkable,
-            $._inline_link_target_conflict_open,
-        ),
-        repeat(
-            choice(
-                $._word,
-                $._whitespace,
-                $.escape_sequence,
-                $.attached_modifier,
-                $._attached_modifier_conflict,
-                $.linkable,
-                $._inline_link_target_conflict_open,
+            seq(
+                alias("|", $.free_form_open),
+                repeat1(
+                    choice(
+                        $._word,
+                        $._whitespace,
+                        $.escape_sequence,
+                        ...modifiers,
+                        alias($[name], "_word"),
+                        $._attached_modifier_conflict,
+                        $._free_form_conflict,
+                        $.linkable,
+                        $._inline_link_target_conflict_open,
+                        newline,
+                    ),
+                ),
+                alias("|", $.free_form_close),
+                $["_" + name + "_close"],
+            ),
+            seq(
+                choice(
+                    $._word,
+                    $.escape_sequence,
+                    ...modifiers,
+                    alias($[name], "_word"),
+                    $._attached_modifier_conflict,
+                    $._free_form_conflict,
+                    $.linkable,
+                    $._inline_link_target_conflict_open,
+                ),
+                repeat(
+                    choice(
+                        $._word,
+                        $._whitespace,
+                        $.escape_sequence,
+                        ...modifiers,
+                        alias($[name], "_word"),
+                        $._attached_modifier_conflict,
+                        $._free_form_conflict,
+                        $.linkable,
+                        $._inline_link_target_conflict_open,
+                        newline,
+                    ),
+                ),
+                $["_" + name + "_close"],
             ),
         ),
-        $["_" + name + "_close"],
         optional($.attached_modifier_extension),
     );
 }
