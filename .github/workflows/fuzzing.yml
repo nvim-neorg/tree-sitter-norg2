@@ -16,17 +16,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y 2to3 libfuzzer-12-dev
       - name: Prepare tree-sitter
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: tree-sitter/tree-sitter
 
       - name: Prepare tree-sitter-norg
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: test/fixtures/grammars/norg
 
       - name: Prepare corpuses
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: out/results/corpus
           ref: fuzz_corpuses
@@ -51,7 +51,7 @@ jobs:
           git add .
           git commit -m "[Action] Add new corpuses"
           git push origin fuzz_corpuses -f
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: fuzzing_results

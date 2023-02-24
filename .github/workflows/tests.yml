@@ -12,12 +12,12 @@ jobs:
       CC: clang
     steps:
       - name: Prepare tree-sitter
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: tree-sitter/tree-sitter
 
       - name: Prepare tree-sitter-norg
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: test/fixtures/grammars/norg
 
