@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/nvim-neorg/tree-sitter-norg2/compare/v0.1.0...v0.1.1) (2023-03-11)
+
+
+### Bug Fixes
+
+* **bindings:** compile the `scanner.cc` into the resulting binary (rust) ([3212930](https://github.com/nvim-neorg/tree-sitter-norg2/commit/32129300276d8824c8e77ea216bf8c3a089d45af))
+
 ## 0.1.0 (2023-03-11)
 
 
